@@ -1,23 +1,25 @@
+/**************************************************************************
 
-instance DIA_Summoned_EXIT(C_Info)
+							ПРИЗВАННЫЙ МОНСТР
+  
+  Следовать за ГГ и охранять его. Управление временем жизни через 
+AIV_SummonedTime:
+    -1 - бесконечно
+    0 - смерть
+    иное - сколько осталось сек.
+
+  Набор восприятий - особый.
+  Режим перемещения - бег.
+ 
+***************************************************************************/
+
+
+//ДИАЛОГИ ================================
+instance DIA_Summoned_EXIT(DIA_Proto_End)
 {
-	nr = 999;
-	condition = DIA_Summoned_EXIT_Condition;
-	information = DIA_Summoned_EXIT_Info;
-	permanent = TRUE;
-	description = Dialog_Ende;
 };
 
-
-func int DIA_Summoned_EXIT_Condition()
-{
-	return TRUE;
-};
-
-func void DIA_Summoned_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+//-------------------------------------------
 
 instance DIA_Summoned_FREE(C_Info)
 {
@@ -37,18 +39,14 @@ func int DIA_Summoned_FREE_Condition()
 func void DIA_Summoned_FREE_Info()
 {
 	AI_StopProcessInfos(self);
-	self.aivar[AIV_SummonedTime] = MONSTER_SUMMON_TIME * 5;
+	self.aivar[AIV_SummonedTime] = 0;
 };
 
-func void B_SummonedAssessTalk()
-{
-	DIA_Summoned_EXIT.npc = Hlp_GetInstanceID(self);
-	DIA_Summoned_FREE.npc = Hlp_GetInstanceID(self);
-	AI_ProcessInfos(self);
-	//Npc_ChangeAttribute(self,ATR_HITPOINTS,-self.attribute[ATR_HITPOINTS_MAX]);
-};
 
-//невидимка для телепортации к ГГ
+//ТЕЛЕПОРТ К ГГ =========================
+//для борьбы с застреваниями
+
+//невидимка - точка телепортации
 instance HELPER_Teleport(C_NPC)
 {
 	name[0] = "Телепорт к ГГ";
@@ -63,8 +61,7 @@ instance HELPER_Teleport(C_NPC)
 	Npc_SetToFistMode(self);
 	start_aistate = ZS_Follow_Player;
 };
-
-//борьба с застреваниями
+//телепорт
 func void B_Summoned_TeleportToPlayer()
 {
 	//если ГГ слишком далеко
@@ -84,11 +81,26 @@ func void B_Summoned_TeleportToPlayer()
 		AI_Teleport(self,wp);
 	};
 };
+
+//ВОСПРИЯТИЯ =========================================
+
+func void B_SummonedAssessTalk()
+{
+	DIA_Summoned_EXIT.npc = Hlp_GetInstanceID(self);
+	DIA_Summoned_FREE.npc = Hlp_GetInstanceID(self);
+	AI_ProcessInfos(self);
+	//Npc_ChangeAttribute(self,ATR_HITPOINTS,-self.attribute[ATR_HITPOINTS_MAX]);
+};
+
+// ----------------------------------------
+
 func void B_SummonedAssessPlayer()
 {
 	B_Summoned_TeleportToPlayer();
 	B_MM_AssessPlayer();
 };
+
+//СОСТОЯНИЕ =========================================
 
 func void ZS_MM_Rtn_Summoned()
 {
@@ -98,6 +110,7 @@ func void ZS_MM_Rtn_Summoned()
 	Npc_PercEnable(self,PERC_ASSESSMAGIC,B_AssessMagic);
 	Npc_PercEnable(self,PERC_ASSESSDAMAGE,B_MM_AssessDamage);
 	Npc_PercEnable(self,PERC_ASSESSFIGHTSOUND,B_MM_AssessOthersDamage);
+	//особые диалоги для ищущего огонька
 	if(Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Wisp_Detector))
 	{
 		Npc_PercEnable(self,PERC_ASSESSTALK,B_AssessTalk);
@@ -106,6 +119,7 @@ func void ZS_MM_Rtn_Summoned()
 	{
 		Npc_PercEnable(self,PERC_ASSESSTALK,B_SummonedAssessTalk);
 	};
+	//дружелюбны к ГГ
 	B_SetAttitude(self,ATT_FRIENDLY);
 	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	self.aivar[AIV_Behaviour] = self.aivar[AIV_Behaviour] | BEHAV_Summoned;
@@ -137,6 +151,7 @@ func int ZS_MM_Rtn_Summoned_Loop()
 		if(Hlp_IsValidNpc(HELPER_Teleport))	{
 			Wld_RemoveNpc(HELPER_Teleport);
 		};
+		//если не видим ГГ - повернуться к нему
 		if(!Npc_CanSeeNpc(self,hero))
 		{
 			AI_TurnToNPC(self,hero);
