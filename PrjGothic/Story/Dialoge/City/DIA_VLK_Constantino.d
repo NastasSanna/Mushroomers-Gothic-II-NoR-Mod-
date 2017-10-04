@@ -1154,6 +1154,7 @@ func void DIA_Constantino_AboutLadysEar_info()
 	AI_Output(self,other,"DIA_Constantino_AboutLadysEar_10_08");	//я алхимик, а не кулинар!
 	AI_Output(self,other,"DIA_Constantino_AboutLadysEar_10_09");	//Ќо если замочить грибы в холодной воде по три раза на три часа, вредные свойства пропадут.  ак и полезные.
 	AI_Output(self,other,"DIA_Constantino_AboutLadysEar_10_10");	//ƒальше можешь делать с ними, что хочешь.
+	MIS_Cookery_ConstantinoAsked = TRUE;
 	B_LogEntry(TOPIC_Cookery,TOPIC_Cookery_Constantino);
 };
 // ---------------------------------------------------
@@ -1206,7 +1207,6 @@ func void DIA_Constantino_AboutRecipe_info()
 	else	{
 		AI_Output(self,other,"DIA_Constantino_AboutRecipe_10_05f");	//Ѕудь благодарна, что € вообще согласилс€ показать его.
 	};
-	MIS_Cookery_ConstantinoAsked = TRUE;
 	B_LogEntry(TOPIC_Cookery,TOPIC_Cookery_ConstantinoRecipePrice);
 };
 // ---------------------------------------------------
