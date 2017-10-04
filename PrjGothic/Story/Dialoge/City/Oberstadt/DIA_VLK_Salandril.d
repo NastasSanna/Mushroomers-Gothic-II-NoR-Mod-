@@ -56,8 +56,8 @@ func void DIA_Salandril_Sarah_WhatIngredients_info()
 	AI_Output(self,other,"DIA_Salandril_Sarah_WhatIngredients_13_06");	//К сожалению, на городских башнях его больше не осталось.
 	B_LogEntry(TOPIC_Sarah_BadHabit,TOPIC_Sarah_BadHabit_SalandrilIngredients);
 	MIS_Sarah_BadHabit_PotionIngredients = TRUE;	//теперь ищем ингредиенты
-	_SpawnBySPName("SP_REDMOSS_01",ItPl_RedMoss);
-	_SpawnBySPName("SP_REDMOSS_02",ItPl_RedMoss);
+	_SpawnBySPName("SP_REDMOSS_01_NP",ItPl_RedMoss);
+	_SpawnBySPName("SP_REDMOSS_02_NP",ItPl_RedMoss);
 };
 
 // ==============================================
