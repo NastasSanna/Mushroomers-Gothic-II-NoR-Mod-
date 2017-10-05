@@ -22,7 +22,7 @@ instance BAU_920_Bauer(Npc_Default)
 
 func void Rtn_Start_920()
 {
-	TA_Smalltalk(7,50,21,50,"NW_BIGFARM_HOUSE_OUT_04");
-	TA_Smalltalk(21,50,7,50,"NW_BIGFARM_STABLE_01");
+	TA_Smalltalk(7,50,21,50,"NW_BIGFARM_HOUSE_OUT_04"); //Bau_903_Bodo
+	TA_Smalltalk(21,50,7,50,"NW_BIGFARM_STABLE_01"); //BAU_921_Bauer
 };
 

@@ -332,7 +332,7 @@ const string TOPIC_Cookery = "Кулинарные изыски";
 
 	const string TOPIC_Cookery_TheklaEatable = "Текла попытается приготовить дамские уши, если я наверняка узнаю, съедобные ли они.";
 	const string TOPIC_Cookery_TheklaNeed3 = "Текла попытается приготовить грибы. На пробу ей нужно 3 штуки.";
-	const string TOPIC_Cookery_TheklaTry = "Текла взялась за готовку. Завтра после полудня будет готово.";
+	const string TOPIC_Cookery_TheklaTry = "Текла взялась за готовку. Надо будет зайти к ней завтра после полудня.";
 	const string TOPIC_Cookery_TheklaReady = "У Теклы получились жареные уши. На вид довольно... оригинально, но пахнет вкусно. Надо отдать рецепт Грому.";
 	const string TOPIC_Cookery_TheklaGiven = "Гром был уверен, что Текла приготовит что-то вкусное. В награду он дал мне пригорошню лесных ягод.";
 	

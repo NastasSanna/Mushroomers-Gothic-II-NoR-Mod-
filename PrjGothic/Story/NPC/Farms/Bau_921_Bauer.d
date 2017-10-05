@@ -22,8 +22,8 @@ instance BAU_921_Bauer(Npc_Default)
 
 func void Rtn_Start_921()
 {
-	TA_Smalltalk(7,55,19,55,"NW_BIGFARM_STABLE_OUT_01");
-	TA_Smalltalk(19,55,21,55,"NW_BIGFARM_PATH_04_1");
-	TA_Smalltalk(21,55,7,55,"NW_BIGFARM_STABLE_01");
+	TA_Smalltalk(7,55,19,55,"NW_BIGFARM_STABLE_OUT_01"); //BAU_902_Gunnar
+	TA_Stand_Eating(19,55,21,55,"NW_BIGFARM_PATH_04_1");
+	TA_Smalltalk(21,55,7,55,"NW_BIGFARM_STABLE_01"); //BAU_920_Bauer
 };
 

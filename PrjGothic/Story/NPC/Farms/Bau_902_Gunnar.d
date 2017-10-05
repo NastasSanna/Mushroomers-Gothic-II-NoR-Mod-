@@ -5,7 +5,7 @@ instance BAU_902_Gunnar(Npc_Default)
 	name[0] = NAME_Bauer;
 	guild = GIL_BAU;
 	id = 902;
-	voice = 13;
+	voice = 11;
 	flags = 0;
 	npcType = NPCTYPE_AMBIENT;
 	B_SetAttributesToChapter(self,2);
@@ -25,7 +25,7 @@ instance BAU_902_Gunnar(Npc_Default)
 
 func void Rtn_Start_902()
 {
-	TA_Smalltalk(8,0,19,59,"NW_BIGFARM_STABLE_OUT_01");
+	TA_Smalltalk(8,0,19,59,"NW_BIGFARM_STABLE_OUT_01"); //BAU_921_Bauer
 	TA_Sit_Chair(19,59,8,0,"NW_BIGFARM_STABLE_01");
 };
 

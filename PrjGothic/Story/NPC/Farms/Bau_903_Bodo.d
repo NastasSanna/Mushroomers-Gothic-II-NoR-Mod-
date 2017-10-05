@@ -24,7 +24,7 @@ instance Bau_903_Bodo(Npc_Default)
 
 func void Rtn_Start_903()
 {
-	TA_Smalltalk(7,45,21,45,"NW_BIGFARM_HOUSE_OUT_04");
+	TA_Smalltalk(7,45,21,45,"NW_BIGFARM_HOUSE_OUT_04"); //BAU_920_Bauer
 	TA_Sit_Bench(21,45,7,45,"NW_BIGFARM_PATH_03");
 };
 
