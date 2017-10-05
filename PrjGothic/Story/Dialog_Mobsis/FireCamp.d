@@ -49,25 +49,31 @@ func void PC_FireCamp_Cook_Info()
 		PrintOnMob(PRINT_MissingMuttonRaw);
 		return;
 	};
-/*	AI_UseMob(self, "CAMPFIRE", -1);
-	AI_PlayAni(self, "T_COOKFIRECAMP_STAND_2_S0");
-	AI_Wait(self, 0.5);
-	AI_PlayAni(self, "T_COOKFIRECAMP_S0_2_S1");
-	AI_Wait(self, 3);
-	Npc_RemoveInvItems(self,ItFoMuttonRaw,1);
-	CreateInvItems(self,ItFoMutton,1);
-	AI_PlayAni(self, "T_COOKFIRECAMP_S1_2_S0");
-	AI_PlayAni(self, "T_COOKFIRECAMP_S0_2_STAND");
-	AI_UseMob(self, "CAMPFIRE",1);
-	*/
 	Info_ClearChoices(PC_FireCamp_Cook);
-	Info_AddChoice(PC_FireCamp_Cook, "1 кусок", PC_FireCamp_Cook_1);
-	var int cnt; cnt = Npc_HasItems(self, ItFoMuttonRaw);
-	if (cnt > 10)	{
-		Info_AddChoice(PC_FireCamp_Cook, "10 кусков", PC_FireCamp_Cook_10);
+	var int cnt;
+	cnt = Npc_HasItems(self, ItFoMuttonRaw);
+	Info_AddChoice(PC_FireCamp_Cook, Dialog_Back, PC_Stove_Cook_Back);
+	if (cnt > 1)
+	{
+		Info_AddChoice(PC_FireCamp_Cook,"...1 кусок (2 минуты)",PC_Stove_Cook_Meat_1);
 	};
-	if (cnt > 1)	{
-		Info_AddChoice(PC_FireCamp_Cook, CS3("все (", IntToString(cnt), " шт.)"), PC_FireCamp_Cook_All);
+	if (cnt > 5)
+	{
+		Info_AddChoice(PC_FireCamp_Cook,"...5 кусков (10 минут)",PC_Stove_Cook_Meat_5);
+	};
+	if (cnt > 10)
+	{
+		Info_AddChoice(PC_FireCamp_Cook,"...10 кусков (20 минут)",PC_Stove_Cook_Meat_10);
+	};
+	if (cnt > 20)
+	{
+		Info_AddChoice(PC_FireCamp_Cook,"...20 кусков (40 минут)",PC_Stove_Cook_Meat_20);
+	};
+	if (cnt > 1)
+	{
+		var string str_cnt; str_cnt = IntToString(cnt);
+		var string str_time; str_time = IntToString(2 * cnt);
+		Info_AddChoice(PC_FireCamp_Cook,CS5("...все (", str_cnt," шт., ",str_time," мин.)"),PC_Stove_Cook_Meat_All);
 	};
 };
 
@@ -78,17 +84,11 @@ func void PC_FireCamp_Cook_DoIt(var float timesec, var int MuttonCount)
 	CreateInvItems(self,ItMi_PanFull,1);
 	AI_UseItemToState(self, ItMi_PanFull, 1);
 	//жарим
-	Npc_RemoveInvItems(self,ItFoMuttonRaw,MuttonCount);
-	AI_Wait(self, timesec);
-	CreateInvItems(self,ItFoMutton,MuttonCount);
+	Cook_Meat_DoCook(MuttonCount);
 	//убираем сковородку
 	AI_UseItemToState(self, ItMi_PanFull, -1);
 	AI_UseMob(self, "CAMPFIRE",1);
-	if (MuttonCount > 10)	{
-		AI_PrintScreen(PRINT_SomeTimeLater,-1,25,FONT_Screen,3);
-		var int time;	time = 2 * MuttonCount + Hlp_Random(5);
-		B_SetTimePlus(0, time);
-	};
+	//есть еще мясо для жарки?
 	if (Npc_HasItems(self, ItFoMuttonRaw) > 0)	{
 		PC_FireCamp_Cook_Info();
 	}
@@ -97,6 +97,10 @@ func void PC_FireCamp_Cook_DoIt(var float timesec, var int MuttonCount)
 	};
 };
 
+func void PC_Stove_Cook_Back()
+{
+	Info_ClearChoices(PC_FireCamp_Cook);
+};
 func void PC_FireCamp_Cook_1()
 {
 	PC_FireCamp_Cook_DoIt(0.8, 1);	

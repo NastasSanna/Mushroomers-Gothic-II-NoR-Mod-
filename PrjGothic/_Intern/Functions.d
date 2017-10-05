@@ -219,6 +219,9 @@ func int C_TimeLesser(var int h1, var int m1, var int h2, var int m2)
 // перевести часы
 func void B_SetTime(var int h, var int m)
 {
+	//бекап - сбивается при перестановке времени
+	var C_NPC slf; slf = Hlp_GetNpc(self);
+	var C_NPC oth; oth = Hlp_GetNpc(other);
 	// если больше, чем на сутки - то как написано
 	if(h >= 24)
 	{
@@ -233,6 +236,8 @@ func void B_SetTime(var int h, var int m)
 	{
 		Wld_SetTime(h + 24, m);
 	};
+	self = Hlp_GetNpc(slf);
+	other = Hlp_GetNpc(oth);
 };
 
 // перевести часы на несколько часов и минут
@@ -247,7 +252,7 @@ func void B_SetTimePlus(var int h, var int m)
 	// обрезать минуты
 	m_target = m_target % 60;
 	// установить время
-	B_SetTime(h_target, m_target);	
+	B_SetTime(h_target, m_target);
 };
 
 //====================================================

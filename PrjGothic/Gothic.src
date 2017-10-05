@@ -452,6 +452,7 @@ AI\Human\TA_Human\ZS_Smalltalk_Drinking.d
 AI\Human\ZS_Human\ZS_AimTo.d
 AI\Human\ZS_Human\ZS_Smith_Once.d
 Story\B_Hero\B_InitHero.d
+Story\Dialog_Mobsis\Cooking.d
 Story\Dialog_Mobsis\B_GivePlayerXp_Bookstand.d
 Story\Dialog_Mobsis\Bookstand.d
 Story\Dialog_Mobsis\BookstandAlchemy.d

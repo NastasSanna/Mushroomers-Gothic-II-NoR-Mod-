@@ -59,27 +59,23 @@ func void PC_Stove_Cook_Meat_Info()
 {
 	Info_ClearChoices(PC_Stove_Cook_Meat);
 	Info_AddChoice(PC_Stove_Cook_Meat,Dialog_Back,PC_Stove_Cook_Meat_Back);
-	var int cnt;
-	cnt = Npc_HasItems(self, ItFoMuttonRaw) + 1; //1 через анимацию
-	if (cnt >= 1)
-	{
+	var int cnt;	cnt = Npc_HasItems(self, ItFoMuttonRaw);
+	if (cnt > 1)	{
 		Info_AddChoice(PC_Stove_Cook_Meat,"...1 кусок (2 минуты)",PC_Stove_Cook_Meat_1);
 	};
-	if (cnt >= 5)
-	{
+	if (cnt > 5)	{
 		Info_AddChoice(PC_Stove_Cook_Meat,"...5 кусков (10 минут)",PC_Stove_Cook_Meat_5);
 	};
-	if (cnt >= 10)
-	{
+	if (cnt > 10)	{
 		Info_AddChoice(PC_Stove_Cook_Meat,"...10 кусков (20 минут)",PC_Stove_Cook_Meat_10);
 	};
-	if (cnt >= 20)
-	{
+	if (cnt > 20)	{
 		Info_AddChoice(PC_Stove_Cook_Meat,"...20 кусков (40 минут)",PC_Stove_Cook_Meat_20);
 	};
-	if (cnt > 0)
-	{
-		Info_AddChoice(PC_Stove_Cook_Meat,CS5("...все (",IntToString(cnt)," шт., ",IntToString(2*cnt)," мин.)"),PC_Stove_Cook_Meat_All);
+	if (cnt > 1)	{
+		var string str_cnt; str_cnt = IntToString(cnt);
+		var string str_time; str_time = IntToString(2 * cnt);
+		Info_AddChoice(PC_Stove_Cook_Meat,CS5("...все (", str_cnt," шт., ",str_time," мин.)"),PC_Stove_Cook_Meat_All);
 	};
 };
 
@@ -88,51 +84,43 @@ func void PC_Stove_Cook_Meat_Back()
 	Info_ClearChoices(PC_Stove_Cook_Meat);
 };
 
+//пожарить заданное кол-во мяса на плите
 func void PC_Stove_Cook_Meat_DoIt(var int MuttonCount)
 {
-	var int time;	time = 2 * MuttonCount;
-	if (MuttonCount > 5)	{
-		time += Hlp_Random(5);
-	};
-	MuttonCount = MuttonCount - 1; //1 через анимацию
-	Npc_RemoveInvItems(self,ItFoMuttonRaw,MuttonCount);
-	AI_PrintScreen(PRINT_SomeTimeLater,-1,25,FONT_Screen,3);
-	AI_Wait(self, 2.0);
-	CreateInvItems(self,ItFoMutton,MuttonCount);
-	B_SetTimePlus(0, time);
+	//жарим
+	Cook_Meat_DoCook(MuttonCount);
+	//больше ничего нет - конец
 	if (Npc_HasItems(self,ItFoMuttonRaw) == 0)	{
-		b_endproductiondialog();
+		PC_Stove_EXIT_Info();
+	}
+	else {
+		PC_Stove_Cook_Meat_Info();
 	};
 };
 
 func void PC_Stove_Cook_Meat_1()
 {
 	PC_Stove_Cook_Meat_DoIt(1);
-	Info_ClearChoices(PC_Stove_Cook_Meat);
 };
 
 func void PC_Stove_Cook_Meat_5()
 {
 	PC_Stove_Cook_Meat_DoIt(5);
-	Info_ClearChoices(PC_Stove_Cook_Meat);
 };
 
 func void PC_Stove_Cook_Meat_10()
 {
 	PC_Stove_Cook_Meat_DoIt(10);
-	Info_ClearChoices(PC_Stove_Cook_Meat);
 };
 
 func void PC_Stove_Cook_Meat_20()
 {
 	PC_Stove_Cook_Meat_DoIt(20);
-	Info_ClearChoices(PC_Stove_Cook_Meat);
 };
 
 func void PC_Stove_Cook_Meat_All()
 {
-	var int cnt;
-	cnt = Npc_HasItems(self, ItFoMuttonRaw);
+	var int cnt;	cnt = Npc_HasItems(self, ItFoMuttonRaw);
 	PC_Stove_Cook_Meat_DoIt(cnt);
 };
 
@@ -143,13 +131,11 @@ func int cancookstove()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (Npc_HasItems(self, ItMi_Pan) == 0)
-		{
-			PrintOnMob(PRINT_MissingPan);
-			return FALSE;
-		};
-		if (Npc_HasItems(self, ItFoMuttonRaw) == 0)
-		{
+		//if (Npc_HasItems(self, ItMi_Pan) == 0)		{
+		//	PrintOnMob(PRINT_MissingPan);
+		//	return FALSE;
+		//};
+		if (Npc_HasItems(self, ItFoMuttonRaw) == 0)		{
 			PrintOnMob(PRINT_MissingMuttonRaw);
 			return FALSE;
 		};
@@ -161,15 +147,10 @@ func void cookstove_s1()
 {
 	if (Npc_IsPlayer(self))
 	{
-		//1 кусок без меню - через анимацию
-		//но он уже исчез из инвентаря, поэтому > 0
-		if (Npc_HasItems(self, ItFoMuttonRaw) > 0)
-		{
-			PC_Stove_EXIT.npc = Hlp_GetInstanceID(self);
-			PC_Stove_Cook_Meat.npc = Hlp_GetInstanceID(self);
-			PLAYER_MOBSI_PRODUCTION = MOBSI_Stove;
-			self.aivar[AIV_INVINCIBLE] = TRUE;
-			AI_ProcessInfos(self);
-		};
+		PC_Stove_EXIT.npc = Hlp_GetInstanceID(self);
+		PC_Stove_Cook_Meat.npc = Hlp_GetInstanceID(self);
+		PLAYER_MOBSI_PRODUCTION = MOBSI_Stove;
+		self.aivar[AIV_INVINCIBLE] = TRUE;
+		AI_ProcessInfos(self);
 	};
 };
