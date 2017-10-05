@@ -330,3 +330,35 @@ func void DIA_Carl_RepairHummer_DoIt()
 	B_GivePlayerXP(XP_Fellan_HammerRepaired);
 };
 
+
+//===================================================
+instance DIA_Carl_MR_Perm(C_Info)
+{
+	npc = VLK_461_Carl;			nr = 50;
+	condition = DIA_NoCond_cond;
+	information = DIA_Carl_MR_Perm_Info;
+	description = "Какие новости?";
+	permanent = TRUE;
+};
+func void DIA_Carl_MR_Perm_Info()
+{
+	if (hero.voice == 3)	{
+		AI_Output(other,self,"DIA_Hanna_MR_Perm_03_00");	//Какие новости?
+	} else if (hero.voice == 7)	{
+		AI_Output(other,self,"DIA_Hanna_MR_Perm_07_00");	//Какие новости?
+	} else if (hero.voice == 10)	{
+		AI_Output(other,self,"DIA_Hanna_MR_Perm_10_00");	//Какие новости?
+	} else if (hero.voice == 14)	{
+		AI_Output(other,self,"DIA_Hanna_MR_Perm_14_00");	//Какие новости?
+	} else	{
+		AI_Output(other,self,"DIA_Hanna_MR_Perm_16_00");	//Какие новости?
+	};
+	var int rnd;	rnd = Hlp_Random(100);
+	if (rnd < 50)	{
+		AI_Output(self,other,"DIA_Karl_News_23_01");	    //Говорят, на материке дела все хуже. Не приведи Аданос, война докатится и до нас.
+	}
+	else {
+		AI_Output(self,other,"DIA_Karl_News_23_02");	    //В порту стало слишком тихо. Раньше тут был такой гвалт, что я собственного молота не слышал.
+	};
+};
+
