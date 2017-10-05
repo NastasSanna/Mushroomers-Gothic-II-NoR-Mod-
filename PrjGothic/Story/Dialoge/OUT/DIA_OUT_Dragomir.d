@@ -179,7 +179,7 @@ func void DIA_Dragomir_IsItDangerousHere_info()
 	} else	{							//Сара/Елена
 		AI_Output(other,self,"DIA_Dragomir_IsItDangerousHere_16_00");	//Здесь опасно?
 	};
-	AI_Output(self,other,"DIA_Dragomir_IsItDangerousHere_12_01");	//Да, для случайного путника, и нет, если умеешь за себя постоять. Главное - смотри, куда идешь.
+	AI_Output(self,other,"DIA_Dragomir_IsItDangerousHere_12_01");	//Да, для случайного путника, и нет, если сумеешь за себя постоять. Главное - смотри, куда идешь.
 	AI_Output(self,other,"DIA_Dragomir_IsItDangerousHere_12_02");	//Например, если поднимешься к пустоши над горным озером, то наткнешься на огромного тролля.
 	AI_Output(self,other,"DIA_Dragomir_IsItDangerousHere_12_03");	//Эта громадина быстро превратит тебя в котлету. Но не заметить его трудно.
 	AI_Output(self,other,"DIA_Dragomir_IsItDangerousHere_12_04");	//Еще не советую соваться в пещеры. В темноте можно неожиданно наткнуться на выводок ползунов, а то и на кого похуже.

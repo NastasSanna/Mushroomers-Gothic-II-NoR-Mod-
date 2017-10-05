@@ -159,7 +159,7 @@ func void DIA_Fellan_WifeWaits_info()
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Fellan_WifeWaits_16_00");	//Твоя жена ждет тебя.
 	};
-	AI_Output(self,other,"DIA_Fellan_WifeWaits_06_01");	//Эта женщина! Я пытался, как мог, убедить ее пойти со мной.
+	AI_Output(self,other,"DIA_Fellan_WifeWaits_06_01");	//Эта женщина! Я, как мог, пытался убедить ее пойти со мной.
 	AI_Output(self,other,"DIA_Fellan_WifeWaits_06_02");	//Но это бесполезно. Она просто тупа, как пробка, она просто не может понять.
 	MIS_FellanGoHome_ToldAttempts += 1;
 	if (MIS_FellanGoHome_ToldAttempts == MIS_FellanGoHome_ToldAttempts_Fail)	{
