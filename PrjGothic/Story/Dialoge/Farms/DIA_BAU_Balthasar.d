@@ -46,7 +46,15 @@ func int DIA_Balthasar_Elena_HowYourSheep_cond()
 };
 func void DIA_Balthasar_Elena_HowYourSheep_info()
 {
+	if (hero.voice == 3)	{			//Одо/Руперт
+		AI_Output(other,self,"DIA_Balthasar_HowYourSheep_03_00");	//Как твои овцы, Бальтазар?
+	} else if (hero.voice == 7)	{		//Талбин
+		AI_Output(other,self,"DIA_Balthasar_HowYourSheep_07_00");	//Как твои овцы, Бальтазар?
+	} else if (hero.voice == 10)	{	//Эрол
+		AI_Output(other,self,"DIA_Balthasar_HowYourSheep_10_00");	//Как твои овцы, Бальтазар?
+	} else	{							//Сара
 		AI_Output(other,self,"DIA_Balthasar_Elena_HowYourSheep_16_00");	//Как твои овцы, Бальтазар?
+	};
 	AI_Output(self,other,"DIA_Balthasar_Elena_HowYourSheep_05_01");	//Довольны жизнью.
 };
 
