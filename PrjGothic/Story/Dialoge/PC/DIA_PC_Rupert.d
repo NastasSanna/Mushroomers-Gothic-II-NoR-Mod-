@@ -131,7 +131,6 @@ instance DIA_Rupert_MRTrade(C_INFO)
 	information = DIA_Rupert_MRTrade_info;
 	description = "(купить грибы)";
 	permanent = TRUE;
-	trade = TRUE;
 };
 func int DIA_Rupert_MRTrade_cond()
 {
@@ -157,73 +156,6 @@ func void DIA_Rupert_MRTrade_info()
 	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Трезубец", ItMr_Trident, MR_Trident, DIA_Rupert_MRTrade_Trident);
 	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Пища рудокопа", ItPl_Mushroom_02, MR_02, DIA_Rupert_MRTrade_MR02);
 	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Темный гриб", ItPl_Mushroom_01, MR_01, DIA_Rupert_MRTrade_MR01);
-	//
-	var int cnt;
-	var int price;
-	cnt = Npc_HasItems(self,ItMr_Red);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Red);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Болтун (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Red);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Piny);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Piny);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Сосновик (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Piny);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Stone);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Stone);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Каменка (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Stone);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_BrownOiler);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_BrownOiler);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Масляк (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_BrownOiler);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Sunrise);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Sunrise);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Зорьник (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Sunrise);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Governor);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Governor);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Губернатор (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Governor);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Trident);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Trident);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Трезубец (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_Trident);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItPl_Mushroom_02);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_02);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Пища рудокопа (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_MR02);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItPl_Mushroom_01);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_01);
-		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade,CS3("Темный гриб (",IntToString(price)," зол.)"),DIA_Rupert_MRTrade_MR01);
-		HasMrms = TRUE;
-	};
-	///
 	if (!HasMrms)	{
 		AI_Output(self,other,"DIA_Rupert_MRTrade_No_03_01");	//У меня сейчас больше нет грибов на продажу.
 		Info_ClearChoices(DIA_Rupert_MRTrade);

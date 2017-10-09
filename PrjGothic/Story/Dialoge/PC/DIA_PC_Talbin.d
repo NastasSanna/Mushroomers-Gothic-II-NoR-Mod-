@@ -108,6 +108,18 @@ var int DIA_Talbin_MRTrade_Cnt;
 var int DIA_Talbin_MRTrade_Price;
 var int DIA_Talbin_MRTrade_Sum;
 
+func int DIA_Talbin_MRTrade_CheckMR(var string mrName, var int mrInst, var int mrIndex, var func choice)
+{
+	var int cnt; cnt = Npc_HasItems(self, mrInst);
+	if (cnt > 0)	{
+		var int price; price = MEM_ReadStatArr(MR_Price, mrIndex) * 11 / 10 + 1;
+		DIA_Talbin_MRTrade_Sum += price * cnt;
+		Info_AddChoice(DIA_Talbin_MRTrade, CS5(mrName, " (", IntToString(price)," зол.)", ""), choice);
+		return TRUE;
+	};
+	return FALSE;
+};
+
 instance DIA_Talbin_MRTrade(C_INFO)
 {
 	npc = CMP_Talbin;		nr = 4;
@@ -127,75 +139,19 @@ func void DIA_Talbin_MRTrade_info()
 	DIA_Talbin_MRTrade_MR = 0;
 	DIA_Talbin_MRTrade_Cnt = 0;
 	DIA_Talbin_MRTrade_Price = 0;
+	DIA_Talbin_MRTrade_Sum = 0;
 	Info_ClearChoices(DIA_Talbin_MRTrade);
 	Info_AddChoice(DIA_Talbin_MRTrade,Dialog_Back,DIA_Talbin_MRTrade_Back);
-	var int price;
-	var int cnt;
-	DIA_Talbin_MRTrade_Sum = 0;
 	var int HasMrms;	HasMrms = FALSE;
-	cnt = Npc_HasItems(self,ItMr_Red);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Red) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Болтун (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_Red);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Piny);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Piny) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Сосновик (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_Piny);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Stone);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Stone) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Каменка (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_Stone);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_BrownOiler);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_BrownOiler) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Масляк (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_BrownOiler);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_LadysEar);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_LadysEar) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Дамские уши (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_LadysEar);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_KeilSmall);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Keil) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Кабанчик (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_Keil);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItMr_Governor);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_Governor) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Губернатор (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_Governor);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItPl_Mushroom_02);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_02) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Пища рудокопа (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_MR02);
-		HasMrms = TRUE;
-	};
-	cnt = Npc_HasItems(self,ItPl_Mushroom_01);
-	if (cnt)	{
-		price = MEM_ReadStatArr(MR_Price,MR_01) * 11 / 10 + 1;
-		DIA_Talbin_MRTrade_Sum += price * cnt;
-		Info_AddChoice(DIA_Talbin_MRTrade,CS3("Темный гриб (",IntToString(price)," зол.)"),DIA_Talbin_MRTrade_MR01);
-		HasMrms = TRUE;
-	};
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Болтун", ItMr_Red, MR_Red, DIA_Talbin_MRTrade_Red);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Сосновик", ItMr_Piny, MR_Piny, DIA_Talbin_MRTrade_Piny);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Каменка", ItMr_Stone, MR_Stone, DIA_Talbin_MRTrade_Stone);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Масляк", ItMr_BrownOiler, MR_BrownOiler, DIA_Talbin_MRTrade_BrownOiler);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Дамские уши", ItMr_LadysEar, MR_LadysEar, DIA_Talbin_MRTrade_LadysEar);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Кабанчик", ItMr_KeilSmall, MR_Keil, DIA_Talbin_MRTrade_Keil);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Губернатор", ItMr_Governor, MR_Governor, DIA_Talbin_MRTrade_Governor);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Пища рудокопа", ItPl_Mushroom_02, MR_02, DIA_Talbin_MRTrade_MR02);
+	HasMrms = HasMrms | DIA_Talbin_MRTrade_CheckMR("Темный гриб", ItPl_Mushroom_01, MR_01, DIA_Talbin_MRTrade_MR01);
 	if (!HasMrms)	{
 		AI_Output(self,other,"DIA_Talbin_MRTrade_No_07_01");	//У меня сейчас нет больше грибов.
 	}
