@@ -258,8 +258,8 @@ func void DIA_Niclas_Exchange_GiveMR()
 {
 	var int i;	i = 0;
 	var int Rnd;
-	var int RndMax;
-	var int i_Max;
+	var int RndMax; RndMax = 0;
+	var int i_Max; i_Max = 0;
 	while(i < Niclas_MR_Max);
 		Rnd = C_Random(MEM_ReadStatArr(Niclas_MRs_Chance,i)) + 1;
 		if (Rnd > RndMax)	{
