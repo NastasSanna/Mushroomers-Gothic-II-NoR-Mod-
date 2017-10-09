@@ -1,4 +1,9 @@
 
+instance DIA_Hilda_END(DIA_Proto_End)
+{
+	npc = BAU_951_Hilda;
+};
+
 // ===================================================
 instance DIA_Hilda_TastySmell(C_Info)
 {
@@ -9,7 +14,7 @@ instance DIA_Hilda_TastySmell(C_Info)
 };
 func int DIA_Hilda_TastySmell_Cond()
 {
-	if (Npc_GetDistToWP(self, "NW_FARM1_INHOUSE_02")) {
+	if (Npc_GetDistToWP(self, "NW_FARM1_INHOUSE_02") < PERC_DIST_INTERMEDIAT) {
 		return TRUE;
 	};
 };
@@ -37,7 +42,7 @@ func void DIA_Hilda_TastySmell_Info()
 // ===================================================
 instance DIA_Hilda_Perm(C_Info)
 {
-	nr = 101;
+	npc = BAU_951_Hilda;				nr = 100;
 	condition = DIA_NoCond_cond;
 	information = DIA_Hilda_Perm_Info;
 	permanent = TRUE;
@@ -75,7 +80,7 @@ instance DIA_Hilda_AskRecipe(C_Info)
 };
 func int DIA_Hilda_AskRecipe_cond()
 {
-	if (MIS_Cookery == LOG_Running && Npc_KnowsInfo(other,DIA_Hilda_TastySmell))	{
+	if (MIS_Cookery == LOG_Running)	{
 		return TRUE;
 	};
 };
