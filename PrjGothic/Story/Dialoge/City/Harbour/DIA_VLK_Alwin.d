@@ -59,7 +59,7 @@ func void DIA_Alwin_News_info()
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Alwin_News_16_00");	//Какие новости?
 	};
-	if (MIS_FellanGoHome == LOG_SUCCESS)	{
+	if (MIS_FellanGoHome_Returned)	{
 		AI_Output(self,other,"DIA_Alwin_News2_12_01");	//С тех пор как мой сосед Феллан вернулся домой, у меня нет ни минуты покоя!
 		AI_Output(self,other,"DIA_Alwin_News2_12_02");	//Он все стучит, и стучит, и стучит... Целый день! Когда уже это кончится?!
 	}
