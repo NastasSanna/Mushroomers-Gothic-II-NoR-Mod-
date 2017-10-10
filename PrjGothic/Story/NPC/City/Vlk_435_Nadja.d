@@ -49,8 +49,9 @@ func void Rtn_NoSmoking_435()
 	TA_Sit_Throne(10,0,14,0,"NW_CITY_PUFF_THRONE");
 	TA_Stand_ArmsCrossed(14,0,15,0,"NW_CITY_PALCAMP_02");
 	TA_Sit_Throne(15,0,17,0,"NW_CITY_PUFF_THRONE");
-	TA_Sleep(17,0,22,30,"NW_CITY_NADJA_BED");
-	TA_Stand_ArmsCrossed(22,30,23,30,"NW_CITY_PALCAMP_02");
+	TA_Sleep(17,0,21,31,"NW_CITY_NADJA_BED");
+	TA_Smalltalk(21,31,21,45,"NW_CITY_PUFF_THRONE"); //Люсия
+	TA_Stand_ArmsCrossed(21,45,23,30,"NW_CITY_PALCAMP_02");
 };
 func void Rtn_NoFireSpit_435()
 {
@@ -63,8 +64,9 @@ func void Rtn_NoFireSpit_435()
 	TA_Sit_Throne(10,0,14,0,"NW_CITY_PUFF_THRONE");
 	TA_Stand_ArmsCrossed(14,0,15,0,"NW_CITY_PALCAMP_02");
 	TA_Sit_Throne(15,0,17,0,"NW_CITY_PUFF_THRONE");
-	TA_Sleep(17,0,22,30,"NW_CITY_NADJA_BED");
-	TA_Stand_ArmsCrossed(22,30,23,30,"NW_CITY_PALCAMP_02");
+	TA_Sleep(17,0,21,35,"NW_CITY_NADJA_BED");
+	TA_Smalltalk(21,35,21,45,"NW_CITY_PUFF_THRONE"); //Люсия
+	TA_Stand_ArmsCrossed(21,45,23,30,"NW_CITY_PALCAMP_02");
 };
 func void Rtn_Tot_435()
 {

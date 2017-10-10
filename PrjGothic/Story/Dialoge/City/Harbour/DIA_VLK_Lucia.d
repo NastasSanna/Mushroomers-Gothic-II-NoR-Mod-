@@ -11,16 +11,24 @@ instance DIA_Lucia_Sarah_Hello(C_INFO)
 	condition = DIA_Lucia_Sarah_MR_Hello_cond;
 	information = DIA_Lucia_Sarah_MR_Hello_info;
 	description = "Эй, ты Люсия?";
+	permanent = TRUE;
 };
 func int DIA_Lucia_Sarah_MR_Hello_cond()
 {
 	if (C_HeroIs_Sarah()
-		 && (MIS_Sarah_BadHabit == LOG_Running) && Borka_Sarah_AgreedToTell)	{
+		 && (MIS_Sarah_BadHabit == LOG_Running) && Borka_Sarah_AgreedToTell
+		 && !MIS_Sarah_BadHabit_LuciaAsked
+	   )	
+	{
 		return TRUE;
 	};
 };
 func void DIA_Lucia_Sarah_MR_Hello_info()
 {
+	if ((Npc_GetDistToNpc(self, VLK_435_Nadja) < PERC_DIST_DIALOG) || (Npc_GetDistToNpc(other, VLK_435_Nadja) < PERC_DIST_DIALOG))	{
+		AI_PrintScreen(PRINT_NadjaTooClose, -1, -1, FONT_Screen, 3);
+		return;
+	};
 		AI_Output(other,self,"DIA_Lucia_Sarah_MR_Hello_16_00");	//Эй, ты Люсия?
 	AI_Output(self,other,"DIA_Lucia_Sarah_MR_Hello_16_01");	//Ну я.
 		AI_Output(other,self,"DIA_Lucia_Sarah_MR_Hello_16_02");	//Есть деловое предложение. Я хочу, чтобы Надя бросила курить.
@@ -32,6 +40,7 @@ func void DIA_Lucia_Sarah_MR_Hello_info()
 	AI_Output(self,other,"DIA_Lucia_Sarah_MR_Hello_16_08");	//Но золото у меня есть. Я хочу кое-что другое.
 	AI_Output(self,other,"DIA_Lucia_Sarah_MR_Hello_16_09");	//Недавно у Бромора пропал ключ. Одна птичка шепнула мне, что этот ключ спрятан где-то в порту, неподалеку.
 	AI_Output(self,other,"DIA_Lucia_Sarah_MR_Hello_16_10");	//Найди его и принеси мне. Это большой стальной ключ, а на рукоятке выцарапана буква Б.
+	MIS_Sarah_BadHabit_LuciaAsked = TRUE;
 	B_LogEntry(TOPIC_Sarah_BadHabit,TOPIC_Sarah_BadHabit_AskedLucia);
 };
 //------------------------------------------------------------
@@ -41,25 +50,30 @@ instance DIA_Lucia_Sarah_GiveKey(C_INFO)
 	condition = DIA_Lucia_Sarah_GiveKey_cond;
 	information = DIA_Lucia_Sarah_GiveKey_info;
 	description = "Этот ключ?";
+	permanent = TRUE;
 };
 func int DIA_Lucia_Sarah_GiveKey_cond()
 {
 	if (C_HeroIs_Sarah()
-		 && (MIS_Sarah_BadHabit == LOG_Running) && Npc_KnowsInfo(other,DIA_Lucia_Sarah_Hello)
-		 && Npc_HasItems(other, ItKe_Bromor))	{
+		 && (MIS_Sarah_BadHabit == LOG_Running) && MIS_Sarah_BadHabit_LuciaAsked
+		 && Npc_HasItems(other, ItKe_Bromor)
+		 && MIS_Sarah_BadHabit_LuciaTalkTime == 0)	{
 		return TRUE;
 	};
 };
 func void DIA_Lucia_Sarah_GiveKey_info()
 {
+	if ((Npc_GetDistToNpc(self, VLK_435_Nadja) < PERC_DIST_DIALOG) || (Npc_GetDistToNpc(other, VLK_435_Nadja) < PERC_DIST_DIALOG))	{
+		AI_PrintScreen(PRINT_NadjaTooClose, -1, -1, FONT_Screen, 3);
+		return;
+	};
 		AI_Output(other,self,"DIA_Lucia_Sarah_GiveKey_16_00");	//Этот ключ?
 	B_GiveInvItems(other,self,ItKe_Bromor,1);
 	AI_Output(self,other,"DIA_Lucia_Sarah_GiveKey_16_01");	//Да, это он. Что ж, уговор есть уговор - я сегодня же пообщаюсь с Надей.
 	AI_Output(self,other,"DIA_Lucia_Sarah_GiveKey_16_02");	//Но если она проспорит, это не мои проблемы.
 	B_LogEntry(TOPIC_Sarah_BadHabit,TOPIC_Sarah_BadHabit_GiveLuciaKey);
 	B_GivePlayerXP(XP_Sarah_Nadja_LuciaTalked);
-	MIS_Sarah_BadHabit_LuciaTalkDay = Wld_GetDay() + 1;
-	B_StartOtherRoutine(VLK_435_Nadja,"NOSMOKING");
+	MIS_Sarah_BadHabit_LuciaTalkTime = (Wld_GetDay() * 24 + 21) * 60; //разговор по расписанию 21:30-21:45
 };
 
 //////////////////////////////////ОСТАЛЬНЫЕ////////////////////////////////////////

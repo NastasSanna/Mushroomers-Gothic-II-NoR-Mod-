@@ -71,6 +71,7 @@ func void B_Hero_PreStart()
 		VLK_478_Irene.npcType = NPCTYPE_FRIEND;
 		VLK_476_Fenia.npcType = NPCTYPE_FRIEND;
 		VLK_471_Edda.npcType = NPCTYPE_FRIEND;
+		VLK_435_Nadja.npcType = NPCTYPE_FRIEND;
 	}
 	else	if (C_HeroIs_Rupert())	{
 		B_StartOtherRoutine(VLK_425_Regis,"PRESTART");

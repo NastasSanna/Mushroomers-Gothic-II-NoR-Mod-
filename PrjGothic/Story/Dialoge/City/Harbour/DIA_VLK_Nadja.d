@@ -97,6 +97,7 @@ func int DIA_Nadja_Sarah_WhatHappened_Cond()
 {
 	if (C_HeroIs_Sarah()
 		 && Npc_KnowsInfo(other,DIA_Nadja_Sarah_Voice) && Npc_KnowsInfo(other,DIA_Nadja_Sarah_LookLikeDeath)
+		 && !Npc_KnowsInfo(other,DIA_Nadja_Sarah_TellAsIs)
 		 && !MIS_Sarah_BadHabit_NadjaAgreed)	{
 		return TRUE;
 	};
@@ -114,7 +115,7 @@ instance DIA_Nadja_Sarah_TellAsIs(C_Info)
 	npc = VLK_435_Nadja;			nr = 5;
 	condition = DIA_Nadja_Sarah_TellAsIs_Cond;
 	information = DIA_Nadja_Sarah_TellAsIs_Info;
-	description = "Скажу прямо - продолжишь курить эту дрянь, скоро концы отдашь!";
+	description = "Продолжишь курить эту дрянь, скоро концы отдашь!";
 };
 func int DIA_Nadja_Sarah_TellAsIs_Cond()
 {
@@ -141,7 +142,8 @@ instance DIA_Nadja_Sarah_ItsMe(C_Info)
 func int DIA_Nadja_Sarah_ItsMe_Cond()
 {
 	if (C_HeroIs_Sarah()
-		&& Npc_KnowsInfo(other,DIA_Nadja_Sarah_WhatHappened) && !MIS_Sarah_BadHabit_NadjaAgreed)	{
+		 && Npc_KnowsInfo(other,DIA_Nadja_Sarah_TellAsIs) 
+		 && !MIS_Sarah_BadHabit_NadjaAgreed)	{
 		return TRUE;
 	};
 };
@@ -190,8 +192,8 @@ instance DIA_Nadja_Sarah_ItWorked(C_Info)
 func int DIA_Nadja_Sarah_ItWorked_Cond()
 {
 	if (C_HeroIs_Sarah()
-		 && (MIS_Sarah_BadHabit_LuciaTalkDay > 0)
-		 && (MIS_Sarah_BadHabit_LuciaTalkDay <= Wld_GetDay_Shifted(17) || DIA_WhenAsked_cond()))	{
+		 && (MIS_Sarah_BadHabit_NadjaTalkTime > 0)
+		 && (Wld_GetFullTime() >= MIS_Sarah_BadHabit_NadjaTalkTime))	{
 		return TRUE;
 	};
 };

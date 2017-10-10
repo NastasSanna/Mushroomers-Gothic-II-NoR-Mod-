@@ -23,15 +23,15 @@ instance VLK_4361_Lucia(Npc_Default)
 
 func void Rtn_Start_4361()
 {
-	TA_Sleep(16,0,19,0,"NW_CITY_HABOUR_PUFF_VANJA");
-	TA_Sit_Throne(19,0,20,30,"NW_CITY_PUFF_THRONE");
-	TA_Dance(20,30,0,40,"NW_PUFF_DANCE");
-	TA_Smalltalk(0,40,2,30,"NW_CITY_HABOUR_PUFF_PECK");
 	TA_Dance(4,30,8,0,"NW_PUFF_DANCE");
 	TA_Stand_Drinking(8,0,11,0,"NW_CITY_HABOUR_PUFF_IN_07");
 	TA_Stand_Sweeping(11,0,13,0,"NW_CITY_HABOUR_PUFF_IN_07");
 	TA_Stand_Sweeping(13,0,14,0,"NW_CITY_PUFF_ROOM_02");
 	TA_Stand_Sweeping(14,0,15,0,"NW_CITY_PUFF_THRONE");
+	TA_Sleep(16,0,19,0,"NW_CITY_HABOUR_PUFF_VANJA");
+	TA_Sit_Throne(19,0,21,40,"NW_CITY_PUFF_THRONE");
+	TA_Smalltalk(21,40,21,45,"NW_CITY_PUFF_THRONE"); //Надя
+	TA_Dance(21,45,0,40,"NW_PUFF_DANCE");
 };
 func void Rtn_TOT_4361()
 {

@@ -1,4 +1,6 @@
 
+const int Value_Straw = 15;
+
 // —ќЋќћј =================================
 // по квесту “илла
 instance ItMi_Straw(C_Item)
@@ -6,13 +8,13 @@ instance ItMi_Straw(C_Item)
 	name = "“юк соломы";
 	mainflag = ITEM_KAT_NONE;
 	flags = ITEM_MISSION;
-	value = 0;
+	value = Value_Straw;
 	visual = "NW_MISC_STRAW_01.3DS";
 	material = MAT_LEATHER;
 	on_state[0] = Use_MR_Straw;
 	scemeName = "MAPSEALED";
 	description = name;
-	text[5] = NAME_NoValue;
+	text[5] = NAME_Value;
 	count[5] = value;
 };
 

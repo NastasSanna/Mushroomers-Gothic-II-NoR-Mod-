@@ -699,7 +699,7 @@ instance DIA_Vatras_Sarah_NeedHelp(C_Info)
 func int DIA_Vatras_Sarah_NeedHelp_Cond()
 {
 	if (C_HeroIs_Sarah()
-		&& (MIS_Sarah_BadHabit == LOG_Running))	{
+		&& (MIS_Sarah_BadHabit == LOG_Running) && Npc_KnowsInfo(other, DIA_Nadja_Sarah_TellAsIs))	{
 		return TRUE;
 	};
 };
@@ -776,7 +776,9 @@ instance DIA_Vatras_Sarah_PotionHelp(C_Info)
 func int DIA_Vatras_Sarah_PotionHelp_Cond()
 {
 	if (C_HeroIs_Sarah()
-		&& (MIS_Sarah_BadHabit == LOG_Running) && Npc_KnowsInfo(other,DIA_Vatras_Sarah_NeedHelp))	{
+		 && (MIS_Sarah_BadHabit == LOG_Running) && Npc_KnowsInfo(other,DIA_Vatras_Sarah_NeedHelp)
+		 && !Npc_KnowsInfo(other, DIA_Salandril_Sarah_AskSmokingCure)
+	)	{
 		return TRUE;
 	};
 };

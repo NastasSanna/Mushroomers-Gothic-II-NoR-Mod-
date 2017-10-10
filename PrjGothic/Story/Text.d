@@ -1063,3 +1063,5 @@ const string PRINT_SomeTimeLater = "Спустя некоторое время...";
 const string NAME_Book = "Книга";
 const string NAME_Map = "Карта";
 const string NAME_Recipe = "Рецепт";
+
+const string PRINT_NadjaTooClose = "Нет! Надя слишком близко.";

@@ -242,6 +242,10 @@ func int DIA_Borka_Sarah_AskInsider_cond()
 };
 func void DIA_Borka_Sarah_AskInsider_info()
 {
+	if ((Npc_GetDistToNpc(self, VLK_435_Nadja) < PERC_DIST_DIALOG) || (Npc_GetDistToNpc(other, VLK_435_Nadja) < PERC_DIST_DIALOG))	{
+		AI_PrintScreen(PRINT_NadjaTooClose, -1, -1, FONT_Screen, 3);
+		return;
+	};
 	if (!DIA_Borka_Hello_SaraAsked_Once)	{
 			AI_Output(other,self,"DIA_Borka_Sarah_AskInsider_16_00");	//Эй, ты ведь хорошо знаешь, что творится в этом заведении?
 		AI_Output(self,other,"DIA_Borka_Sarah_AskInsider_11_01");	//Сведения о клиентах не разглашаются!
@@ -269,6 +273,14 @@ func void DIA_Borka_Sarah_AskInsider_info()
 	};
 	DIA_Borka_Hello_SaraAsked_Once = TRUE;
 };
+func void DIA_Borka_Sarah_TellInsider()
+{
+	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_01");	//Ладно, слушай, повторять не буду.
+	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_02");	//Надя у нас на особом положении из-за своего таланта. И характер у нее не сахар. От остальных девочек она держится особняком, они ее тоже недолюбливают.
+	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_03");	//Но еще больше все не любят Люсию. Та еще штучка. 
+	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_04");	//А с Надей они почти на ножах. Что бы одна не сказала, вторая сделает наоборот.
+		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_16_05");	//Это то, что нужно!
+};
 func void DIA_Borka_Sarah_AskInsiderBack()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderBack_16_00");	//У меня ничего нет.
@@ -292,6 +304,7 @@ func void DIA_Borka_Sarah_AskInsider50()
 	B_GiveGold(other,self,50);
 	Borka_Sarah_AgreedToTell = TRUE;
 	Info_ClearChoices(DIA_Borka_Sarah_AskInsider);
+	DIA_Borka_Sarah_TellInsider();
 };
 func void DIA_Borka_Sarah_AskInsider100()
 {
@@ -300,37 +313,46 @@ func void DIA_Borka_Sarah_AskInsider100()
 	B_GiveGold(other,self,100);
 	Borka_Sarah_AgreedToTell = TRUE;
 	Info_ClearChoices(DIA_Borka_Sarah_AskInsider);
+	DIA_Borka_Sarah_TellInsider();
 };
-func void DIA_Borka_Sarah_AskInsiderFight()
+
+func void DIA_Borka_Sarah_AskInsider_DoFight()
 {
-		AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderFight_16_00");	//Как насчет пары оплеух?
-	AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight_11_01");	//Это что, шутка такая? Ты, пигалица!
-	Info_ClearChoices(DIA_Borka_Sarah_AskInsider);
-	Info_AddChoice(DIA_Borka_Sarah_AskInsider,"Что, мало? Могу еще добавить уколов шпагой.",DIA_Borka_Sarah_AskInsiderFight2);
-	Info_AddChoice(DIA_Borka_Sarah_AskInsider,"Да-да, шутка, не кипятись.",DIA_Borka_Sarah_AskInsiderNoFight);	
-};
-func void DIA_Borka_Sarah_AskInsiderNoFight()
-{
-		AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderNoFight_16_00");	//Да-да, шутка, не кипятись.
-	AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderNoFight_11_01");	//Ты со мной не шути.
-};
-func void DIA_Borka_Sarah_AskInsiderFight2()
-{
-	AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderFight2_16_00");	//Что, мало? Могу еще добавить уколов шпагой.
-	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)	{
-		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_01");	//Что?! Ах ты... Ну доставай эту свою шпагу! И я больше не буду таким вежливым!
-	}
-	else if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)	{
-		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_02");	//Думаешь, я так легко сдамся? Доставай эту свою шпагу!
-	}
-	else	{
-		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_03");	//Думаешь, в этот раз все будет по-другому? Ну давай, попробуем!
-	};
 	AI_StopProcessInfos(self);
 	B_Attack(self,other,AR_NONE,1);
 	other.aivar[AIV_LastDistToWP] = 0;
 	self.aivar[AIV_Guardpassage_Status] = GP_NONE;
 	Borka_Sarah_Fight = TRUE;
+};
+func void DIA_Borka_Sarah_AskInsiderFight()
+{
+	AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderFight_16_00");	//Как насчет пары оплеух?
+	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)	{
+		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight_11_01");	//Это что, шутка такая? Ты, пигалица!
+		Info_ClearChoices(DIA_Borka_Sarah_AskInsider);
+		Info_AddChoice(DIA_Borka_Sarah_AskInsider,"Что, мало? Могу еще добавить уколов шпагой.",DIA_Borka_Sarah_AskInsiderFight2);
+		Info_AddChoice(DIA_Borka_Sarah_AskInsider,"Да-да, шутка, не кипятись.",DIA_Borka_Sarah_AskInsiderNoFight);
+	}
+	else if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)	{
+		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_02");	//Думаешь, я так легко сдамся? Доставай эту свою шпагу!
+		DIA_Borka_Sarah_AskInsider_DoFight();
+	}
+	else	{
+		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_03");	//Думаешь, в этот раз все будет по-другому? Ну давай, попробуем!
+		DIA_Borka_Sarah_AskInsider_DoFight();
+	};
+};
+func void DIA_Borka_Sarah_AskInsiderNoFight()
+{
+	AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderNoFight_16_00");	//Да-да, шутка, не кипятись.
+		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderNoFight_11_01");	//Ты со мной не шути.
+	Info_ClearChoices(DIA_Borka_Sarah_AskInsider);
+};
+func void DIA_Borka_Sarah_AskInsiderFight2()
+{
+	AI_Output(other,self,"DIA_Borka_Sarah_AskInsiderFight2_16_00");	//Что, мало? Могу еще добавить уколов шпагой.
+		AI_Output(self,other,"DIA_Borka_Sarah_AskInsiderFight2_11_01");	//Что?! Ах ты... Ну доставай эту свою шпагу! И я больше не буду таким вежливым!
+	DIA_Borka_Sarah_AskInsider_DoFight();
 };
 
 //-----------------------------------------
@@ -357,8 +379,9 @@ func void DIA_Borka_Sarah_FightEnd_info()
 			AI_Output(other,self,"DIA_Borka_Sarah_FightEnd_16_01");	//Ну как, достаточная мотивация?
 		AI_Output(self,other,"DIA_Borka_Sarah_FightEnd_11_02");	//Стерва!
 			AI_Output(other,self,"DIA_Borka_Sarah_FightEnd_16_03");	//Я пропущу это мимо ушей. И даже никому не скажу, что тебе наваляла девчонка.
-		AI_Output(self,other,"DIA_Borka_Sarah_FightEnd_11_04");	//Гррр.
+		AI_Output(self,other,"DIA_Borka_Sarah_FightEnd_11_04");	//(скрипит зубами)
 		Borka_Sarah_AgreedToTell = TRUE;
+		DIA_Borka_Sarah_TellInsider();
 	}
 	else	{
 		AI_Output(self,other,"DIA_Borka_Sarah_FightEnd_11_05");	//Ну что, киса, угомонилась?
@@ -367,38 +390,41 @@ func void DIA_Borka_Sarah_FightEnd_info()
 };
 
 //-----------------------------------------
-instance DIA_Borka_Sarah_TellInsider(C_INFO)
+instance DIA_Borka_Sarah_LetMeInToLucia(C_INFO)
 {
-	npc = VLK_434_Borka;			nr = 22;
-	condition = DIA_Borka_Sarah_TellInsider_cond;
-	information = DIA_Borka_Sarah_TellInsider_info;
-	important = TRUE;
+	npc = VLK_434_Borka;			nr = 23;
+	condition = DIA_Borka_Sarah_LetMeInToLucia_cond;
+	information = DIA_Borka_Sarah_LetMeInToLucia_info;
+	description = "Пропусти меня, я с ней поговорю.";
+	permanent = TRUE;
 };
-func int DIA_Borka_Sarah_TellInsider_cond()
+func int DIA_Borka_Sarah_LetMeInToLucia_cond()
 {
 	if (C_HeroIs_Sarah()
-		 && Borka_Sarah_AgreedToTell)	{
+		 && Borka_Sarah_AgreedToTell
+		 && !Borka_Sarah_AgreedToPass)	{
 		return TRUE;
 	};
 };
-func void DIA_Borka_Sarah_TellInsider_info()
+func void DIA_Borka_Sarah_LetMeInToLucia_info()
 {
-	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_01");	//Ладно, слушай, повторять не буду.
-	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_02");	//Надя у нас на особом положении из-за своего таланта. И характер у нее не сахар. От остальных девочек она держится особняком, они ее тоже недолюбливают.
-	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_03");	//Но еще больше все не любят Люсию. Та еще штучка. 
-	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_04");	//А с Надей они почти на ножах. Что бы одна не сказала, вторая сделает наоборот.
-		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_16_05");	//Это то, что нужно! Пропусти меня, я с ней поговорю.
+	if ((Npc_GetDistToNpc(self, VLK_435_Nadja) < PERC_DIST_DIALOG) || (Npc_GetDistToNpc(other, VLK_435_Nadja) < PERC_DIST_DIALOG))	{
+		AI_PrintScreen(PRINT_NadjaTooClose, -1, -1, FONT_Screen, 3);
+		return;
+	};
+		AI_Output(other,self,"DIA_Borka_Sarah_LetMeInToLucia_16_00");	//Пропусти меня, я с ней поговорю.
 	B_LogEntry(TOPIC_Sarah_BadHabit,TOPIC_Sarah_BadHabit_KnowLucia);
 	AI_Output(self,other,"DIA_Borka_Sarah_TellInsider_11_06");	//Мы так не договаривались! Бромор желчью изойдет, если я впущу бабу!
-	Info_ClearChoices(DIA_Borka_Sarah_TellInsider);
+	Info_ClearChoices(DIA_Borka_Sarah_LetMeInToLucia);
+	Info_AddChoice(DIA_Borka_Sarah_LetMeInToLucia,"Может, все-таки договоримся?",DIA_Borka_Sarah_LetMeInToLucia_AddNone);
+	if (C_NpcHasGold(other,50))	{
+		Info_AddChoice(DIA_Borka_Sarah_LetMeInToLucia,"Как насчет еще 50 золотых?",DIA_Borka_Sarah_LetMeInToLucia_AddGold50);
+	};
+	if (C_NpcHasGold(other,100))	{
+		Info_AddChoice(DIA_Borka_Sarah_LetMeInToLucia,"100 золотых тебя устроит?",DIA_Borka_Sarah_LetMeInToLucia_AddGold100);
+	};
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST) {
-		Info_AddChoice(DIA_Borka_Sarah_TellInsider,"Тебе еще раз отвесить? Лучше всего на глазах у Бромора.",DIA_Borka_Sarah_TellInsider_AddHit);
-	}
-	else if (C_NpcHasGold(other,50))	{
-		Info_AddChoice(DIA_Borka_Sarah_TellInsider,"Как насчет еще 50 золотых?",DIA_Borka_Sarah_TellInsider_AddGold50);
-	}
-	else	{
-		Info_AddChoice(DIA_Borka_Sarah_TellInsider,"Может, все-таки договоримся?",DIA_Borka_Sarah_TellInsider_AddNone);
+		Info_AddChoice(DIA_Borka_Sarah_LetMeInToLucia,"Тебе еще раз отвесить?",DIA_Borka_Sarah_LetMeInToLucia_AddHit);
 	};
 };
 func void DIA_Borka_Sarah_Passgate()
@@ -408,33 +434,32 @@ func void DIA_Borka_Sarah_Passgate()
 	Borka_Sarah_AgreedToPass = TRUE;
 	AI_StopProcessInfos(self);
 };
-func void DIA_Borka_Sarah_TellInsider_AddHit()
+func void DIA_Borka_Sarah_LetMeInToLucia_AddHit()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_AddHit_16_00");	//Тебе еще раз отвесить? Лучше всего на глазах у Бромора.
 	DIA_Borka_Sarah_Passgate();
 };
-func void DIA_Borka_Sarah_TellInsider_AddGold50()
+func void DIA_Borka_Sarah_LetMeInToLucia_AddGold50()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_AddGold50_16_00");	//Как насчет еще 50 золотых?
 	AI_Output(self,other,"DIA_Borka_Sarah_AddGold50_11_01");	//Мало.
-	Info_ClearChoices(DIA_Borka_Sarah_TellInsider);
-	Info_AddChoice(DIA_Borka_Sarah_TellInsider,"Может, все-таки договоримся?",DIA_Borka_Sarah_TellInsider_AddNone);
-	if (C_NpcHasGold(other,100))	{
-		Info_AddChoice(DIA_Borka_Sarah_TellInsider,"100 золотых тебя устроит?",DIA_Borka_Sarah_TellInsider_AddGold100);
-	};
 };
-func void DIA_Borka_Sarah_TellInsider_AddGold100()
+func void DIA_Borka_Sarah_LetMeInToLucia_AddGold100()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_AddGold100_16_00");	//100 золотых тебя устроит?
 	B_GiveGold(other,self,100);
 	DIA_Borka_Sarah_Passgate();
 };
-func void DIA_Borka_Sarah_TellInsider_AddNone()
+func void DIA_Borka_Sarah_LetMeInToLucia_AddNone()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_AddNone_16_00");	//Может, все-таки договоримся?
 	AI_Output(self,other,"DIA_Borka_Sarah_AddNone_11_01");	//Договоримся - если у тебя будет достаточно золота.
 	AI_StopProcessInfos(self);
 };
+
+
+
+
 
 //////////////////////////////////МУЖИКИ////////////////////////////////////////
 //-----------------------------------------
@@ -449,7 +474,7 @@ instance DIA_Borka_Hello_Male(C_INFO)
 func int DIA_Borka_Hello_Male_cond()
 {
 	if ((other.aivar[AIV_Gender] == MALE)
-		 && ((Npc_GetDistToWP(other,Borka_Checkpoint) < 600) || DIA_WhenAsked_cond()))	{
+		 && ((Npc_GetDistToWP(other,Borka_Checkpoint) < 600) && DIA_Borka_Hello_Male_Once || DIA_WhenAsked_cond()))	{
 		return TRUE;
 	};
 };

@@ -41,7 +41,7 @@ instance DIA_Edda_Sarah_HowAU(C_Info)
 };
 func int DIA_Edda_Sarah_HowAU_cond()
 {
-	if (C_HeroIs_Sarah())	{
+	if (C_HeroIs_Sarah() && Npc_KnowsInfo(other,DIA_Edda_Sarah_Hello))	{
 		return TRUE;
 	};
 };

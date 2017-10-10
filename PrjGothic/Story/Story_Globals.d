@@ -287,7 +287,9 @@ var int MIS_Sarah_BadHabit;
 	var int MIS_Sarah_BadHabit_EddaAsked;	//попросили помощи у Эдды
 	var int MIS_Sarah_BadHabit_MoeAsked;	//попросили помощи у Мо
 	var int MIS_Sarah_BadHabit_MoeTalked;	//Мо поговорил с Надей
-	var int MIS_Sarah_BadHabit_LuciaTalkDay;	//когда Люсия поговорит с Надей
+	var int MIS_Sarah_BadHabit_LuciaAsked;	//спросили Люсию, поговорит ли та с Надей (но еще не дали ключ)
+	var int MIS_Sarah_BadHabit_LuciaTalkTime;	//когда Люсия поговорит с Надей
+	var int MIS_Sarah_BadHabit_NadjaTalkTime;	//когда Надя "созреет" (день не курила)
 	var int MIS_Sarah_BadHabit_SearchPotion;	//ищем лекарство (спросили у Ватраса или Надя сама попросила)
 	var int MIS_Sarah_BadHabit_PotionIngredients;	//ищем ингредиенты
 	var int MIS_Sarah_BadHabit_PotionIngredientsGiven;	//отдали ингредиенты
@@ -350,7 +352,7 @@ var int Engrom_ArmHurt;	//у Энгрома болит плечо
 var int Engrom_ArmHurt_Day;	//с какого дня
 var int Engrom_ArmHurt_Hour;	//и часа
 var int Orlan_Room_Got;	//сняли комнату в таверне Мертвая гарпия
-var int Fishers_Rain_Day;	//дождь, предсказанный Фаримом
+var int Fishers_Rain_Day;	//когда будет дождь, предсказанный Фаримом
 var int Fishers_Rain_Started;	//дождь, предсказанный Фаримом, уже начался + сообщение
 var int Ulf_Beer_Count;	//сколько пива выдул Ульф
 var int Odo_Bless_Innos_Once;	//благословление от Пирокара

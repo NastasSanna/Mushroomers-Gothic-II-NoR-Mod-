@@ -703,6 +703,16 @@ func void CYCLE_TRIGGER_FUNC()
 			B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerBroken);
 		};
 	};
+
+	// Сара - Вредная привычка ----------------------------------------------
+	//если Надя и Люсия поспорили
+	if (MIS_Sarah_BadHabit_LuciaTalkTime > 0 && Wld_GetFullTime() > MIS_Sarah_BadHabit_LuciaTalkTime && MIS_Sarah_BadHabit_NadjaTalkTime == 0)
+	{
+		//бросаем курить
+		B_StartOtherRoutine(VLK_435_Nadja,"NOSMOKING");
+		//поговорим на следующий день после 9:00
+		MIS_Sarah_BadHabit_NadjaTalkTime = ((MIS_Sarah_BadHabit_LuciaTalkTime / 60 / 24 + 1) * 24 + 9) * 60;
+	};
 	
 	//SnowStudio -----------------------------------------------------------------
 	EVT_SnowStudio_Portrait();

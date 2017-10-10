@@ -23,6 +23,7 @@ func void DIA_Sonja_Sarah_MR_Hello_info()
 {
 		AI_Output(other,self,"DIA_Sonja_Sarah_MR_Hello_16_00");	//Ты Люсия?
 	AI_Output(self,other,"DIA_Sonja_Sarah_MR_Hello_16_01");	//Не смей путать меня с этой рыжей сучкой.
+	AI_StopProcessInfos(self);
 };
 
 //////////////////////////////////ВСЕ////////////////////////////////////////

@@ -220,7 +220,7 @@ instance DIA_Ignaz_Sarah_AskSmokingCure(C_INFO)
 	npc = VLK_498_Ignaz;			nr = 21;
 	condition = DIA_Ignaz_Sarah_AskSmokingCure_cond;
 	information = DIA_Ignaz_Sarah_AskSmokingCure_info;
-	description = "” теб€ есть очищающее зелье, которое поможет от курени€?";
+	description = "” теб€ есть очищающее зелье?";
 };
 func int DIA_Ignaz_Sarah_AskSmokingCure_cond()
 {
