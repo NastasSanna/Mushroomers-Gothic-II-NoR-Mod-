@@ -32,7 +32,7 @@ func void DIA_Farim_MR_Hello_Info()
 		AI_Output(self,other,"DIA_Farim_MR_Hello_11_02");	//¬иль€м хочет выйти в открытое море, а € говорю, что это бесполезно, да и опасно. ѕогода может испортитьс€ в любую минуту.
 		AI_Output(self,other,"DIA_Farim_MR_Hello_11_03");	//¬ результате мы спорим большую часть дн€.
 		Fishers_Rain_Day = Wld_GetDay() + 1;
-		//сегодн€ дожд€ больше не будет
+		/* DISABLED сегодн€ дожд€ больше не будет
 		MEM_InitGlobalInst();
 		MEM_SkyController.rainFX_timeStartRain = FLOATNULL;
 		if (Wld_IsRaining())	{
@@ -43,6 +43,7 @@ func void DIA_Farim_MR_Hello_Info()
 		else	{
 			MEM_SkyController.rainFX_timeStopRain = FLOATNULL;
 		};
+		//*/
 	}
 	else if (Wld_GetDay() > Fishers_Rain_Day)	{
 		AI_Output(self,other,"DIA_Farim_MR_Hello_11_04");	//„ерез пару дней море успокоитс€ и можно будет спокойно рыбачить.
