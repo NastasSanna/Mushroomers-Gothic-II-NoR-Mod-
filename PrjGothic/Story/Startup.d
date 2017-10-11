@@ -1250,15 +1250,14 @@ func void INIT_SUB_NewWorld_Part_GreatPeasant_MR()
 	else	{
 		Wld_AssignRoomToGuild("grpwaldhuette01",GIL_ROOMNONE);
 	};
-	/*UNFINISHED охотники
+	// охотники
 	RoomOwner = Hlp_GetNpc(OUT_1200_Engrom);
 	if (Hlp_IsValidNpc(RoomOwner))	{
-		Wld_AssignRoomToNpc("grpwaldhuette01",RoomOwner);
+		Wld_AssignRoomToNpc("HUNTERHOUSE",RoomOwner);
 	}
 	else	{
-		Wld_AssignRoomToGuild("grpwaldhuette01",GIL_ROOMNONE);
+		Wld_AssignRoomToGuild("HUNTERHOUSE",GIL_ROOMNONE);
 	};
-	//*/
 	Wld_AssignRoomToGuild("grpturm01",GIL_ROOMNONE);
 	Wld_AssignRoomToGuild("grpturm02",GIL_ROOMNONE);
 	Wld_AssignRoomToGuild("grpwaldhuette02",GIL_ROOMNONE);
@@ -1274,6 +1273,14 @@ func void INIT_SUB_NewWorld_Part_GreatPeasant_MR()
 	Wld_AssignRoomToGuild("grpcave03",GIL_GOBBO);
 	Wld_AssignRoomToGuild("grpcave04",GIL_MINECRAWLER);
 	Wld_AssignRoomToGuild("grpcave05",GIL_CAVE);
+	//Сагитта
+	RoomOwner = Hlp_GetNpc(OUT_1203_Sagitta);
+	if (Hlp_IsValidNpc(RoomOwner))	{
+		Wld_AssignRoomToNpc("SAGITTACAVE",RoomOwner);
+	}
+	else	{
+		Wld_AssignRoomToGuild("SAGITTACAVE",GIL_ROOMNONE);
+	};
 	/*/
 	if(MIS_Addon_Erol_BanditStuff == LOG_SUCCESS)
 	{
