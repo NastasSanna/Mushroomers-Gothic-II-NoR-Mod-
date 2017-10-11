@@ -221,27 +221,7 @@ func void CYCLE_TRIGGER_FUNC()
 	};
 	
 	// регенерация здоровья засчет маны (до обработки отравления!)
-	if (Hero_RegenHPFromMana)	{
-		// если ранены и есть мана
-		if ((hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX])	&& (hero.attribute[ATR_MANA] > 0))	{
-			// 1HP в минуту
-			var int HP_regen;	HP_regen = 100 * hero.attribute[ATR_HITPOINTS] / hero.attribute[ATR_HITPOINTS_MAX];
-			if (HP_regen == 0)	{
-				HP_regen = 1;
-			};
-			HP_regen = HP_regen * CYCLE_TRIGGER_Period;
-			//не больше запасов маны
-			if (HP_regen > hero.attribute[ATR_MANA])	{
-				HP_regen = hero.attribute[ATR_MANA];
-			};
-			//не больше потраченного здоровья
-			if (HP_regen > hero.attribute[ATR_HITPOINTS_MAX] - hero.attribute[ATR_HITPOINTS])	{
-				HP_regen = hero.attribute[ATR_HITPOINTS_MAX] - hero.attribute[ATR_HITPOINTS];
-			};
-			hero.attribute[ATR_HITPOINTS] += HP_regen;
-			hero.attribute[ATR_MANA] -= HP_regen;
-		};
-	};
+	B_HeroRegenFromMana(CYCLE_TRIGGER_Period);
 	
 	//не были наложены оверлеи, т.к. ГГ был в боевом режиме
 	if (HERO_DelayedFarOverlay && !Npc_IsInFightMode(hero,FMODE_FAR))	{
@@ -445,7 +425,7 @@ func void CYCLE_TRIGGER_FUNC()
 	// дождь от Фарима ------------------------------
 	//начать дождь
 	if ((Fishers_Rain_Started == 0) && (Fishers_Rain_Day > 0))	{
-		if ((Wld_GetDay() == Fishers_Rain_Day) && Wld_IsTime(13,15,0,0))	{
+		if ((Wld_GetDay() >= Fishers_Rain_Day) && Wld_IsTime(13,15,0,0))	{
 			MEM_InitGlobalInst();
 			MEM_SkyController.rainFX_timeStartRain = fracf(0,24); //с 12 часов дня (в 13.15 сразу пойдет сильный)
 			MEM_SkyController.rainFX_timeStopRain = fracf(21,24); //до 9 утра
