@@ -118,10 +118,10 @@ func void Rtn_Wolf_Maleth()
 {
 	TA_Min(self,4,5,4,30,ZS_TeleportToWP,"TOT");
 	TA_Stand_WP(4,30,21,55,"TOT");
-	TA_Min(self,21,55,22,0,ZS_TeleportToWP,"NW_XARDAS_MONSTER_INSERT_01");
-		TA(self,22,1,ZS_MM_Rtn_Rest_Loop,"NW_FARM1_PATH_SPAWN_02");
+	TA_Min(self,21,55,22,0,ZS_TeleportToWP,"NW_FARM1_PATH_CITY_WOLVES");
+		TA(self,22,1,ZS_MM_Rtn_Rest_Loop,"NW_FARM1_PATH_CITY_WOLVES");
 		TA(self,1,2,ZS_MM_Rtn_Rest_Loop,"NW_FARM1_PATH_CITY_SHEEP_07");
-		TA(self,2,4,ZS_MM_Rtn_Rest_Loop,"NW_FARM1_PATH_SPAWN_02");
+		TA(self,2,4,ZS_MM_Rtn_Rest_Loop,"NW_FARM1_PATH_CITY_WOLVES");
 	TA_Min(self,4,0,4,5,ZS_RunToWP,"NW_XARDAS_MONSTER_INSERT_01");
 };
 

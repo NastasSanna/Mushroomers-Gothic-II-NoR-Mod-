@@ -546,12 +546,12 @@ func void STARTUP_NewWorld_Part_Farm_MR()
 	if (Hlp_Random(6) < 2)	{Wld_InsertNpc(Scavenger,"FP_ROAM_NW_FARM1_PATH_SPAWN_03_05");};
 	if (Hlp_Random(6) < 1)	{Wld_InsertNpc(Scavenger,"FP_ROAM_NW_FARM1_PATH_SPAWN_03_06");};
 
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
-	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_SPAWN_02");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
+	Wld_InsertNpc(Wolf_Maleth,"NW_FARM1_PATH_CITY_WOLVES");
 };
 
 func void INIT_SUB_NewWorld_Part_Farm_MR()
