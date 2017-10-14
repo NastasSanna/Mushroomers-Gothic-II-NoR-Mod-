@@ -982,28 +982,28 @@ func void DIA_Vatras_Donate_50()
 	};
 	AI_Output(self,other,"DIA_Vatras_Donate50_05_01");	//ќт имени јданоса € благодарю теб€ за этот дар.
 	B_GiveInvItems(other,self,ItMi_Gold,50);
-	var int rnd;	rnd = C_Random(6);
-	if (PATRONGOD != PATRONGOD_Adanos)	{
+	var int rnd;	rnd = C_Random(3);
+	if (PATRONGOD == PATRONGOD_Adanos)	{
+		if (rnd == 0)	{
+			B_RaiseProtection(other,DAM_EDGE | DAM_POINT, 2);
+		}
+		else	if (rnd == 1)	{
+			B_RaiseProtection(other,DAM_MAGIC | DAM_FIRE, 2);
+		}
+		else	{
+			B_RaiseAttribute(other, ATR_MANA_MAX, 4);
+		};
+		B_GivePlayerXP(XP_Adanos50);
+	}
+	else	if (DIA_Vatras_Donate_Day <= Wld_GetDay())	{
 		if (rnd == 0)	{
 			B_RaiseProtection(other,DAM_EDGE | DAM_POINT, 1);
 		}
 		else	if (rnd == 1)	{
 			B_RaiseProtection(other,DAM_MAGIC | DAM_FIRE, 1);
 		}
-		else	if (rnd == 3)	{
-			B_RaiseAttribute(other, ATR_MANA_MAX, 1);
-		};
-		B_GivePlayerXP(XP_Adanos50);
-	}
-	else	if (DIA_Vatras_Donate_Day <= Wld_GetDay())	{
-		if (rnd < 2)	{
-			B_RaiseProtection(other,DAM_EDGE | DAM_POINT, 1);
-		}
-		else	if (rnd < 4)	{
-			B_RaiseProtection(other,DAM_MAGIC | DAM_FIRE, 1);
-		}
 		else	{
-			B_RaiseAttribute(other, ATR_MANA_MAX, 3);
+			B_RaiseAttribute(other, ATR_MANA_MAX, 2);
 		};
 		B_GivePlayerXP(XP_Adanos50);
 	};
@@ -1028,15 +1028,15 @@ func void DIA_Vatras_Donate_100()
 	AI_Output(self,other,"DIA_Vatras_Donate100_05_01");	//»менем јданоса € благославл€ю теб€ за этот щедрый дар!
 	B_GiveInvItems(other,self,ItMi_Gold,100);
 	var int rnd;	rnd = C_Random(3);
-	if (PATRONGOD != PATRONGOD_Adanos)	{
+	if (PATRONGOD == PATRONGOD_Adanos)	{
 		if (rnd == 0)	{
-			B_RaiseProtection(other,DAM_EDGE | DAM_POINT, 1);
+			B_RaiseProtection(other,DAM_EDGE | DAM_POINT, 5);
 		}
 		else	if (rnd == 1)	{
-			B_RaiseProtection(other,DAM_MAGIC | DAM_FIRE, 1);
+			B_RaiseProtection(other,DAM_MAGIC | DAM_FIRE, 5);
 		}
 		else	{
-			B_RaiseAttribute(other, ATR_MANA_MAX, 3);
+			B_RaiseAttribute(other, ATR_MANA_MAX, 10);
 		};
 		B_GivePlayerXP(XP_Adanos100);
 	}
