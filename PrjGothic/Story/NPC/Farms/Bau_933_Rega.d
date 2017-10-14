@@ -1,7 +1,8 @@
 
 instance BAU_933_Rega(Npc_Default)
 {
-	name[0] = "ахур";
+	name[0] = NAME_Baeuerin;
+	name[1] = "ахур";
 	guild = GIL_BAU;
 	id = 933;
 	voice = 16;
