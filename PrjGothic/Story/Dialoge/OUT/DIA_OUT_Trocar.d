@@ -108,6 +108,7 @@ func void DIA_Trocar_HogKilled_info()
 		AI_Output(other,self,"DIA_Trocar_Thanks_03_06");	//Будем считать, что это было “спасибо за помощь“!
 	} else if (hero.voice == 7)	{		//Талбин
 		AI_Output(other,self,"DIA_Trocar_Thanks_07_06");	//Будем считать, что это было “спасибо за помощь“!
+		B_LogEntry(TOPIC_FindTrocar, TOPIC_FindTrocar_Found);
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Trocar_Thanks_10_06");	//Будем считать, что это было “спасибо за помощь“!
 	} else if (hero.voice == 14)	{	//Тилл
@@ -135,6 +136,7 @@ func void DIA_Trocar_HogKilled_info()
 	B_StartOtherRoutine(self,"START");
 	B_StartOtherRoutine(VLK_440_Bartok,"TROCARMEET");
 	self.aivar[AIV_IgnoreFlags] = self.aivar[AIV_IgnoreFlags] & ~IGNORE_DrawWeapon;
+	B_GivePlayerXP(XP_Trocar_Found);
 };
 
 //=====================================================
@@ -191,6 +193,7 @@ func void DIA_Trocar_WhoAU_info()
 	AI_Output(self,other,"DIA_Trocar_WhoAU_12_03");	//Барток - отличный товарищ, но ему не хватает авантюризма.
 	AI_Output(self,other,"DIA_Trocar_WhoAU_12_04");	//Охотиться поближе к городу, сдавать шкуры Босперу и пропивать полученные деньги в таверне - вот его горизонт.
 	AI_Output(self,other,"DIA_Trocar_WhoAU_12_05");	//Я так не могу. Охота - это кураж, это гонка со зверем. Поэтому я иногда ухожу поохотиться без него.
+	B_LogEntry(TOPIC_FindTrocar, TOPIC_FindTrocar_Found);
 	DIA_Trocar_OfOldTimes();
 };
 
@@ -263,7 +266,13 @@ func void DIA_Trocar_MsgFromBartok_info()
 	else	{
 		AI_Output(self,other,"DIA_Trocar_MsgFromBartok_12_03");	//О, спасибо. А я думал, что потерял, когда за кабаном гнался.
 	};
-	B_GivePlayerXP(XP_Ambient);
+	if (other.aivar[AIV_Gender] == MALE)	{
+		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTroсar_Told);
+	}
+	else {
+		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTroсar_Told_F);
+	};
+	B_GivePlayerXP(XP_Trocar_Told);
 };
 
 //=====================================================

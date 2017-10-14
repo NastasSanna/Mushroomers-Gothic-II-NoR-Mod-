@@ -171,4 +171,7 @@ const int XP_Fellan_HammerRepaired				= 200;
 const int XP_Fellan_Returned					= 1000; //вернулся
 const int XP_Fellan_Success						= 200; //поговорили с Ириной
 
+// Трокар ------------------------------------------------
+const int XP_Trocar_Found						= 200;
+const int XP_Trocar_Told						= 50;
 

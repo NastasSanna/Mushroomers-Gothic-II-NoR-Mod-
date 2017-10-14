@@ -114,6 +114,7 @@ func void DIA_Bartok_Alone_info()
 	else 	{
 		AI_Output(self,other,"DIA_Bartok_Alone_04_06");	//Если вдруг встретишь его, скажи, чтобы двигал к Мертвой гарпии. Он у Орлана на стойке нож забыл.
 	};
+	B_LogEntry_Create(TOPIC_FindTrocar, LOG_MISSION, TOPIC_FindTrocar_Start);
 };
 
 //=====================================================
