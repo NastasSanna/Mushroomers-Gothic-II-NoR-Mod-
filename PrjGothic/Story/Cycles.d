@@ -431,8 +431,8 @@ func void CYCLE_TRIGGER_FUNC()
 			MEM_SkyController.rainFX_timeStopRain = fracf(21,24); //до 9 утра
 			MEM_SkyController.rainFX_renderLightning = TRUE;	//с молниями
 			Fishers_Rain_Started = 1;
-			PrintScreen(PRINT_Fishers_Rain1,-1,15,FONT_ScreenSmall,2);
-			PrintScreen(PRINT_Fishers_Rain2,-1,18,FONT_ScreenSmall,2);
+			PrintScreen(PRINT_Fishers_Rain1,-1,15,FONT_ScreenSmall,5);
+			PrintScreen(PRINT_Fishers_Rain2,-1,18,FONT_ScreenSmall,5);
 		}
 		else if (Wld_GetDay() < Fishers_Rain_Day)	{	//до этого дождя не будет
 			MEM_SkyController.rainFX_timeStartRain = 0;
@@ -453,7 +453,7 @@ func void CYCLE_TRIGGER_FUNC()
 			AI_SetWalkmode(OUT_1210_Grimbald,NPC_RUN);
 			AI_GotoWP(OUT_1210_Grimbald,"NW_XARDAS_GOBBO_01");
 			MIS_GrimbaldOrcs_Timer = Wld_GetFullTime() + 6;
-			PrintScreen(PRINT_Grimbald_FarAway,-1,15,FONT_Screen,3);
+			PrintScreen(PRINT_Grimbald_FarAway,-1,15,FONT_Screen,4);
 //			MEM_Debug("MIS_GrimbaldOrcs_GetBow_Go");
 		};
 	};
@@ -477,13 +477,13 @@ func void CYCLE_TRIGGER_FUNC()
 		}
 		else	{
 			//UNFINISHED - орки вернулись
-			PrintScreen("Орки возвращаются!",-1,15,FONT_Screen,1);
-			PrintScreen("Надо срочно их увести",-1,20,FONT_Screen,1);
+			PrintScreen("Орки возвращаются!",-1,15,FONT_Screen,3);
+			PrintScreen("Надо срочно их увести",-1,20,FONT_Screen,3);
 			MIS_GrimbaldOrcs_Timer = Wld_GetFullTime() + 5;
 		};
 		if (C_GrimbaldOrcs_FarAway() && MIS_GrimbaldOrcs_Timer == Wld_GetFullTime())
 		{
-			PrintScreen(PRINT_Grimbald_Returned,-1,15,FONT_Screen,3);
+			PrintScreen(PRINT_Grimbald_Returned,-1,15,FONT_Screen,4);
 			MIS_GrimbaldOrcs_GetBow = MIS_GrimbaldOrcs_GetBow_Return;
 		};
 	};
