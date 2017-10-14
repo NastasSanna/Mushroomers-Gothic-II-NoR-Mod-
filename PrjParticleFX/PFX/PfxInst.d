@@ -6443,9 +6443,10 @@ instance TREASURE_GLOW_CHILD(C_PARTICLEFX)
 instance LEAVES(C_PARTICLEFX)
 {
 	ppsvalue = 3;
-	ppsscalekeys_s = "1 0.5 2";
+	ppsscalekeys_s = "1 0.5 2 1 0 0.5";
 	ppsislooping = 1;
 	ppsissmooth = 1;
+	ppsFps = 1;
 	shptype_s = "CIRCLE";
 	shpfor_s = "object";
 	shpoffsetvec_s = "0 1 0";
@@ -6464,7 +6465,7 @@ instance LEAVES(C_PARTICLEFX)
 	lsppartavg = 10000;
 	lsppartvar = 400;
 	flygravity_s = "-0.00004 -0.00009 0";
-	flycolldet_b = 0;
+	flycolldet_b = 3;
 	visname_s = "LEAF_A0.TGA";
 	visorientation_s = "NONE";
 	vistexisquadpoly = 1;
@@ -6485,15 +6486,16 @@ instance LEAVES(C_PARTICLEFX)
 instance SINGLELEAF(C_PARTICLEFX)
 {
 	ppsvalue = 1;
-	ppsscalekeys_s = "0.2 1 0.3 0.6 0.5";
+	ppsscalekeys_s = "1 0 0 0 1 1 0 0 0 0 2 0 0 1 0 0 1 0 1 0";
 	ppsislooping = 1;
 	ppsissmooth = 1;
+	ppsFps = 1;
 	shptype_s = "CIRCLE";
 	shpfor_s = "object";
 	shpoffsetvec_s = "0 1 0";
 	shpdistribtype_s = "RAND";
 	shpisvolume = 1;
-	shpdim_s = "200";
+	shpdim_s = "250";
 	shpscalekeys_s = "1";
 	shpscaleislooping = 1;
 	shpscaleissmooth = 1;
@@ -6504,9 +6506,9 @@ instance SINGLELEAF(C_PARTICLEFX)
 	dirangleelev = 90;
 	dirangleelevvar = 20;
 	lsppartavg = 7000;
-	lsppartvar = 400;
+	lsppartvar = 1000;
 	flygravity_s = "-0.00004 -0.00009 0";
-	flycolldet_b = 0;
+	flycolldet_b = 3;
 	visname_s = "LEAF_A0.TGA";
 	visorientation_s = "NONE";
 	vistexisquadpoly = 1;
@@ -6520,22 +6522,23 @@ instance SINGLELEAF(C_PARTICLEFX)
 	visalphastart = 255;
 	visalphaend = 255;
 	flockmode = "WIND";
-	flockstrength = 0.1;
+	flockstrength = 0.08;
 	m_bisambientpfx = 1;
 };
 
 instance LEAVESSWIRL(C_PARTICLEFX)
 {
 	ppsvalue = 1;
-	ppsscalekeys_s = "1 0.8 1.5 1.2 0.5 0.9";
+	ppsscalekeys_s = "1 0 2 1 0 0 0 1 0";
 	ppsislooping = 1;
 	ppsissmooth = 1;
+	ppsFps = 1;
 	shptype_s = "CIRCLE";
 	shpfor_s = "object";
 	shpoffsetvec_s = "0 1 0";
 	shpdistribtype_s = "RAND";
 	shpisvolume = 1;
-	shpdim_s = "2000";
+	shpdim_s = "1800";
 	shpscalekeys_s = "1";
 	shpscaleislooping = 1;
 	shpscaleissmooth = 1;
@@ -6548,7 +6551,7 @@ instance LEAVESSWIRL(C_PARTICLEFX)
 	lsppartavg = 10000;
 	lsppartvar = 400;
 	flygravity_s = "-0.00004 -0.00009 0";
-	flycolldet_b = 0;
+	flycolldet_b = 3;
 	visname_s = "LEAFSWIRL_A0.TGA";
 	visorientation_s = "VELO";
 	vistexisquadpoly = 1;
