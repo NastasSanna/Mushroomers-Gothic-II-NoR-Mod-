@@ -169,6 +169,7 @@ func void DIA_Gaan_Talbin_TeachMandibles_info()
 		AI_Output(self,other,"DIA_Gaan_Talbin_TeachMandibles_03_01");	//Чтобы не повредив отделить жвала от черепа, их нужно оттянуть как можно дальше и сильным точным ударом перерубить у основания.
 		player_talent_takeanimaltrophy[TROPHY_Mandibles] = TRUE;
 		B_LogNote(TOPIC_TalentAnimalTrophy,"...извлекать жвала у ползунов и полевых хищников.");
+		
 	}
 	else	{
 		AI_Output(self,other,"DIA_Gaan_Talbin_TeachMandibles_03_02");	//Как только у тебя будет золото.

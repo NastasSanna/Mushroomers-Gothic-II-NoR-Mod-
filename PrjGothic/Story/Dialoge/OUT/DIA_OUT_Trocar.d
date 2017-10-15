@@ -267,10 +267,10 @@ func void DIA_Trocar_MsgFromBartok_info()
 		AI_Output(self,other,"DIA_Trocar_MsgFromBartok_12_03");	//О, спасибо. А я думал, что потерял, когда за кабаном гнался.
 	};
 	if (other.aivar[AIV_Gender] == MALE)	{
-		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTroсar_Told);
+		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTrocar_Told);
 	}
 	else {
-		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTroсar_Told_F);
+		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTrocar_Told_F);
 	};
 	B_GivePlayerXP(XP_Trocar_Told);
 };
