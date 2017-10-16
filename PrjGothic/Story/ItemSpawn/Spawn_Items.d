@@ -6,7 +6,7 @@ func int B_ReplaseItem(var int OldItem_ptr, var int NewItemInst)
 	Wld_InsertItem(NewItemInst,"TOT");
 	var int NewItem_ptr;	NewItem_ptr = Wld_GetInsertedItem();
 	if (!NewItem_ptr)	{	return 0;	};
-	MEM_CopyWords(OldItem_ptr+60, NewItem_ptr+60, 16);	//trafo
+	MEM_CopyWords(OldItem_ptr+196, NewItem_ptr+196, 16);	//trafo;                     // 0x00C4 zMATRIX4*
 	Vob_RemoveFromWorld(OldItem_ptr);
 	return NewItem_ptr;
 };
