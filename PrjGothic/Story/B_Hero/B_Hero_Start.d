@@ -40,6 +40,7 @@ func void B_Hero_PreStart()
 		OUT_1200_Engrom.npcType = NPCTYPE_FRIEND;
 		B_SetNameByIndex(BAU_963_Malak,1);
 		B_StartOtherRoutine(BAU_963_Malak,"PRESTART");
+		BAU_963_Malak.npcType = npctype_main;
 		BAU_961_Gaan.npcType = NPCTYPE_FRIEND;
 		B_StartOtherRoutine(BAU_961_Gaan,"PRESTART");
 		Wld_InsertItem(ItMw_Nagelkeule, "FP_ITEM_TALBIN_WEAPON");

@@ -424,7 +424,7 @@ func void DIA_Kardif_Rumors02_info()
 		}
 		else	{
 			AI_Output(self,other,"DIA_Kardif_Rumors02_14_06");	//Если хочешь зрелища, приходи к полуночи к Красному фонарю - Надя будет выступать с факелами.
-			AI_Output(self,other,"DIA_Kardif_Rumors02_14_07");	//Больше сейчас, пожалуй, ничего интересного нет. Если только тебе не нравится пялиться часами на море.
+			AI_Output(self,other,"DIA_Kardif_Rumors02_14_07");	//Больше сейчас, пожалуй, ничего интересного нет. Если только тебе не понравится пялиться часами на море.
 		};
 		B_LogNote(TOPIC_Rumors,Topic_Rumors_Entertain);
 	};
