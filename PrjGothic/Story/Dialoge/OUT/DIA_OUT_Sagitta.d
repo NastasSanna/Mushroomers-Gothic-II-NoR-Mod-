@@ -111,6 +111,7 @@ func void DIA_Sagitta_HealMe_info()
 		Sagitta_BigHeal = TRUE;
 		return;
 	};
+	AI_StopProcessInfos(self);
 	if (DIA_Sagitta_OnHello)	{
 		DIA_Sagitta_OnHello = FALSE;
 		Info_ClearChoices(DIA_Sagitta_Hello);
@@ -197,6 +198,7 @@ func void DIA_Sagitta_Poisoned_info()
 		};
 		AI_Output(self,other,"DIA_Sagitta_Poisoned_17_09");	//Правильно. Тебе нужно хорошенько пропотеть. Лучше поспи пару часиков.
 	};
+	AI_StopProcessInfos(self);
 	if (DIA_Sagitta_OnHello)	{
 		DIA_Sagitta_OnHello = FALSE;
 		Info_ClearChoices(DIA_Sagitta_Hello);
