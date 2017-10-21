@@ -34,7 +34,7 @@ func void B_LogEntry_Start()
 var int B_LogEntry_Weekend_Once;
 func void B_LogEntry_Weekend()
 {
-	if (!B_LogEntry_Weekend_Once && (Competition_Result == Competition_Result_NONE))	{
+	if (!B_LogEntry_Weekend_Once)	{
 		B_LogEntry(TOPIC_ConstantinoMushrooms, TOPIC_ConstantinoMushrooms_Time);
 		B_LogEntry_Weekend_Once = TRUE;
 	};

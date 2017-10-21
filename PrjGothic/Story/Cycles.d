@@ -418,7 +418,9 @@ func void CYCLE_TRIGGER_FUNC()
 		};
 	};
 	
-	if ((day > Competition_LastDay) || ((day == Competition_LastDay) && Wld_IsTime(8,0,0,0)))	{
+	if ((day > Competition_LastDay) || ((day == Competition_LastDay) && Wld_IsTime(8,0,0,0))
+		&& (Competition_Result == Competition_Result_NONE)
+	)	{
 		B_LogEntry_Weekend();
 	};
 	
