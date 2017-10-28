@@ -18,7 +18,7 @@ instance PC_BloodwinSnow(Npc_Default)
 	
 	aivar[AIV_IgnoreFlags] = -1;
 	aivar[AIV_Behaviour] = BEHAV_NeverRansack;
-	aivar[AIV_Temper] = TEMPER_ToughGuy | TEMPER_ToughGuyNewsOverride;
+	aivar[AIV_Temper] = TEMPER_ToughGuy | TEMPER_ToughGuyNewsOverride | TEMPER_NoFightParker;
 
 	daily_routine = Rtn_Start_1618;
 };

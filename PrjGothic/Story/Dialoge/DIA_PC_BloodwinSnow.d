@@ -72,6 +72,7 @@ func void DIA_BloodwinSnow_YouLike_No()
 	else {
 		AI_Output(self,other,"DIA_BloodwinSnow_YouLike_No_F");	//Вот значит как? Ты являешься сюда и заявляешь, что наша озвучка недостаточно хороша? Взять ее, парни! Порубить на куски!
 	};
+	self.aivar[AIV_Temper] = self.aivar[AIV_Temper] & ~TEMPER_NoFightParker;
 	AI_StopProcessInfos(self);
 			Wld_InsertNpc(PC_SnowStudioActor_01,"NW_MAGECAVE_14");
 			AI_GotoWP(PC_SnowStudioActor_01,"NW_MAGECAVE_15");

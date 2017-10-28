@@ -274,3 +274,20 @@ instance Summoned_ZOMBIE(Mst_Default_Zombie)
 	Npc_SetToFistMode(self);
 };
 
+instance Zombie_Istar_01(Mst_Default_Zombie)
+{
+	attribute[ATR_HITPOINTS_MAX] = 200;
+	attribute[ATR_HITPOINTS] = 200;
+	B_SetVisuals_Pal_Zombie01();
+	Npc_SetToFistMode(self);
+};
+
+instance Zombie_Istar_02(Mst_Default_Zombie)
+{
+	attribute[ATR_HITPOINTS_MAX] = 200;
+	attribute[ATR_HITPOINTS] = 200;
+	B_SetVisuals_Maya_Zombie04();
+	Npc_SetToFistMode(self);
+};
+
+

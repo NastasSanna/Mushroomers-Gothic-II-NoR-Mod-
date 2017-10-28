@@ -19,6 +19,8 @@ func void EVT_SNOWGALLERY_ISTAR()
 		EVT_SNOWGALLERY_ISTAR_Once = TRUE;
 		B_GiveAchievement_SnowStudio();
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_Istar);
+		Wld_SpawnNpcRange(hero, Zombie_Istar_01, 1, -1);
+		Wld_SpawnNpcRange(hero, Zombie_Istar_02, 1, -1);
 	};
 };
 
@@ -155,7 +157,9 @@ func void EVT_SNOWGALLERY_NASTASSANNA()
 {
 	MEM_Debug("EVT_SNOWGALLERY_NASTASSANNA");
 	if (!EVT_SNOWGALLERY_NASTASSANNA_Once) {
-		Wld_InsertNpc(PC_NastasSanna_Snow, "NW_MAGECAVE_NS_IN");
+		//Wld_InsertNpc(PC_NastasSanna_Snow, "NW_MAGECAVE_NS_IN");
+		Wld_SpawnNpcRange(hero, PC_NastasSanna_Snow, 1, -1);
+		AI_GoToNpc(PC_NastasSanna_Snow, hero);
 		AI_TurnToNpc(PC_NastasSanna_Snow, hero);
 		B_GiveAchievement_SnowStudio();
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_NastasSanna);
