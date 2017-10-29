@@ -273,6 +273,8 @@ const int AIV_IgnoreFlags					= 46;
 	const int IGNORE_PortalRoom_Public	= 1 << 6;	//персонаж владеет публичным помещением
 	const int IGNORE_Drunk				= 1 << 7;	//то, что ГГ пьян
 	const int IGNORE_DrawWeapon			= 1 << 8;	//то, что ГГ достал оружие
+	const int IGNORE_Enemy				= 1 << 9;	//врагов
+	const int IGNORE_FightSound			= 1 << 10;	//драку
 	const int IGNORE_All			= -1;	//все
 
 // Флаги, определяющие характер персонажа

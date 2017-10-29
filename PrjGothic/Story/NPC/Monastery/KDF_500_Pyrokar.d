@@ -16,7 +16,7 @@ instance KDF_500_Pyrokar(Npc_Default)
 	B_SetFightSkills(self,30);
 	daily_routine = Rtn_Start_500;
 	aivar[AIV_TheftDex] = 108;
-	aivar[AIV_IgnoreFlags] = IGNORE_All;
+	aivar[AIV_IgnoreFlags] = IGNORE_All & ~IGNORE_Enemy;
 	CreateInvItems(self, ItMi_Gold, 550);
 };
 

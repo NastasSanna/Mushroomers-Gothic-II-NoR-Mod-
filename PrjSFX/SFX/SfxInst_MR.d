@@ -1,5 +1,6 @@
 
 INSTANCE 		SNOWSTUDIO_ISTAR			(C_SFX_DEF)		{file="SNOWSTUDIO_ISTAR.wav";						vol=127;						};
+INSTANCE 		SNOWSTUDIO_ISTAR_STEREO		(C_SFX_DEF)		{file="SNOWSTUDIO_ISTAR_STEREO.wav";				vol=127;						};
 INSTANCE 		SNOWSTUDIO_FIREDRAGON		(C_SFX_DEF)		{file="FIRE_SNEEZING.wav";							vol=127;						};
 INSTANCE 		SNOWSTUDIO_ADEPT			(C_SFX_DEF)		{file="DIA_Vino_Payment_Yes_07_00.wav";				vol=127;						};
 INSTANCE 		SNOWSTUDIO_KERTAX			(C_SFX_DEF)		{file="DIA_Regis_Rupert_Final_No_03_08.wav";		vol=127;						};

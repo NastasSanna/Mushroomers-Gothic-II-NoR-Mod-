@@ -13,14 +13,13 @@ var int EVT_SNOWGALLERY_ISTAR_Once;
 func void EVT_SNOWGALLERY_ISTAR()
 {
 	MEM_Debug("EVT_SNOWGALLERY_ISTAR");
-	//Wld_InsertNpc(PC_Zombi_Istar, "NW_MAGECAVE_NS_OUT");
-	Snd_Play3D(hero,"SNOWSTUDIO_ISTAR");
+	//Wld_SendTrigger("TRIGGER_SNOWSTUDIO_ISTAR");
+	Wld_SendTrigger("EVT_SFX_SNOWSTUDIO_ISTAR_STEREO");
 	if (!EVT_SNOWGALLERY_ISTAR_Once) {
 		EVT_SNOWGALLERY_ISTAR_Once = TRUE;
+		//Snd_Play3D(hero,"SNOWSTUDIO_ISTAR");
 		B_GiveAchievement_SnowStudio();
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_Istar);
-		Wld_SpawnNpcRange(hero, Zombie_Istar_01, 1, -1);
-		Wld_SpawnNpcRange(hero, Zombie_Istar_02, 1, -1);
 	};
 };
 

@@ -62,6 +62,12 @@ func int B_AssessEnemy()
 		return FALSE;
 	};
 	
+	// мне велено игнорировать врагов
+	if (HasFlags(other.aivar[AIV_IgnoreFlags], IGNORE_Enemy))
+	{
+		return FALSE;
+	};
+	
 	// он плывет или нырнул или я сам угодил-таки в воду, а я не хочу туда лезть
 	if(!C_WantToFollowInWater(self, other))
 	{

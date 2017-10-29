@@ -16,7 +16,7 @@ instance PC_BloodwinSnow(Npc_Default)
 	B_SetFightSkills(self,70);
 	fight_tactic = FAI_HUMAN_MASTER;
 	
-	aivar[AIV_IgnoreFlags] = -1;
+	aivar[AIV_IgnoreFlags] = IGNORE_All;
 	aivar[AIV_Behaviour] = BEHAV_NeverRansack;
 	aivar[AIV_Temper] = TEMPER_ToughGuy | TEMPER_ToughGuyNewsOverride | TEMPER_NoFightParker;
 

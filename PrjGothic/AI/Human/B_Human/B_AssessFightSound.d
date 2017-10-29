@@ -37,6 +37,7 @@ func int B_AssessGuardedDamage()
 	if (Npc_IsInState(self, ZS_Attack))	{
 		return FALSE;
 	};
+	
 	// если я охранник
 	if (HasFlags(self.aivar[AIV_Temper], TEMPER_BodyGuard)) {
 		//и я охраняю жертву
@@ -84,6 +85,11 @@ func void B_AssessFightSound()
 		return;
 	};
 	
+	//игнорировать драку
+	if (HasFlags(self.aivar[AIV_IgnoreFlags], IGNORE_FightSound)) {
+		return;
+	};
+
 	// если расстояние до дерущихся больше среднего, 
 	if((Npc_GetDistToNpc(self,victim) > PERC_DIST_INTERMEDIAT) && (Npc_GetDistToNpc(self,other) > PERC_DIST_INTERMEDIAT))
 	{
