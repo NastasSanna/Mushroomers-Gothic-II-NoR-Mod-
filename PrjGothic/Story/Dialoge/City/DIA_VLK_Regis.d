@@ -299,7 +299,8 @@ instance DIA_Regis_Hello(C_Info)
 };
 func int DIA_Regis_MR_Hello_Condition()
 {
-	if (!C_HeroIs_Rupert())	{
+	if (!C_HeroIs_Rupert()
+		 && (Competition_Result == Competition_Result_NONE))	{
 		return TRUE;
 	};
 };
