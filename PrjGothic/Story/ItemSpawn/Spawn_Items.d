@@ -113,12 +113,12 @@ func void SP_DeleteVobsFromList()
 	if (!LH.list)	{	return;	};
 	var zCList list;	
 //	var C_ITEM itm;
-	var zCVob Vob;
+//	var zCVob Vob;
 	//repeat
 	var int loop;	loop = MEM_StackPos.position;
 		list = _^(LH.list);
-		if (list.data != 0)	{
-			Vob = _^(list.data);
+		if (list.data != 0 && Hlp_Is_oCItem(list.data))	{
+			//Vob = _^(list.data);
 			//MEM_Debug(ConcatStrings("SP_DeleteVobsFromList: ",Vob._zCObject_objectName));
 			Vob_RemoveFromWorld(list.data);
 //			itm = _^(list.data);

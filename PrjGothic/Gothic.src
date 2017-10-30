@@ -90,6 +90,7 @@ Story\ATR_Constants.d
 Story\Story_Globals.d
 Story\Npc_Globals.d
 Story\ItemSpawn\Spawn_Difficulty.d
+Story\ItemSpawn\Spawn_Count.d
 AI\Human\C_Human\C_NpcIsDown.d
 Story\B_Hero\Hero_Globals.d
 Story\B_Hero\C_HeroIs.d

@@ -604,9 +604,6 @@ const int SP_MR_Lists[MR_Lists_DoubleLen] =	{
 };
 const int SP_FOOD_List[2] = {0,0};	//список точек СП для еды
 
-var int SP_MR_InWorldCount[MR_Count];
-
-
 // --------------------------------------
 
 var int SP_NightSparkles_Night;

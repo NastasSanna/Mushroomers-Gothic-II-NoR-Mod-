@@ -155,165 +155,140 @@ func int C_GetWorkingHours(var int full_time, var int h_begin, var int m_begin, 
 };
 
 //расчет кол-ва рабочего времени каждого конкурента, 1 раз за цикл
-var int ActualWorkingHours[7];
+var int ActualWorkingPeriod[7];
 func void B_CalcWorkingHoursAll(var int Time_Minutes)
 {
 	//Елена
 	if (!C_HeroIs_Elena() && !C_NpcIsDown(Cmp_Elena))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[0] = C_GetWorkingHours(Time_Minutes, 7, 6, 19, 10);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[0] = C_GetWorkingHours(Time_Minutes, 7, 6, 19, 10);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[0] = 0;
+		ActualWorkingPeriod[0] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Elena] = ",IntToString(ActualWorkingHours[0])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Elena] = ",IntToString(ActualWorkingPeriod[0])));
 	//Эрол
 	if (!C_HeroIs_Erol() && !C_NpcIsDown(Cmp_Erol))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[1] = C_GetWorkingHours(Time_Minutes, 5, 0, 19, 45);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[1] = C_GetWorkingHours(Time_Minutes, 5, 0, 19, 45);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[1] = 0;
+		ActualWorkingPeriod[1] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Erol] = ",IntToString(ActualWorkingHours[1])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Erol] = ",IntToString(ActualWorkingPeriod[1])));
 	//Одо
 	if (!C_HeroIs_Odo() && !C_NpcIsDown(CMP_Odo))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[2] = C_GetWorkingHours(Time_Minutes, 8, 0, 18, 20);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[2] = C_GetWorkingHours(Time_Minutes, 8, 0, 18, 20);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[2] = 0;
+		ActualWorkingPeriod[2] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Odo] = ",IntToString(ActualWorkingHours[2])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Odo] = ",IntToString(ActualWorkingPeriod[2])));
 	//Руперт
 	if (!C_HeroIs_Rupert() && !C_NpcIsDown(CMP_Rupert))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[3] = C_GetWorkingHours(Time_Minutes, 10, 0, 17, 30);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[3] = C_GetWorkingHours(Time_Minutes, 10, 0, 17, 30);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[3] = 0;
+		ActualWorkingPeriod[3] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Rupert] = ",IntToString(ActualWorkingHours[3])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Rupert] = ",IntToString(ActualWorkingPeriod[3])));
 	//Сара
 	if (!C_HeroIs_Sarah() && !C_NpcIsDown(CMP_Sarah))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[4] = C_GetWorkingHours(Time_Minutes, 7, 5, 18, 20);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[4] = C_GetWorkingHours(Time_Minutes, 7, 5, 18, 20);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[4] = 0;
+		ActualWorkingPeriod[4] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Sarah] = ",IntToString(ActualWorkingHours[4])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Sarah] = ",IntToString(ActualWorkingPeriod[4])));
 	//Талбин
 	if (!C_HeroIs_Talbin() && !C_NpcIsDown(CMP_Talbin))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[5] = C_GetWorkingHours(Time_Minutes, 7, 30, 19, 0);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[5] = C_GetWorkingHours(Time_Minutes, 7, 30, 19, 0);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[5] = 0;
+		ActualWorkingPeriod[5] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Talbin] = ",IntToString(ActualWorkingHours[5])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Talbin] = ",IntToString(ActualWorkingPeriod[5])));
 	//Тилл
 	if (!C_HeroIs_Till() && !C_NpcIsDown(CMP_Till))	{	//если не ГГ и жив-здоров
-		ActualWorkingHours[6] = C_GetWorkingHours(Time_Minutes, 10, 30, 18, 30);	//сколько из прошедшего времени собирал грибы
+		ActualWorkingPeriod[6] = C_GetWorkingHours(Time_Minutes, 10, 30, 18, 30);	//сколько из прошедшего времени собирал грибы
 	}
 	else	{
-		ActualWorkingHours[6] = 0;
+		ActualWorkingPeriod[6] = 0;
 	};
-//	MEM_Debug(ConcatStrings("ActualWorkingHours[Till] = ",IntToString(ActualWorkingHours[6])));
+//	MEM_Debug(ConcatStrings("ActualWorkingPeriod[Till] = ",IntToString(ActualWorkingPeriod[6])));
+};
+//собрали гриб?
+var int B_AddCompetitors_Max;
+var int B_AddCompetitors_MaxIndex;
+func void _CompetitorGotMushroom(var int workingPeriod, var int cmpSkill, var int pickupPeriod, var int index)
+{
+	if (workingPeriod > 0) {	//если не ГГ, и жив-здоров, и собирал грибы в это время
+		//шанс собрать за время workingPeriod с учетом личного таланта cmpSkill и сложности MR_Opts_CmpActivity
+		var int chance; 
+		chance = (MR_Opts_Base + MR_Opts_CmpActivity) * (50 + cmpSkill);
+		chance = (Hlp_Random(workingPeriod) * chance + Hlp_Random(chance)) / 100;
+		var int rnd; 
+		rnd = Hlp_Random(pickupPeriod) * MR_Opts_Base * 1 + Hlp_Random(MR_Opts_Base * 1);
+		/* DEBUG INFO
+		var string txt; txt = ConcatStrings("_CompetitorGotMushroom chance = ", IntToString(chance));
+		txt = ConcatStrings(txt, "/");
+		txt = ConcatStrings(txt, IntToString(workingPeriod * (MR_Opts_Base + MR_Opts_CmpActivity) * (50 + cmpSkill) / 100));
+		txt = ConcatStrings(txt, ", rnd = ");
+		txt = ConcatStrings(txt, IntToString(rnd));
+		txt = ConcatStrings(txt, "/");
+		txt = ConcatStrings(txt, IntToString(pickupPeriod * MR_Opts_Base * 1));
+		MEM_Debug(txt);
+		//*/
+		if (rnd < chance)	{ //собрали?
+			if (chance > B_AddCompetitors_Max)	{ //собрали первыми?
+				B_AddCompetitors_Max = chance;
+				B_AddCompetitors_MaxIndex = index + 1;
+			};
+		};
+	};
 };
 
 //гриб на счет конкурентов
-//чем больше Time_Minutes и меньше period, тем выше вероятность собрать гриб
-//UPD: расчет времени Time_Minutes для каждого собирателя вынесен в B_CalcWorkingHoursAll
-func int C_GetCompetitor_Chance(var int period, var int dif_correction, var int Cmp_Skill)
-{
-	return (period * 100 / dif_correction * (150 - Cmp_Skill/2) / 100);
-};
-func int B_AddCompetitors(/*var int Time_Minutes, */var int period, var int MR_Index)
+func int B_AddCompetitors(/*var int Time_Minutes, */ var int MR_Index)
 {
 	// только во время конкурса
 	if (Wld_GetDay() >= Competition_Len)	{return FALSE;};
-	// сколько стоит
-	var int sum;	sum = MEM_ReadStatArr(MR_Price, MR_Index);
+	var int pickupPeriod; pickupPeriod = _Spawn_MR_GetPickupPeriod(MR_Index);
+	if (pickupPeriod <= 0)	{return FALSE;};
 	// кто собрал?
-	var int rnd; rnd = 0;
-	var int rnd_min; rnd_min = 0;
-	var int i_min; i_min = 0;
-	var int dif_correction;	dif_correction = 100 + MR_Opts_CmpActivity;
-	if (dif_correction <= 0) 	{dif_correction = 1;};
-	//Елена
-	if (ActualWorkingHours[0] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Elena));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[0]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 1;
-		};
-	};
-	//Эрол
-	if (ActualWorkingHours[1] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Erol));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[1]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 2;
-		};
-	};
-	//Одо
-	if (ActualWorkingHours[2] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Odo));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[2]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 3;
-		};
-	};
-	//Руперт
-	if (ActualWorkingHours[3] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Rupert));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[3]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 4;
-		};
-	};
-	//Сара
-	if (ActualWorkingHours[4] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Sarah));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[4]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 5;
-		};
-	};
-	//Талбин
-	if (ActualWorkingHours[5] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Talbin));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[5]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 6;
-		};
-	};
-	//Тилл
-	if (ActualWorkingHours[6] > 0)	{	//если не ГГ и жив-здоров
-		rnd = Hlp_Random(C_GetCompetitor_Chance(period, dif_correction, Cmp_Skill_Till));	//шанс собрать с учетом личного таланта и сложности
-		if ((rnd < ActualWorkingHours[6]) && ((rnd < rnd_min) || (rnd_min == 0)))	{	//если шанс достаточный для сбора и меньше остальных
-			rnd_min = rnd;	//собрать гриб
-			i_min = 7;
-		};
-	};
-	//кому гриб?
-	if (i_min > 0)	{
+	B_AddCompetitors_Max = 0;
+	B_AddCompetitors_MaxIndex = 0;
+	//все пытаются
+	_CompetitorGotMushroom(ActualWorkingPeriod[0], Cmp_Skill_Elena,  pickupPeriod, 0);
+	_CompetitorGotMushroom(ActualWorkingPeriod[1], Cmp_Skill_Erol,   pickupPeriod, 1);
+	_CompetitorGotMushroom(ActualWorkingPeriod[2], Cmp_Skill_Odo, 	 pickupPeriod, 2);
+	_CompetitorGotMushroom(ActualWorkingPeriod[3], Cmp_Skill_Rupert, pickupPeriod, 3);
+	_CompetitorGotMushroom(ActualWorkingPeriod[4], Cmp_Skill_Sarah,  pickupPeriod, 4);
+	_CompetitorGotMushroom(ActualWorkingPeriod[5], Cmp_Skill_Talbin, pickupPeriod, 5);
+	_CompetitorGotMushroom(ActualWorkingPeriod[6], Cmp_Skill_Till,   pickupPeriod, 6);
+	//кому гриб в итоге?
+	if (B_AddCompetitors_Max > 0)	{
 		if (Hlp_Random(100) < 100)	{
 //			MEM_Debug("MR in inventory");
-			if (i_min == 1)	{	B_CreateInvMroom(Cmp_Elena,MR_Index); };
-			if (i_min == 2)	{	B_CreateInvMroom(Cmp_Erol,MR_Index);};
-			if (i_min == 3)	{	B_CreateInvMroom(Cmp_Odo,MR_Index);};
-			if (i_min == 4)	{	B_CreateInvMroom(Cmp_Rupert,MR_Index);};
-			if (i_min == 5)	{	B_CreateInvMroom(Cmp_Sarah,MR_Index);};
-			if (i_min == 6)	{	B_CreateInvMroom(Cmp_Talbin,MR_Index);};
-			if (i_min == 7)	{	B_CreateInvMroom(Cmp_Till,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 1)	{	B_CreateInvMroom(Cmp_Elena,MR_Index); };
+			if (B_AddCompetitors_MaxIndex == 2)	{	B_CreateInvMroom(Cmp_Erol,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 3)	{	B_CreateInvMroom(Cmp_Odo,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 4)	{	B_CreateInvMroom(Cmp_Rupert,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 5)	{	B_CreateInvMroom(Cmp_Sarah,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 6)	{	B_CreateInvMroom(Cmp_Talbin,MR_Index);};
+			if (B_AddCompetitors_MaxIndex == 7)	{	B_CreateInvMroom(Cmp_Till,MR_Index);};
 		}
 		else	{
 //			MEM_Debug("MR in scorelist");
-			if (i_min == 1)	{	MR_Counter_Elena += sum;};
-			if (i_min == 2)	{	MR_Counter_Erol += sum;};
-			if (i_min == 3)	{	MR_Counter_Odo += sum;};
-			if (i_min == 4)	{	MR_Counter_Rupert += sum;};
-			if (i_min == 5)	{	MR_Counter_Sarah += sum;};
-			if (i_min == 6)	{	MR_Counter_Talbin += sum;};
-			if (i_min == 7)	{	MR_Counter_Till += sum;};
+			// сколько стоит
+			var int sum;	sum = MEM_ReadStatArr(MR_Price, MR_Index);
+			if (B_AddCompetitors_MaxIndex == 1)	{	MR_Counter_Elena += sum;};
+			if (B_AddCompetitors_MaxIndex == 2)	{	MR_Counter_Erol += sum;};
+			if (B_AddCompetitors_MaxIndex == 3)	{	MR_Counter_Odo += sum;};
+			if (B_AddCompetitors_MaxIndex == 4)	{	MR_Counter_Rupert += sum;};
+			if (B_AddCompetitors_MaxIndex == 5)	{	MR_Counter_Sarah += sum;};
+			if (B_AddCompetitors_MaxIndex == 6)	{	MR_Counter_Talbin += sum;};
+			if (B_AddCompetitors_MaxIndex == 7)	{	MR_Counter_Till += sum;};
 		};
-		MEM_Debug(ConcatStrings("B_AddCompetitors TRUE i_min = ", IntToString(i_min)));
+		//MEM_Debug(ConcatStrings("B_AddCompetitors TRUE index = ", IntToString(B_AddCompetitors_MaxIndex)));
 		return TRUE;
 	};
 	return FALSE;

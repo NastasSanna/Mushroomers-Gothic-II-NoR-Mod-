@@ -152,6 +152,7 @@ func void CYCLE_TRIGGER_FUNC()
 	
 	//респаун грибов
 	if (CYCLE_TRIGGER_Period > 0)	{
+		//MEM_Debug(ConcatStrings("Cycles CYCLE_TRIGGER_TimeNew = ", IntToString(CYCLE_TRIGGER_TimeNew)));
 		B_CalcWorkingHoursAll(CYCLE_TRIGGER_Period);	//один раз за цикл вычисляем всем конкурентам, сколько они собирали грибы
 		SP_SearchItemsList_Cycle(CYCLE_TRIGGER_Period);	//деспаун
 		Spawn_MR_Normal(CYCLE_TRIGGER_Period);	//спаун обычных
