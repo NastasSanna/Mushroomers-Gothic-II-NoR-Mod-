@@ -20,6 +20,7 @@ func void B_Hero_SetTalents()
 		Log_AddEntry(TOPIC_TalentAnimalTrophy,"...вырезать зубы.");
 		Log_AddEntry(TOPIC_TalentAnimalTrophy,"...вырезать жало у кровавых мух.");
 		Log_AddEntry(TOPIC_Sleep,TOPIC_Sleep_Erol);
+		Log_AddEntry(TOPIC_Sleep,TOPIC_Sleep_Orlan);
 	}
 	else if (C_HeroIs_Till())	{
 		player_talent_takeanimaltrophy[TROPHY_BFWing] = TRUE;
