@@ -55,10 +55,14 @@ instance MENU_STATUS(C_MENU_DEF)
 	items[49] = "MENU_ITEM_TALENT_15_SKILL";
 	items[50] = "MENU_ITEM_TALENT_16_TITLE";
 	items[51] = "MENU_ITEM_TALENT_16_SKILL";
-	items[52] = "MENU_ITEM_TALENT_20_TITLE";
-	items[53] = "MENU_ITEM_TALENT_20_SKILL";
-	items[54] = "MENU_ITEM_TALENT_21_TITLE";
-	items[55] = "MENU_ITEM_TALENT_21_SKILL";
+	items[52] = "MENU_ITEM_TALENT_18_TITLE";
+	items[53] = "MENU_ITEM_TALENT_18_SKILL";
+	items[54] = "MENU_ITEM_TALENT_19_TITLE";
+	items[55] = "MENU_ITEM_TALENT_19_SKILL";
+	items[56] = "MENU_ITEM_TALENT_20_TITLE";
+	items[57] = "MENU_ITEM_TALENT_20_SKILL";
+	items[58] = "MENU_ITEM_TALENT_21_TITLE";
+	items[59] = "MENU_ITEM_TALENT_21_SKILL";
 	dimx = 8192;
 	dimy = 8192;
 	flags = flags | MENU_OVERTOP | MENU_NOANI;
@@ -83,6 +87,7 @@ const int STAT_ARMHEAD_Y = 5200;
 const int STAT_ARM_Y = 5650;
 const int STAT_TALHEAD_Y = 1000;
 const int STAT_TAL_Y = 1450;
+const int STAT_OPTS_Y = 6100;
 const int STAT_DY = 300;
 
 instance MENU_ITEM_STATUS_HEADING(C_MENU_ITEM_DEF)
@@ -559,4 +564,37 @@ instance MENU_ITEM_TALENT_21_SKILL(C_MENU_ITEM_DEF)
 	posy = STAT_TAL_Y + (9 * STAT_DY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
+};
+
+
+instance MENU_ITEM_TALENT_18_TITLE(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X1;
+	posy = STAT_OPTS_Y;
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENU_ITEM_TALENT_18_SKILL(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X2a;
+	posy = STAT_OPTS_Y;
+	fontname = STAT_FONT_DEFAULT;
+	flags = (flags & ~IT_SELECTABLE) | IT_TXT_CENTER;
+};
+
+instance MENU_ITEM_TALENT_19_TITLE(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X1;
+	posy = STAT_OPTS_Y + STAT_DY;
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENU_ITEM_TALENT_19_SKILL(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X2a;
+	posy = STAT_OPTS_Y + STAT_DY;
+	fontname = STAT_FONT_DEFAULT;
+	flags = (flags & ~IT_SELECTABLE) | IT_TXT_CENTER;
 };

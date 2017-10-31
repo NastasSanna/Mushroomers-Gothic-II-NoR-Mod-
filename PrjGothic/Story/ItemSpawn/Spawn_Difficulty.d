@@ -2,17 +2,17 @@
 //настройки сложности для засева грибов
 
 var int MR_Opts_MrAmount;	//сколько грибов?	
-	const int MR_OptsAmount_Less = -1;
-	const int MR_OptsAmount_Norm = 0;
-	const int MR_OptsAmount_More = 1;
+	const int MR_OptsAmount_Less = -1;	const int MR_OptsAmount_Index_Less = 1;
+	const int MR_OptsAmount_Norm = 0;	const int MR_OptsAmount_Index_Norm = 0;
+	const int MR_OptsAmount_More = 1;	const int MR_OptsAmount_Index_More = 2;
 var int MR_Opts_CmpActivity;	//сколько грибов соберут конкуренты?
 	const int MR_Opts_Base = 100;
-	const int MR_Opts_MuchLess = -90;
-	const int MR_Opts_Less = -50;
-	const int MR_Opts_Norm = -0;
-	const int MR_Opts_More = 75;
-	const int MR_Opts_MuchMore = 100;
-	const int MR_Opts_SuperMore = 400;
+	const int MR_Opts_MuchLess = -90;	const int MR_Opts_Index_MuchLess = 	1;
+	const int MR_Opts_Less = -50;		const int MR_Opts_Index_Less = 		2;
+	const int MR_Opts_Norm = 0;			const int MR_Opts_Index_Norm = 		0;
+	const int MR_Opts_More = 75;		const int MR_Opts_Index_More = 		3;
+	const int MR_Opts_MuchMore = 100;	const int MR_Opts_Index_MuchMore = 	4;
+	const int MR_Opts_SuperMore = 400;	const int MR_Opts_Index_SuperMore =	5;
 var int MR_Opts_MM_Flee;	//сбегают ли слабые монстры?
 	const int MR_Opts_MM_Flee_Never = -1;
 	const int MR_Opts_MM_Flee_Random = 0;

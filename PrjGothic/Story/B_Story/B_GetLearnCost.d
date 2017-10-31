@@ -445,37 +445,6 @@ func int B_GetLearnCostTalent(var C_Npc oth,var int talent,var int skill)
 			kosten = 15;
 		};
 	}
-	else if(talent == NPC_TALENT_WISPDETECTOR)
-	{
-		if(skill == WISPSKILL_NF)
-		{
-			kosten = 0;
-		}
-		else if(skill == WISPSKILL_FF)
-		{
-			kosten = 1;
-		}
-		else if(skill == WISPSKILL_NONE)
-		{
-			kosten = 2;
-		}
-		else if(skill == WISPSKILL_RUNE)
-		{
-			kosten = 3;
-		}
-		else if(skill == WISPSKILL_MAGIC)
-		{
-			kosten = 4;
-		}
-		else if(skill == WISPSKILL_FOOD)
-		{
-			kosten = 5;
-		}
-		else if(skill == WISPSKILL_POTIONS)
-		{
-			kosten = 5;
-		};
-	}
 	else if(talent == NPC_TALENT_RUNES)
 	{
 		if(skill == SPL_PalLight)

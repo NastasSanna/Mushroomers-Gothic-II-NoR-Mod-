@@ -107,19 +107,33 @@ func void DIA_Difficulty_MrAmount()
 		Info_AddChoice(DIA_Difficulty,"Мало",DIA_Difficulty_MrAmount_Less);
 	};
 };
+
+func void DIA_Difficulty_MrAmount_SetSkill(var int skill)
+{
+	Npc_SetTalentSkill(PC_Elena, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Erol, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Sarah, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Talbin, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Till, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Rupert, NPC_TALENT_MRCOUNT, skill);
+	Npc_SetTalentSkill(PC_Odo, NPC_TALENT_MRCOUNT, skill);
+};
 func void DIA_Difficulty_MrAmount_Less()
 {
 	MR_Opts_MrAmount = MR_OptsAmount_Less;
+	DIA_Difficulty_MrAmount_SetSkill(MR_OptsAmount_Index_Less);
 	DIA_Difficulty_MrAmount();
 };
 func void DIA_Difficulty_MrAmount_Norm()
 {
 	MR_Opts_MrAmount = MR_OptsAmount_Norm;
+	DIA_Difficulty_MrAmount_SetSkill(MR_OptsAmount_Index_Norm);
 	DIA_Difficulty_MrAmount();
 };
 func void DIA_Difficulty_MrAmount_More()
 {
 	MR_Opts_MrAmount = MR_OptsAmount_More;
+	DIA_Difficulty_MrAmount_SetSkill(MR_OptsAmount_Index_More);
 	DIA_Difficulty_MrAmount();
 };
 
@@ -166,34 +180,51 @@ func void DIA_Difficulty_CmpActivity()
 	};
 };
 
+func void DIA_Difficulty_CmpActivity_SetSkill(var int skill)
+{
+	Npc_SetTalentSkill(PC_Elena, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Erol, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Sarah, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Talbin, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Till, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Rupert, NPC_TALENT_CMPACTIVITY, skill);
+	Npc_SetTalentSkill(PC_Odo, NPC_TALENT_CMPACTIVITY, skill);
+};
+
 func void DIA_Difficulty_CmpActivity_MuchLess()
 {
 	MR_Opts_CmpActivity = MR_Opts_MuchLess;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_MuchLess);
 	DIA_Difficulty_CmpActivity();
 };
 func void DIA_Difficulty_CmpActivity_Less()
 {
 	MR_Opts_CmpActivity = MR_Opts_Less;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_Less);
 	DIA_Difficulty_CmpActivity();
 };
 func void DIA_Difficulty_CmpActivity_Norm()
 {
 	MR_Opts_CmpActivity = MR_Opts_Norm;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_Norm);
 	DIA_Difficulty_CmpActivity();
 };
 func void DIA_Difficulty_CmpActivity_More()
 {
 	MR_Opts_CmpActivity = MR_Opts_More;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_More);
 	DIA_Difficulty_CmpActivity();
 };
 func void DIA_Difficulty_CmpActivity_MuchMore()
 {
 	MR_Opts_CmpActivity = MR_Opts_MuchMore;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_MuchMore);
 	DIA_Difficulty_CmpActivity();
 };
 func void DIA_Difficulty_CmpActivity_SuperMore()
 {
 	MR_Opts_CmpActivity = MR_Opts_SuperMore;
+	DIA_Difficulty_CmpActivity_SetSkill(MR_Opts_Index_SuperMore);
 	DIA_Difficulty_CmpActivity();
 };
 
