@@ -126,11 +126,10 @@ func void DIA_NastasSanna_Scripts_info()
 	if (NastasSanna_Scripts_Cnt >= 7)	{
 		AI_Output(self,other,"DIA_NastasSanna_Scripts_19_03");	//Наконец-то, все скрипты на месте!
 		AI_Output(self,other,"DIA_NastasSanna_Scripts_19_04");	//А это вам.
+		
+		AI_Output(other,self,"XXX");
 		//след. уровень сразу
-		var int x; x = TRUE;
-		if (x) {
-			LevelUp();
-		};
+		LevelUp();
 	};
 };
 //=====================================================
