@@ -4,7 +4,7 @@ instance KDF_504_Parlan(Npc_Default)
 	name[0] = "Парлан";
 	guild = GIL_KDF;
 	id = 504;
-	voice = 2;
+	voice = 24;
 	npcType = NPCTYPE_AMBIENT;
 	aivar[AIV_Temper] = TEMPER_MagicUser;
 	aivar[AIV_IGNOREFlags] = IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller;
