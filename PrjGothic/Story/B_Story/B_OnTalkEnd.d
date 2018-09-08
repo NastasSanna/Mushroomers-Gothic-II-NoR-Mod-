@@ -234,6 +234,7 @@ func void B_OnTalkEnd()
 			Npc_ClearAIQueue(VLK_494_Attila);
 			AI_WaitTillEnd(VLK_494_Attila,self);
 			B_Attack(VLK_494_Attila,other,AR_NONE,0);
+			MIS_KhorinisPost_HalvorFight = FALSE;
 		};
 		return;
 	};

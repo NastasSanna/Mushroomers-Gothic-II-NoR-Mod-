@@ -835,6 +835,7 @@ Story\B_AssignAmbientInfos\B_Addon_GivePotion.d
 AI\Human\ZS_Human\ZS_ClearRoom.d
 Story\B_Story\B_OnCompetitorDeath.d
 Story\Events\B_OnDeath.d
+Story\Log_Entries\B_CloseLogOnDeath.d
 Story\B_Story\B_OnTalkEnd.d
 Story\B_Hero\B_HeroCrimeVerdict.d
 AI\Human\ZS_Human\ZS_Dead.d

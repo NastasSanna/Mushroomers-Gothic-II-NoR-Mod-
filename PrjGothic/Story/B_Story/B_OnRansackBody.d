@@ -102,7 +102,6 @@ func int B_OnRansackBody()
 			{
 				Npc_RemoveInvItems(other,ItMi_Packet_Halvor,1);
 				MIS_KhorinisPost_HalvorFight = FALSE;
-				B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_HalvorGotByForce);
 			}
 			else	{
 				Npc_PerceiveAll(self);
