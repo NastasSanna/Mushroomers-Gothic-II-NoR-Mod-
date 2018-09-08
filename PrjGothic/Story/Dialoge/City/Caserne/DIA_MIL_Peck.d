@@ -326,7 +326,10 @@ func void  DIA_Peck_TrainingAfter_Info()
 	else	{//if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)	{
 		AI_Output(self,other,"DIA_Peck_TrainingAfter_Lost_12_00");	//“ебе удалось одолеть мен€! Ќо это не значит, что тебе больше не нужны тренировки.
 		AI_Output(self,other,"DIA_Peck_TrainingAfter_Lost_12_01");	//я всегда к твоим услугам. » € тоже становлюсь лучше, сражась с опытным противником.
-		self.attribute[ATR_STRENGTH] += 10;
+		self.attribute[ATR_STRENGTH] += 5;
+		self.attribute[ATR_HITPOINTS] += 10;
+		self.attribute[ATR_HITPOINTS_MAX] += 10;
+		self.level += 1;
 	};
 //	Peck_Training_Running = FALSE;
 	self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_NONE;
@@ -334,6 +337,7 @@ func void  DIA_Peck_TrainingAfter_Info()
 	self.aivar[AIV_ArenaFight] = AF_NONE;
 	self.fight_tactic = FAI_HUMAN_STRONG;
 	self.aivar[AIV_OriginalFightTactic] = FAI_HUMAN_STRONG;
+	self.aivar[AIV_VictoryXPGiven] = FALSE;
 };
 //============================================
 instance DIA_Peck_FuckOff(C_INFO)
