@@ -6,6 +6,7 @@ instance KDF_504_Parlan(Npc_Default)
 	id = 504;
 	voice = 24;
 	npcType = NPCTYPE_AMBIENT;
+	flags = NPC_FLAG_IMMORTAL;
 	aivar[AIV_Temper] = TEMPER_MagicUser;
 	aivar[AIV_IGNOREFlags] = IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller;
 	B_SetAttributesToChapter(self,4);

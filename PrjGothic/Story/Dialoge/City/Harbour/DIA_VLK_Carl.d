@@ -234,6 +234,7 @@ func void DIA_Carl_CanRepairHummer_Info()
 	AI_Output(self,other,"DIA_Carl_CanRepairHummer_05_04");	//У меня есть ясень и дуб, но это определенно не они.
 	AI_Output(self,other,"DIA_Carl_CanRepairHummer_05_05");	//Если хочешь узнать наверняка, спроси у плотника Торбена.
 	B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerСarl);
+	B_CloseLogOnDeath(VLK_462_Thorben);
 };
 
 //===================================================

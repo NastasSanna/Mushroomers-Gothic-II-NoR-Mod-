@@ -33,6 +33,10 @@ func void DIA_Gorax_Odo_HasJob_info()
 	AI_Output(self,other,"DIA_Gorax_Odo_HasJob_14_06");	//После я решу, где лучше его купить.
 	B_LogEntry_Create(TOPIC_Odo_Straw,LOG_MISSION,TOPIC_Odo_Straw_Start);
 	MIS_Odo_Straw = LOG_Running;
+	B_CloseLogOnDeath(BAU_940_Akil);
+	B_CloseLogOnDeath(BAU_950_Lobart);
+	B_CloseLogOnDeath(BAU_930_Sekob);
+	B_CloseLogOnDeath(BAU_960_Bengar);
 };
 
 // ==============================================
@@ -72,7 +76,7 @@ func void DIA_Gorax_Odo_AboutStraw_Menu()
 	if ((MIS_Odo_Straw_Onar[0] > 0) && (MIS_Odo_Straw_Onar[1] > 0) && !MIS_Odo_Straw_Onar[Straw_Told])	{
 		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"у лендлорда Онара...",DIA_Gorax_Odo_AboutStraw_Onar);
 	};
-	if (MIS_Odo_Straw_All == 5)	{
+	if (MIS_Odo_Straw_Cnt == MIS_Odo_Straw_All)	{
 		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"Я обошел все фермы.",DIA_Gorax_Odo_AboutStraw_All);
 	};
 };
@@ -93,7 +97,7 @@ func void DIA_Gorax_Odo_AboutStraw_Onar()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Onar_03_01");	//И оно отменного качества.
 	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Onar[Straw_Told] = 1;
-	MIS_Odo_Straw_All += 1;
+	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Onar);
 };
 func void DIA_Gorax_Odo_AboutStraw_Sekob()
@@ -102,7 +106,7 @@ func void DIA_Gorax_Odo_AboutStraw_Sekob()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Sekob_03_01");	//Но оно никудышное, гнилое.
 	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Sekob[Straw_Told] = 1;
-	MIS_Odo_Straw_All += 1;
+	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Sekob);
 };
 func void DIA_Gorax_Odo_AboutStraw_Bengar()
@@ -111,7 +115,7 @@ func void DIA_Gorax_Odo_AboutStraw_Bengar()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Bengar_03_01");	//Сено у него отличное, свежее и душистое.
 	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Bengar[Straw_Told] = 1;
-	MIS_Odo_Straw_All += 1;
+	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Bengar);
 };
 func void DIA_Gorax_Odo_AboutStraw_Akil()
@@ -120,7 +124,7 @@ func void DIA_Gorax_Odo_AboutStraw_Akil()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Akil_03_01");	//Сено у него слишком жесткое.
 	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Akil[Straw_Told] = 1;
-	MIS_Odo_Straw_All += 1;
+	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Akil);
 };
 func void DIA_Gorax_Odo_AboutStraw_Lobart()
@@ -129,7 +133,7 @@ func void DIA_Gorax_Odo_AboutStraw_Lobart()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Lobart_03_01");	//Сено неплохое, но и не самое лучшее. Свежести в нем нет.
 	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Lobart[Straw_Told] = 1;
-	MIS_Odo_Straw_All += 1;
+	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Lobart);
 };
 func void DIA_Gorax_Odo_AboutStraw_All()
@@ -137,11 +141,21 @@ func void DIA_Gorax_Odo_AboutStraw_All()
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_All_03_00");	//Я обошел все фермы.
 	AI_Output(self,other,"DIA_Gorax_Odo_AboutStraw_All_14_01");	//Хорошо. И где бы ты купил сено, если бы мог выбирать?
 	Info_ClearChoices(DIA_Gorax_Odo_AboutStraw);
-	Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Лобарта.",DIA_Gorax_Odo_AboutStraw_BuyLobart);
-	Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Акила.",DIA_Gorax_Odo_AboutStraw_BuyAkil);
-	Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Бенгара.",DIA_Gorax_Odo_AboutStraw_BuyBengar);
-	Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Секоба.",DIA_Gorax_Odo_AboutStraw_BuySekob);
-	Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Онара.",DIA_Gorax_Odo_AboutStraw_BuyOnar);
+	if (MIS_Odo_Straw_Lobart[Straw_Told]) {
+		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Лобарта.",DIA_Gorax_Odo_AboutStraw_BuyLobart);
+	};
+	if (MIS_Odo_Straw_Akil[Straw_Told]) {
+		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Акила.",DIA_Gorax_Odo_AboutStraw_BuyAkil);
+	};
+	if (MIS_Odo_Straw_Bengar[Straw_Told]) {
+		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Бенгара.",DIA_Gorax_Odo_AboutStraw_BuyBengar);
+	};
+	if (MIS_Odo_Straw_Sekob[Straw_Told]) {
+		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Секоба.",DIA_Gorax_Odo_AboutStraw_BuySekob);
+	};
+	if (MIS_Odo_Straw_Onar[Straw_Told]) {
+		Info_AddChoice(DIA_Gorax_Odo_AboutStraw,"У Онара.",DIA_Gorax_Odo_AboutStraw_BuyOnar);
+	};
 };
 func void DIA_Gorax_Odo_AboutStraw_DoBuyBengar()
 {

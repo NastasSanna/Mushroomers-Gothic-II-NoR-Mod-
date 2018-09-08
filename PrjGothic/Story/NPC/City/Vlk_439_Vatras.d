@@ -6,9 +6,10 @@ instance VLK_439_Vatras(Npc_Default)
 	id = 439;
 	voice = 2;
 	npcType = npctype_main;
+	flags = NPC_FLAG_IMMORTAL;
 	aivar[AIV_Temper] = TEMPER_MagicUser;
 	aivar[AIV_IgnoreFlags] = IGNORE_Armor | IGNORE_FakeGuild;
-	B_SetAttributesToChapter(self,2);
+	B_SetAttributesToChapter(self,5);
 	fight_tactic = FAI_HUMAN_COWARD;
 	CreateInvItems(self,ItSc_LightHeal,2);
 	CreateInvItems(self,ItSc_Zap,2);

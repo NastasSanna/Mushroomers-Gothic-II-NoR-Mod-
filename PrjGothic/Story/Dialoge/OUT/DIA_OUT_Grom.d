@@ -120,6 +120,9 @@ func void DIA_Grom_MR_Hello_Info()
 	};
 	MIS_Cookery = LOG_Running;
 	B_LogEntry_Create(TOPIC_Cookery,LOG_MISSION,TOPIC_Cookery_Start);
+	B_CloseLogOnDeath(BAU_913_Thekla);
+	B_CloseLogOnDeath(OUT_1203_Sagitta);
+	B_CloseLogOnDeath(BAU_951_Hilda);
 };
 
 

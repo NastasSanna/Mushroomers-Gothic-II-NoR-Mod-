@@ -830,6 +830,7 @@ const string PRINT_KRAUT = "Травяной табак";
 const string PRINT_XPGained = "Опыт + ";
 const string PRINT_LevelUp = "Повышение уровня!";
 const string PRINT_NewLogEntry = "Новая запись в дневнике";
+const string PRINT_LogEntryObsolete = "Задание отменено";
 const string PRINT_TeleportTooFarAway = "Слишком далеко";
 const string PRINT_BiffsAnteil = "Доля Биффа: ";
 const string PRINT_BiffGold = " золота";

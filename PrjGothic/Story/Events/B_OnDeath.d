@@ -9,6 +9,9 @@ func void B_OnDeath(var C_NPC slf)
 	
 	//часть стрел/болтов можно собрать с трупа
 	B_OnDamage_Arrows();
+	
+	//смерть квестовых участников
+	B_CloseLogOnDeath(slf);
 
 	//конкуренты
 	if (slf.npcType == NPCTYPE_Competitor) {
@@ -73,15 +76,14 @@ func void B_OnDeath(var C_NPC slf)
 	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(Icewolf_Talbin) && !MIS_Talbin_WhiteWolf_Dead)	{
 		B_LogEntry(TOPIC_Talbin_WhiteWolf,TOPIC_Talbin_WhiteWolf_Dead);
 		MIS_Talbin_WhiteWolf_Dead = TRUE;
+		if (Npc_IsDead(BAU_961_Gaan) && Npc_IsDead(BAU_963_Malak)) {
+			B_LogEntry_Status(TOPIC_Talbin_WhiteWolf. LOG_FAILED,TOPIC_Talbin_WhiteWolf_Fail);
+		};
 		return;
 	};
 
 	// ТИЛЛ -----------------------------------
 	if (C_HeroIs_Till())	{
-		//Крестик
-		if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Molerat_Cross))	{
-			B_LogEntry_Status(TOPIC_Till_Pet,LOG_FAILED,TOPIC_Till_Pet_Fail);
-		};
 		//гоблины
 		if ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gobbo_Green_Till_1))
 			|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gobbo_Green_Till_2))

@@ -7,6 +7,7 @@ instance Bau_900_Onar(Npc_Default)
 	id = 900;
 	voice = 24; //14;
 	npcType = npctype_main;
+	flags = NPC_FLAG_IMMORTAL;
 	aivar[AIV_IgnoreFlags] = IGNORE_PortalRoom_Public | IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller;
 	B_SetAttributesToChapter(self,4);
 	fight_tactic = FAI_HUMAN_STRONG;

@@ -7,6 +7,7 @@ instance MIL_312_Wulfgar(Npc_Default)
 	voice = 15;
 	flags = 0;
 	npcType = npctype_main;
+	flags = NPC_FLAG_IMMORTAL;
 	B_SetAttributesToChapter(self,3);
 	fight_tactic = FAI_HUMAN_STRONG;
 	EquipItem(self,ItMw_1h_Mil_Sword);

@@ -46,6 +46,8 @@ func void DIA_Chief_Start_NoReason()
 	B_Attack(BDT_803_Bootlegger,other,AR_KILL,0);
 	B_Attack(BDT_804_Bootlegger,other,AR_KILL,0);
 	AI_StopProcessInfos(self);
+	MIS_KhorinisPost_FailChief = TRUE;
+	B_LogEntry_KhorinisPost_FailChief();
 };
 //------------------------------------------------
 func void DIA_Chief_Start_Vino()

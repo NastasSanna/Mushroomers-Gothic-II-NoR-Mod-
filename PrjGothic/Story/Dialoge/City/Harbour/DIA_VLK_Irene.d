@@ -16,7 +16,7 @@ instance DIA_Irene_Sarah_HowAU(C_INFO)
 func int DIA_Irene_Sarah_HowAU_cond()
 {
 	if (C_HeroIs_Sarah()
-		&& !MIS_FellanGoHome_WifeWaits)	{
+		&& !MIS_FellanGoHome_WifeWaits && !Npc_IsDead(VLK_480_Fellan))	{
 		return TRUE;
 	};
 };
@@ -46,7 +46,7 @@ instance DIA_Irene_Others_HowAU(C_INFO)
 func int DIA_Irene_Others_HowAU_cond()
 {
 	if (!C_HeroIs_Sarah()
-		&& !MIS_FellanGoHome_WifeWaits)	{
+		&& !MIS_FellanGoHome_WifeWaits && !Npc_IsDead(VLK_480_Fellan))	{
 		return TRUE;
 	};
 };
@@ -84,7 +84,7 @@ instance DIA_Irene_HusbandLeft(C_INFO)
 func int DIA_Irene_HusbandLeft_cond()
 {
 	if (MIS_FellanGoHome_WifeWaits
-		&& (MIS_FellanGoHome == 0))	{
+		&& (MIS_FellanGoHome == 0) && !Npc_IsDead(VLK_480_Fellan))	{
 		return TRUE;
 	};
 };
@@ -253,7 +253,7 @@ func void DIA_Irene_OtherWay_info()
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Irene_OtherWay_16_00");	//Думаю, надо изменить подход.
 	};
-	AI_Output(self,other,"DIA_Irene_OtherWay_17_01");	//Что ты имеешь в виду?
+	AI_Output(self,other,"DIA_Irene_OtherWay_17_01");	//Что ты имеешь ввиду?
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Irene_OtherWay_03_02");	//Не надо уговаривать его. Надо сделать так, чтобы он сам решил вернуться.
 	} else if (hero.voice == 7)	{		//Талбин
@@ -371,6 +371,7 @@ func void DIA_Irene_WhoRepairHammer_info()
 	};
 	AI_Output(self,other,"DIA_Irene_WhoRepairHammer_17_01");	//Поговори с кузнецом Карлом.
 	B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerSmith);
+	B_CloseLogOnDeath(VLK_461_Carl);
 };
 
 //============================================================

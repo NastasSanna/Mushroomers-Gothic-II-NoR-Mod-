@@ -116,8 +116,8 @@ var int MIS_KhorinisPost;
 	var int MIS_KhorinisPost_Stage_FromBootlegger;
 	var int MIS_KhorinisPost_Stage_FromHalvor;
 	var int MIS_KhorinisPost_Stage_FromHakon;
-	var int MIS_KhorinisPost_VinoDelivered;
 	//кому донесли
+	var int MIS_KhorinisPost_VinoDelivered;
 	var int MIS_KhorinisPost_BootleggerDelivered;
 	var int MIS_KhorinisPost_HalvorDelivered;
 	var int MIS_KhorinisPost_ValentinoDelivered;
@@ -133,6 +133,9 @@ var int MIS_KhorinisPost;
 	var int MIS_KhorinisPost_HalvorShareGiven;	//дали Халвору его долю
 	var int MIS_KhorinisPost_HalvorShareDay;	//когда Халвор ждет от нас свою долю
 	var int MIS_KhorinisPost_HakonTime;	//когда Хакон начнет ругаться за недоставку
+	//провалы
+	var int MIS_KhorinisPost_FailChief;	//поругались с контрабандистами
+	var int MIS_KhorinisPost_FailChief;	//поругались с контрабандистами
 	
 // Кулинарные изыски
 var int MIS_Cookery;
@@ -160,13 +163,16 @@ var int MIS_FellanGoHome;
 	var int MIS_FellanGoHome_YewGot;	//получили тис
 	var int MIS_FellanGoHome_Returned;	//вернулся!
 
-// Пропавший раотник
+// Пропавший работник
 var int MIS_LostBau;
 
 // Голодные волки
 var int MIS_MalethWolves;
 	var int MIS_MalethWolves_SheepKilled;	//сколько овец было убито
 	var int MIS_MalethWolves_FeedDay;	//когда в последний раз обедали
+
+//А где Трокар?
+var int MIS_FindTrocar;
 
 // ---------------------------------------------------------------
 
@@ -182,6 +188,7 @@ var int MIS_Odo_Herbs;
 	var int MIS_Odo_Herbs_Day;		//когда Парлан запрет нас в Монастыре, если не принесем травы
 	var int MIS_Odo_Wine_SecretAsk;		//хотим узнать секрет монастырского вина
 	var int MIS_Odo_Wine_SecretGot;		//узнали секрет монастырского вина
+var int MIS_Odo_Wine;
 var int MIS_Odo_Straw;
 		const int Straw_Price = 0;
 		const int Straw_Quality = 1;
@@ -192,7 +199,8 @@ var int MIS_Odo_Straw;
 	var int MIS_Odo_Straw_Bengar[Straw_Max];
 	var int MIS_Odo_Straw_Akil[Straw_Max];
 	var int MIS_Odo_Straw_Lobart[Straw_Max];
-	var int MIS_Odo_Straw_All;
+	var int MIS_Odo_Straw_Cnt;
+		const int MIS_Odo_Straw_All = 5;
 	var int MIS_Odo_Straw_BengarChoosen;
 
 // ТАЛБИН Охота пуще неволи
@@ -276,12 +284,16 @@ var int MIS_Elena_Present;
 		const int MIS_Elena_Present_Lehamar_Mad = 3;	//Лемар конкретно зол на нас
 		const int MIS_Elena_Present_Lehamar_Waits = 4;	//еще можно вернуть кубок
 
+// ЕЛЕНА Грибной супчик
+var int MIS_Elena_TheklaSoup;
+
 // САРА
 var int MIS_Sarah_OldFriends;
 	var int MIS_Sarah_OldFriends_BernyPray;	//надо помолиться за Берни
 	var int MIS_Sarah_OldFriends_BernyMet;	//встретили призрак Берни
 	var int MIS_Sarah_OldFriends_Count;	//сколько народу проведали
 	const int MIS_Sarah_OldFriends_CountAll = 8;	//сколько всего надо проведать
+	var int MIS_Sarah_OldFriends_DeadCount;	//сколько умерло (грустный конец)
 var int MIS_Sarah_BadHabit;
 	var int MIS_Sarah_BadHabit_VatrasAsked;	//спросили совета у Ватраса
 	var int MIS_Sarah_BadHabit_EddaAsked;	//попросили помощи у Эдды
@@ -571,7 +583,7 @@ const string TOPIC_ConstantinoMushrooms_Comment[MR_Lists_DoubleLen] =
 	"Трезубец Константино заинтересовал, но не сильно. Он заплатит ", " золотых за штуку.",	//"TRI",
 	"Ночные искры - маленькие, но ценные. За каждую горсть Константино готов выложить ", " золотых.",	//"NSP",
 	"Синие драконовы слезы стоят целых ", " золотых.",	//"DRG",
-	"За редкий и необычный гриб-сердце я могу получить целых ", " зололтых. Константино был очень удивлен.",	//"HRT",
+	"За редкий и необычный гриб-сердце я могу получить целых ", " золотых. Константино был очень удивлен.",	//"HRT",
 	"Золотая чаша - очень ценный гриб, он стоит ", " золотых.",	//"GLD",
 	"Плющевик можно продать Константино за ", " золотых.",	//"IVY",
 	"Ядовитая фиолетовая поганка стоит немало, ", " золотых."	//"VLT"

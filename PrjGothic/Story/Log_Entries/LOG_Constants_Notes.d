@@ -9,6 +9,8 @@ const string TOPIC_ConstantinoMushrooms = "Грибной конкурс";
 	const string TOPIC_ConstantinoMushrooms_Won_F = "Я выиграла конкурс! Больше никто не смог собрать столько грибов. Таинственным призом оказалась книга Константино о грибах. Почитаем...";
 	const string TOPIC_ConstantinoMushrooms_Lost = "Победа ускользнула от меня. Если бы можно было все переиграть...";
 
+//Константино бессмертен
+
 //ГОТОВ ---------------------------------------------------
 const string TOPIC_Odo_Herbs = "Травы для мастера";
 	const string TOPIC_Odo_Herbs_Start = "Мастер Неорас разрешил мне пойти на поиски растений. Он упомянул, что ему особенно нужен царский щавель. Нужно попросить ключ от входной двери у мастера Парлана.";
@@ -29,12 +31,15 @@ const string TOPIC_Odo_Straw = "Лучшее сено";
 	const string TOPIC_Odo_Straw_Onar_Quality = "Сено у Онара как всегда отменного качества.";
 	const string TOPIC_Odo_Straw_Sekob_Price = "Секоб хочет за свое сено 19 золотых за тюк.";
 	const string TOPIC_Odo_Straw_Sekob_Quality = "У Секоба сено никудышное. Несколько тюков подгнили, сплошная труха.";
+	const string TOPIC_Odo_Straw_Sekob_Dead = "У Секоба купить не получится. По... непреодолимым обстоятельствам.";
 	const string TOPIC_Odo_Straw_Bengar_Price = "Бенгар просит по 16 золотых за тюк сена.";
 	const string TOPIC_Odo_Straw_Bengar_Quality = "Сено Бенгара просто отличное - свежее и душистое, чистый клевер.";
+	const string TOPIC_Odo_Straw_Bengar_Dead = "Я не смог уберечь лучшего поставщика сена на острове.";
 	const string TOPIC_Odo_Straw_Akil_Price = "У Акила сено по 14 золотых за тюк.";
 	const string TOPIC_Odo_Straw_Akil_Quality = "Сено Акила не очень хорошее: слишком жесткое, одни былки.";
 	const string TOPIC_Odo_Straw_Lobart_Price = "Лобарт предлагает сено по 16 золотых за тюк.";
 	const string TOPIC_Odo_Straw_Lobart_Quality = "У Лобарта сено неплохое, но не особо душистое.";
+	const string TOPIC_Odo_Straw_Lobart_Dead = "Лобарт сено уже не продаст.";
 	const string TOPIC_Odo_Straw_Told = "Я сообщил мастеру Гораксу все, что узнал. Мастер велел купить сено у Бенгара.";
 	const string TOPIC_Odo_Straw_Success = "Теперь наши овцы будут сыты.";
 
@@ -59,6 +64,7 @@ const string TOPIC_Talbin_Hunt = "Охота пуще неволи";
 	const string TOPIC_Talbin_Hunt_KeilsSoldLutero = "Я продал клыки Лютеро за 500 золотых.";
 	const string TOPIC_Talbin_Hunt_KeilsSoldBosper = "Я продал клыки Босперу за 300 золотых.";
 	const string TOPIC_Talbin_Hunt_KeilsSoldBosper2 = "Я продал клыки Босперу за 250 золотых и ягоду гоблина.";
+	const string TOPIC_Talbin_Hunt_KeilsFailDead = "Лютеро мог бы купить клыки... если бы был жив.";
 
 const string TOPIC_Talbin_WhiteWolf = "Белый волк";
 	const string TOPIC_Talbin_WhiteWolf_Start = "Пастух Малак утверждает, что видел белого волка неподалеку от Прохода. Охотник Гаан ему не поверил. Я тоже не слыхал, чтобы в наших местах водились белые волки, но в жизни бывает всякое.";
@@ -71,7 +77,7 @@ const string TOPIC_Talbin_WhiteWolf = "Белый волк";
 	const string TOPIC_Talbin_WhiteWolf_TraceStairs = "Возле верхней ступени виден смазанный отпечаток лапы и несколько капель крови. Думаю, волк спустился вниз, в лощину.";
 	const string TOPIC_Talbin_WhiteWolf_Dead = "Белый волк мертв. Его шкура должна стоить немалых денег.";
 	const string TOPIC_Talbin_WhiteWolf_SuccessMalak = "Малак в качестве награды дал мне сотню стрел и немного ягод.";
-	const string TOPIC_Talbin_WhiteWolf_SuccessGaan = "Гаан действительно полез кукарекать на крышу! Малак чуть живот не надорвал.";
+	const string TOPIC_Talbin_WhiteWolf_Fail = "А про победу и рассказать некому.";
 
 //ГОТОВ ---------------------------------------------------
 const string TOPIC_Rupert_Debts = "В долгах, как в шелках";
@@ -79,22 +85,29 @@ const string TOPIC_Rupert_Debts = "В долгах, как в шелках";
 	const string TOPIC_Rupert_Debts_Creditors = "Я должен Ханне, Маттео, Кантару, Йоре, Бальтраму, Кардифу, но главное - Лемару. Я должен убедить его дать мне отсрочку.";
 	const string TOPIC_Rupert_Debts_Hanna_Sum = "Ханне я должен 40 золотых.";
 	const string TOPIC_Rupert_Debts_Hanna = "Я вернул долг Ханне.";
+	const string TOPIC_Rupert_Debts_Hanna_Dead = "Ханна умерла, какая потеря. Но и долг теперь возвращать не придется.";
 	const string TOPIC_Rupert_Debts_Matteo_Sum = "Маттео я должен 38 золотых.";
 	const string TOPIC_Rupert_Debts_Matteo = "Маттео получил свои деньги.";
+	const string TOPIC_Rupert_Debts_Matteo_Dead = "Маттео мертв. На один долг меньше. Хотя жаль его, хороший был мужик.";
 	const string TOPIC_Rupert_Debts_Jora_Sum = "Йоре я должен 55 золотых.";
 	const string TOPIC_Rupert_Debts_Jora = "Я вернул долг Йоре.";
+	const string TOPIC_Rupert_Debts_Jora_Dead = "Бедный Йорик. Я был ему должен...";
 	const string TOPIC_Rupert_Debts_Baltram_Sum = "Бальтраму я задолжал 75 золотых. Он грозится упечь меня в тюрьму, но вряд ли сделает это на самом деле.";
 	const string TOPIC_Rupert_Debts_Baltram = "Бальтраму я больше ничего не должен.";
+	const string TOPIC_Rupert_Debts_Baltram_Dead = "Бальтраму я больше ничего не должен. Потому что он умер. Мир его праху.";
 	const string TOPIC_Rupert_Debts_Kardif_Sum = "Даже Кардифу в портовом кабаке я дожен 60 золотых. Пока не расплачусь, Мо меня на порог не пустит.";
 	const string TOPIC_Rupert_Debts_Kardif = "Я расплатился с долгами в портовом кабаке.";
+	const string TOPIC_Rupert_Debts_Kardif_Dead = "В портовый кабак больше заходить не за чем. Кардиф отдал концы.";
 	const string TOPIC_Rupert_Debts_Canthar_Sum = "Кантар хочет получить с меня 150 золотых в течение недели, или меня ждет куча проблем.";
 	const string TOPIC_Rupert_Debts_Canthar = "Я успел расплатиться с Кантаром вовремя.";
+	const string TOPIC_Rupert_Debts_Canthar_Dead = "Нехорошо это, но я чувствую облегчение, что Кантара больше нет. Многие из тех, кто ему задолжал, заканчивали плохо.";
 	const string TOPIC_Rupert_Debts_Lehmar_Sum = "Я должен Лемару уже 500 золотых, хотя одалживал сотню.";
 	const string TOPIC_Rupert_Debts_Lehmar_Percent = "Лемар согласен подождать еще три дня. Но за каждый день сумма долга вырастает еще на 100! Я не хочу даже думать, что будет, если я не верну ему деньги.";
 	const string TOPIC_Rupert_Debts_Lehmar_Alt = "Мо сказал, что если я достану оружие из магической руды, Лемар простит мне долг.";
 	const string TOPIC_Rupert_Debts_Lehmar_Told = "Лемар пообещал, что простит мне проценты по долгу, если я достану ему такой меч.";
 	const string TOPIC_Rupert_Debts_Lehmar_Sword = "Я отдал Лемару меч. Еще я должен ему 100 золотых.";
 	const string TOPIC_Rupert_Debts_Lehmar_Surprise = "Лемар так удивился, получив свой меч, что простил мне весь долг.";
+	const string TOPIC_Rupert_Debts_Lehmar_Dead = "Нет Лемара - нет долга. Уверен, полгорода спляшет на его похоронах.";
 	const string TOPIC_Rupert_Debts_Lehmar = "Мне удалось расплатиться с Лемаром. Больше я к нему ни ногой.";
 	const string TOPIC_Rupert_Debts_Harad = "Гарад может выковать рудный меч, если я принесу ему кусок руды.";
 	const string TOPIC_Rupert_Debts_GotSword = "Рудный меч у меня. Нужно скорее отнести его Лемару.";
@@ -205,23 +218,33 @@ const string TOPIC_Elena_TheklaSoup = "Грибной супчик";
 	const string TOPIC_Elena_TheklaSoup_NeedRedMr = "Текла попросила собрать десяток красных болтунов, чтобы она могла сварить грибной суп.";
 	const string TOPIC_Elena_TheklaSoup_MrGiven = "Я принесла Текле грибы. Завтра на обед будет грибной супчик.";
 	const string TOPIC_Elena_TheklaSoup_GotSoup = "Супчик Теклы просто бесподобен!";
+	const string TOPIC_Elena_TheklaSoup_FailDead = "Никогда мне больше не попробовать супчик Теклы! И похлебку, и пирожки, и... (дальше чернила размазаны слезами)";
 
 //ГОТОВ ----------------------------------------------------
 const string TOPIC_Sarah_OldFriends = "Старые друзья и новые заботы";
 	const string TOPIC_Sarah_OldFriends_Start = "Ханна права - я слишком зациклилась на этом дурацком рынке. И я совсем забыла о своих старых друзьях. Я так давно не спускалась в портовый квартал и даже не знаю, как у них дела. Надо навестить всех.";
 	const string TOPIC_Sarah_OldFriends_Edda = "Эдда в порядке. И все также варит вкуснейший рыбный суп.";
+	const string TOPIC_Sarah_OldFriends_EddaDead = "Эдда погибла! А она была мне как мать.";
 	const string TOPIC_Sarah_OldFriends_Fenia = "Феня сетует, что рыбаки давно не приносили свежей рыбы. А покупатели жалуются.";
+	const string TOPIC_Sarah_OldFriends_FeniaDead = "Фени не стало. Да успокоит Аданос ее душу!";
 	const string TOPIC_Sarah_OldFriends_Kardif = "Кардиф как всегда готов выложить все новости за пару золотых.";
+	const string TOPIC_Sarah_OldFriends_KardifDead = "Кардиф умер. Без его пива и баек Порт будет уже не тот.";
 	const string TOPIC_Sarah_OldFriends_Moe = "Мо опять стоит в дверях у Кардифа. Сколько его помню, он всегда был здоров подраться, но никогда не поднимал руку на женщин.";
+	const string TOPIC_Sarah_OldFriends_MoeDead = "Умер Мо. Вот уж не думала, что его что-то или кто-то сможет укокошить. Покойся с миром.";
 	const string TOPIC_Sarah_OldFriends_Nadja = "Похоже, у Нади проблемы. При ее... профессии это неудивительно, но я не думала, что все так плохо. Она выглядит так, будто уже одной ногой стоит в могиле. Надо выяснить, что с ней происходит.";
+	const string TOPIC_Sarah_OldFriends_NadjaDead = "Умерла моя лучшая подруга детства, Надя. Наши пути давно разошлись, но я часто вспоминала детские игры. Да смилостивится Белиар над ее душой!";
 	const string TOPIC_Sarah_OldFriends_Fellan = "Бедняга Феллан совсем спятил и ушел из дому. Ирина, его жена, не знает, что и делать. Надо ей как-то помочь.";
+	const string TOPIC_Sarah_OldFriends_FellanDead = "Сумасбродный Феллан встретил свой конец. Бедная Ирина!";
+	const string TOPIC_Sarah_OldFriends_IreneDead = "Ирина погибла. А она была такой молодой!";
 	const string TOPIC_Sarah_OldFriends_Brahim = "Дела у Ибрагима идут неважно, но он здоров.";
+	const string TOPIC_Sarah_OldFriends_BrahimDead = "Ибрагима больше нет среди живых. Он был настоящим мастером пера и кисти.";
 	const string TOPIC_Sarah_OldFriends_BernyDead = "Старик Берни не пережил прошлую зиму... А я даже не знала. Надо бы помолиться за упокой его души.";
 	const string TOPIC_Sarah_OldFriends_BernyPrayInnos = "Я помолилась Инносу за упокой души Берни. Светлый был старик!";
 	const string TOPIC_Sarah_OldFriends_BernyPrayAdanos = "Я помолилась Аданосу за упокой души Берни. Пусть море примет его!";
 	const string TOPIC_Sarah_OldFriends_BernyPrayBeliar = "Я помолилась Белиару, Богу Смерти, за упокой души Берни. Пусть будет он счастлив в загробном мире!";
 	const string TOPIC_Sarah_OldFriends_BernyPrayBeliar2 = "Я помолилась Белиару, Богу Смерти, за упокой души Берни. Он позволил мне попрощаться с его духом.";
 	const string TOPIC_Sarah_OldFriends_Success = "Я встретилась со всеми своими старыми знакомыми. И на душе стало как-то легче.";
+	const string TOPIC_Sarah_OldFriends_FailAllDead = "Никого из моих старых друзей больше нет в живых. Я как будто еще раз осиротела.";
 
 //ГОТОВ
 const string TOPIC_Sarah_BadHabit = "Вредная привычка";
@@ -267,18 +290,21 @@ const string TOPIC_GrimbaldOrcs = "Охотник против орков";
 	const string TOPIC_GrimbaldOrcs_OrcsDead = "Все орки мертвы. Нужно обрадовать Гримбальда.";
 	const string TOPIC_GrimbaldOrcs_OrcsDead_Liar = "Гримбальд не поверил, что орки мертвы. Он решил сам убедиться в этом.";
 	const string TOPIC_GrimbaldOrcs_Success_OrcsDead = "Убедившись, что товарищи отомщены, Гримбальд ушел.";
+	const string TOPIC_GrimbaldOrcs_Failed_GrimbaldDead = "Гримбальд погиб. Да воссоединится его дух с душами погибших товарищей.";
+	
 
 //ГОТОВО
 const string TOPIC_KhorinisPost = "Почта Хориниса";
-	const string TOPIC_KhorinisPost_Vino = "Вино попросил отнести письмо его друзьям в Восточный лес, в пещеру с железной решеткой. Для этого нужно идти по дороге через лес к горам, а от круга камней свернуть налево. Вход в пещеру спрятан под елями, не доходя до скал.";
+	const string TOPIC_KhorinisPost_Vino = "Вино попросил отнести письмо его друзьям в Восточный лес, в пещеру с железной решеткой. Для этого нужно идти по дороге через лес к горам, а от круга камней свернуть налево. Вход в пещеру спрятан под елями, не доходя до скал. Вино пообщеал, что за доставку меня щедро вознаградят.";
 	const string TOPIC_KhorinisPost_BootleggerDelivered = "Я передал письмо друзьям Вино.";
 	const string TOPIC_KhorinisPost_BootleggerDelivered_Fem = "Я передала письмо друзьям Вино.";
-	const string TOPIC_KhorinisPost_BootleggerUnfriendly = "Друзья Вино оказались совсем не дружелюбными. Они попытались убить меня, когда при мне не оказалось письма Вино. И их главарь что-то говорил про шпионов... Дело нечисто, стоит поговорить с начальником городской стражи.";
+	const string TOPIC_KhorinisPost_BootleggerUnfriendly = "Друзья Вино оказались совсем не дружелюбными. Они попытались убить меня, когда при мне не оказалось письма Вино. ";
 	const string TOPIC_KhorinisPost_BootleggerNoPay = "Похоже, награды за письмо мне не видать.";
 	const string TOPIC_KhorinisPost_BootleggerVinoPay = "“Друг“ Вино отказался платить за письмо и посоветовал обратиться к самому Вино. Что-то мне не хочется с ним спорить.";
 	const string TOPIC_KhorinisPost_BootleggerNewJob = "За письмо мне не заплатили, зато подбросили еще работенки. Нужно отнести пакет с какими-то товарами Халвору из портового района.";
 	const string TOPIC_KhorinisPost_VinoWine = "Вино дал мне бутылку хорошего вина.";
 	const string TOPIC_KhorinisPost_Vino10gold = "10 золотых - вся плата за доставку письма через пол-острова.";
+	const string TOPIC_KhorinisPost_VinoFailed = "Кажется, доставить письмо уже не получится... Лучше не буду говорить Вино об этом.";
 	const string TOPIC_KhorinisPost_HalvorDelivered = "Халвор получил свою посылку.";
 	const string TOPIC_KhorinisPost_HalvorPayed0 = " Он выглядел очень довольным, но не дал мне ни монеты.";
 	const string TOPIC_KhorinisPost_HalvorPayed20 = " За доставку он заплатил 20 золотых. Почему у меня такое чувство, как будто меня надули?";
@@ -286,11 +312,10 @@ const string TOPIC_KhorinisPost = "Почта Хориниса";
 	const string TOPIC_KhorinisPost_HalvorWait = "Халвору нужна пара часов, чтобы найти 100 золотых за доставку пакета.";
 	const string TOPIC_KhorinisPost_Halvor100Give = "Да пусть подавится своим пакетом! Сразу бы сказал, что слишком дорого...";
 	const string TOPIC_KhorinisPost_Halvor100Fight = "Этот мерзавец обманул меня, да еще и дружка какого-то привел. Но мы еще посмотрим, кто кого!";
-	const string TOPIC_KhorinisPost_HalvorGotByForce = "Халвор отобрал у меня пакет.";
 	const string TOPIC_KhorinisPost_HalvorNoJob = "Вместо денег Халвор предложил еще какое-то дело. С меня хватит! Пусть сами носят свои письма и посылки.";
 	const string TOPIC_KhorinisPost_HalvorJob = "Халвор тоже отказался платить. Вместо этого он предложил доставить еще 3 заказа. Мне нужно отдать торговцу Хакону с рыночной площади 3 куска руды за 150 золотых, Фернандо из Верхнего квартала кожу болотной акулы за 250 золотых и Валентино кольцо за 100 золотых. Моя доля - 50 золотых.";
 	const string TOPIC_KhorinisPost_HalvorGive250 = "Халвор получил свои деньги.";
-	const string TOPIC_KhorinisPost_HalvorAll = "Все посылки доставлены. Пора отдать Халвору его деньги.";
+	const string TOPIC_KhorinisPost_HalvorAll = "Все посылки доставлены. Пора отдать Халвору его 450 золотых.";
 	const string TOPIC_KhorinisPost_HakonDelivered = "Хакон получил свою руду и заплатил ровно 150 золотых.";
 	const string TOPIC_KhorinisPost_HakonPost = "Хакон попросил отнести руду кузнецу Гараду. За это он дал мне 10 золотых и велел отнести прямо сейчас.";
 	const string TOPIC_KhorinisPost_HaradDelivered = "Руда у Гарада. Ему ее явно не хватает.";
@@ -309,6 +334,7 @@ const string TOPIC_LostBau = "Пропавший работник";
 	const string TOPIC_LostBau_Found_1st = "Мне встретился забавный крестьянин, Вино, пьяный в стельку. Стоит навестить его, когда он проспится.";
 	const string TOPIC_LostBau_Told = "Лобарт чуть не придушил Вино, когда тот вернулся. То ли со злости, то ли от радости.";
 	const string TOPIC_LostBau_Letter = "Вино пришел в себя настолько, что вспомнил про письмо для своих друзей. Думаю, с ним все будет в порядке.";
+	const string TOPIC_LostBau_Fail_DeadVino = "Вино погиб.";
 
 //ГОТОВО
 const string TOPIC_MalethWolves = "Голодные волки";
@@ -319,6 +345,7 @@ const string TOPIC_MalethWolves = "Голодные волки";
 	const string TOPIC_MalethWolves_Killed2 = "Возле фермы Лобарта ошивалась большая стая волков. Надо поговорить с пастухом.";
 	const string TOPIC_MalethWolves_Paid = "Малет отдал мне все свои деньги, 7 золотых.";
 	const string TOPIC_MalethWolves_Food = "Малет обещал каждый день делиться со мной обедом, пока его овцы целы.";
+	const string TOPIC_MalethWolves_Fail_Dead = "Малет погиб. Волки его больше не волнуют.";
 	
 //ГОТОВ
 const string TOPIC_Cookery = "Кулинарные изыски";
@@ -335,15 +362,21 @@ const string TOPIC_Cookery = "Кулинарные изыски";
 	const string TOPIC_Cookery_TheklaTry = "Текла взялась за готовку. Надо будет зайти к ней завтра после полудня.";
 	const string TOPIC_Cookery_TheklaReady = "У Теклы получились жареные уши. На вид довольно... оригинально, но пахнет вкусно. Надо отдать рецепт Грому.";
 	const string TOPIC_Cookery_TheklaGiven = "Гром был уверен, что Текла приготовит что-то вкусное. В награду он дал мне пригорошню лесных ягод.";
+	const string TOPIC_Cookery_TheklaDead = "Рецепт Теклы я уже никогда не узнаю...";
 	
 	const string TOPIC_Cookery_Sagitta = "Сагитта посоветовала жарить дамские уши с коричневым масляком. Масляков нужно взять вдвое больше, чем ушек. Ушки сначала отварить в крепко соленой воде.";
 	const string TOPIC_Cookery_SagittaTold = "За рецепт Сагитты Гром дал мне разных грибов, которые он собрал в лесу.";
 	const string TOPIC_Cookery_AskSpices = "Грому нужны специи, чтобы приготовить грибное рагу. Что-нибудь острое.";
 	const string TOPIC_Cookery_SpicesGiven = "Красный жгучий перец пришелся Грому по вкусу.";
+	const string TOPIC_Cookery_SagittaDead = "Сагитта погибла. А она могла знать какой-то рецепт...";
 
 	const string TOPIC_Cookery_Hilda = "У Хильды есть бабушкин рецепт маринованых “ушек“. Она отдаст его мне, если я заточу ее кухонный нож у кузнеца.";
 	const string TOPIC_Cookery_HildaGet = "Рецепт Хильды у меня. Надо отнести его Грому.";
 	const string TOPIC_Cookery_HildaGiven = "За рецепт маринованых грибов Гром дал мне полсотни стрел.";
+	const string TOPIC_Cookery_HildaDead = "Рецепт Хильды утрачен для мира.";
+	
+	const string TOPIC_Cookery_Success = "Больше рецептов мне не найти.";
+	const string TOPIC_Cookery_Fail_GromDead = "Рецепты Грому больше не нужны. Покойся с миром.";
 
 //ВЫРЕЗАН
 const string TOPIC_ThorbenSales = "Плотник на мели";
@@ -359,7 +392,7 @@ const string TOPIC_FellanGoHome = "Как вернуть мужа домой";
 	const string TOPIC_FellanGoHome_HammerСarl = "Карл может починить молоток, но у него нет точно такой же древесины для рукоятки. Нужно поговорить с плотником Торбеном.";
 	const string TOPIC_FellanGoHome_HammerThorben = "Торбен уверяет, что рукоятка сделана из тиса. К несчастью, тис уже давно не растет на Хоринисе и у Торбена его нет. Из тиса делают луки, а еще его называют негной-дерево, потому что он не портится в воде.";
 	const string TOPIC_FellanGoHome_HammerBosper = "У Боспера нет древесины тиса, а если бы и была, то не подошла бы для рукояти - луки изготавливают из другой части. Он посоветовал поспрашивать в порту - из тиса иногда делают сваи и лодки.";
-	const string TOPIC_FellanGoHome_HammerHafenAsked = "Нужно спросить Фабио и Бруно, у рабочих на верфи..";
+	const string TOPIC_FellanGoHome_HammerHafenAsked = "Нужно спросить Фабио и Бруно, у рабочих на верфи.";
 	const string TOPIC_FellanGoHome_HammerHafen = "У работников в Порту есть небольшой запас тиса. Я могу купить чурбак за 50 золотых.";
 	const string TOPIC_FellanGoHome_HammerYew = "Теперь у меня есть древесина для рукоятки.";
 	const string TOPIC_FellanGoHome_HammerRepaired = "Готово! Молоток как новенький.";
@@ -368,6 +401,8 @@ const string TOPIC_FellanGoHome = "Как вернуть мужа домой";
 	const string TOPIC_FellanGoHome_Success = "Сработало! Феллан вернулся домой. Надо будет проведать Ирину.";
 	const string TOPIC_FellanGoHome_SuccessIrene = "Ирина выглядит очень счастливой.";
 	const string TOPIC_FellanGoHome_SuccessAmul = " Она подарила мне амулет на удачу, который Феллан починил первым делом.";
+	const string TOPIC_FellanGoHome_Fail_DeadFellan = "Феллан умер. Ирина с ума сойдет от горя. Не смогу ей сказать.";
+	const string TOPIC_FellanGoHome_Fail_Hummer = "Ну и как теперь починить молоток?";
 //	const string TOPIC_FellanGoHome_After = "Похоже, соседи не очень рады возвращению Феллана и его молотка. Лучше пока обходить стороной его дом.";
 
 //ГОТОВО
@@ -376,6 +411,7 @@ const string TOPIC_FindTrocar = "А где Трокар?";
 	const string TOPIC_FindTrocar_Found = "Трокар забрался в самую дальнюю часть острова в погоне за раненым секачом. Это же надо было - три дня идти по следу и выжидать его, сидя на дереве!";
 	const string TOPIC_FindTrocar_Told = "Я сказал Трокару про нож.";
 	const string TOPIC_FindTrocar_Told_F = "Я сказала Трокару про нож.";
+	const string TOPIC_FindTrocar_FailDead = "Нож Трокару больше не понадобится...";
 
 
 //-------------------------------------------------------------
@@ -432,7 +468,7 @@ const string TOPIC_Sleep = "Ночлег";
 	const string TOPIC_Sleep_Elena = "Дома меня всегда ждет моя кроватка. Моя комната находится в правом крыле дома на втором этаже.";
 	const string TOPIC_Sleep_Talbin = "Я всегда могу отдохнуть в нашей с Энгромом избушке.";
 	const string TOPIC_Sleep_Erol = "Мой дом на берегу озера хоть и не такой роскошный, как в верхнем квартале, но на свежем воздухе можно отлично выспаться.";
-	const string TOPIC_Sleep_Till = "Я могу спокойно переночевать дома. Но днем лучше не попадатсья отцу на глаза.";
+	const string TOPIC_Sleep_Till = "Я могу спокойно переночевать дома. Но днем лучше не попадаться отцу на глаза.";
 	const string TOPIC_Sleep_Odo = "Моя кровать находится в келье возле винокурни.";
 	const string TOPIC_Sleep_Rupert = "Я опять задолжал Ханне за ночлег. Пока не заплачу, она меня и на порог не пустит.";
 
@@ -475,14 +511,14 @@ const string TOPIC_Poison = "Отравление";
 	const string TOPIC_Poison_Healer = "Мне нужно срочно найти целителя! Говорят, лесная ведьма Сагитта может вылечить что угодно.";
 	const string TOPIC_Poison_Foggy = "От туманника у меня все поплыло и потемнело в глазах. И я не помню, что было за последние пару часов. Теперь меня постоянно мутит.";
 	const string TOPIC_Poison_DrgTears = "А-а-а-а! От драконьих слез внутри все горит! Воды, скорее, ВОДЫ!!!";
-	const string TOPIC_Poison_Trident = "От трезубца меня начало трясти, и я чувствую странную слабость.";
+	const string TOPIC_Poison_Trident = "От трезубца у меня начались судороги, и я чувствую сильную слабость.";
 
 
 const string TOPIC_SnowStudio = "SNOW STUDIO";
 	const string TOPIC_SnowStudio_General = "SnowStudio - команда волонтеров, подарившая голоса множеству модов для Готики. В озвучке Грибников задействовано целых 18 актеров-любителей. Заходите на snow-studio.ru, чтобы найти больше хороших модов с озвучкой!";
 	const string TOPIC_SnowStudio_Istar = "!sTaR - актер озвучки: Эрол (главная роль), Пирокар, Боспер, Торбен, Халвор, Энгром, Бромор, Василий, Онар, друзья Вино (контрабандисты), Орлан";
 	const string TOPIC_SnowStudio_2Khaos = "2Khaos - актер озвучки: Тилл (главная роль)";
-	const string TOPIC_SnowStudio_Adept = "Adept - актер озвучки Талбин (главная роль)";
+	const string TOPIC_SnowStudio_Adept = "Adept - актер озвучки: Талбин (главная роль)";
 	const string TOPIC_SnowStudio_HelenDream = "Helen Dream - актриса озвучки: Елена и Сара (главные роли)";
 	const string TOPIC_SnowStudio_Kertax = "Kertax - актер озвучки Одо и Руперт (главные роли)";
 	const string TOPIC_SnowStudio_Naja = "Naja - актриса озвучки: Сара (конкурентка), Мария, Надя, Эдда, безымянные горожанки и крестьянки";

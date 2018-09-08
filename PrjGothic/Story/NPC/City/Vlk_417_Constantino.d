@@ -6,6 +6,7 @@ instance VLK_417_Constantino(Npc_Default)
 	id = 417;
 	voice = 4;//12;
 	npcType = npctype_main;
+	flags = NPC_FLAG_IMMORTAL;
 	aivar[AIV_IgnoreFlags] = IGNORE_PortalRoom_Public;
 	B_SetAttributesToChapter(self,4);
 	fight_tactic = FAI_HUMAN_COWARD;

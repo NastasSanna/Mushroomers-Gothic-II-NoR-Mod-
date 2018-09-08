@@ -85,6 +85,16 @@ func void B_LogEntry_KhorinisPost_SuccessAll(var string entry)
 		B_LogEntry(TOPIC_KhorinisPost,entry);
 	};
 };
+//не повезло с бандитами
+func void B_LogEntry_KhorinisPost_FailChief()
+{
+	if (MIS_KhorinisPost == LOG_Running)	{
+		if (MIS_KhorinisPost_FailChief) {
+			MIS_KhorinisPost = LOG_FAILED;
+		B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_VinoFailed);
+		};
+	};
+};
 
 
 //====================================================
@@ -92,15 +102,13 @@ func void B_LogEntry_KhorinisPost_SuccessAll(var string entry)
 func void B_LogEntry_Cookery_SuccessAll(var string entry)
 {
 	//все рецепты нашли?
+	B_LogEntry(TOPIC_Cookery,entry);
 	if (MIS_Cookery_TheklaTold && MIS_Cookery_HildaTold && MIS_Cookery_SagittaTold && MIS_Cookery_ConstantinoTold
 		// а специи?
 		&& (MIS_Cookery_SpicesGiven || !MIS_Cookery_AskSpices)) {
 		B_GivePlayerXP(XP_Cookery_Success);
 		MIS_Cookery = LOG_SUCCESS;
-		B_LogEntry_Status(TOPIC_Cookery,LOG_SUCCESS,entry);
-	}
-	else	{
-		B_LogEntry(TOPIC_Cookery,entry);
+		B_LogEntry_Status(TOPIC_Cookery,LOG_SUCCESS,TOPIC_Cookery_Success);
 	};
 };
 //====================================================

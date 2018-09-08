@@ -230,6 +230,8 @@ func void DIA_Vino_Letter_Yes()
 	BDT_802_Bootlegger.aivar[AIV_EnemyOverride] = TRUE;
 	BDT_803_Bootlegger.aivar[AIV_EnemyOverride] = TRUE;
 	BDT_804_Bootlegger.aivar[AIV_EnemyOverride] = TRUE;
+	
+	B_LogEntry_KhorinisPost_FailChief();
 };
 
 //==============================================================
