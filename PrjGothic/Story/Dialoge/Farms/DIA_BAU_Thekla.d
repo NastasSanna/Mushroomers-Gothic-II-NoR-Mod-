@@ -31,6 +31,7 @@ func void DIA_Thekla_Elena_Help_Info()
 	AI_Output(self,other,"DIA_Thekla_Elena_Help_17_06");	//А я и не прошу у тебя чего-то сверхъестественного, что ценят господа-алхимики.
 	AI_Output(self,other,"DIA_Thekla_Elena_Help_17_07");	//Десяток самых обычных красных болтунов. Конечно, ты можешь рассчитывать на самую большую порцию.
 	B_LogEntry_Create(TOPIC_Elena_TheklaSoup,LOG_MISSION,TOPIC_Elena_TheklaSoup_NeedRedMr);
+	MIS_Elena_TheklaSoup = LOG_Running;
 };
 
 //===================================================
@@ -77,6 +78,7 @@ func void DIA_Thekla_Elena_MrSoup_Info()
 	AI_Output(self,other,"DIA_Thekla_Elena_MrSoup_17_01");	//Вот, угощайся на здоровье.
 	B_GiveInvItems(self,other,ItFo_MrSoup,1);
 	B_LogEntry_Status(TOPIC_Elena_TheklaSoup,LOG_SUCCESS,TOPIC_Elena_TheklaSoup_GotSoup);
+	MIS_Elena_TheklaSoup = LOG_SUCCESS;
 };
 
 /////////////////////////////////////// ВСЕ /////////////////////////////////////////////

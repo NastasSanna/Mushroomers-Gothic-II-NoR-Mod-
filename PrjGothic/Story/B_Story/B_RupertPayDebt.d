@@ -1,4 +1,25 @@
 
+func void B_RupertPayDebt_All(var int XP_sum)
+{
+	// все долги вернули?  -----------------------------
+	if (MIS_Rupert_Debts_Paid[Creditor_Hanna]
+		&& MIS_Rupert_Debts_Paid[Creditor_Matteo]
+		&& MIS_Rupert_Debts_Paid[Creditor_Jora]
+		&& MIS_Rupert_Debts_Paid[Creditor_Baltram]
+		&& MIS_Rupert_Debts_Paid[Creditor_Canthar]
+		&& MIS_Rupert_Debts_Paid[Creditor_Kardif]
+		&& MIS_Rupert_Debts_Paid[Creditor_Lehmar])
+	{
+		// квест завершен!
+		B_LogEntry_Status(TOPIC_Rupert_Debts,LOG_SUCCESS,TOPIC_Rupert_Debts_Success);
+		MIS_Rupert_Debts = LOG_SUCCESS;
+		XP_sum += XP_Rupert_Debts_All;
+	};
+	
+	//выдать весь опыт
+	B_GivePlayerXP(XP_sum);
+};
+
 //Руперт возвращает долг, Creditor = Creditor_XXX  - кому
 func void B_RupertPayDebt(var int Creditor)
 {
@@ -54,22 +75,6 @@ func void B_RupertPayDebt(var int Creditor)
 		XP_sum += XP_Rupert_Debts_Lehmar;
 	};
 	
-	// все долги вернули?  -----------------------------
-	if (MIS_Rupert_Debts_Paid[Creditor_Hanna]
-		&& MIS_Rupert_Debts_Paid[Creditor_Matteo]
-		&& MIS_Rupert_Debts_Paid[Creditor_Jora]
-		&& MIS_Rupert_Debts_Paid[Creditor_Baltram]
-		&& MIS_Rupert_Debts_Paid[Creditor_Canthar]
-		&& MIS_Rupert_Debts_Paid[Creditor_Kardif]
-		&& MIS_Rupert_Debts_Paid[Creditor_Lehmar])
-	{
-		// квест завершен!
-		B_LogEntry_Status(TOPIC_Rupert_Debts,LOG_SUCCESS,TOPIC_Rupert_Debts_Success);
-		MIS_Rupert_Debts = LOG_SUCCESS;
-		XP_sum += XP_Rupert_Debts_All;
-	};
-	
-	//выдать весь опыт
-	B_GivePlayerXP(XP_sum);
+	B_RupertPayDebt(XP_sum);
 };
 

@@ -104,17 +104,20 @@ func void DIA_Bartok_Alone_info()
 		AI_Output(self,other,"DIA_Bartok_Alone_04_01");	//Да. Обычно мы охотимся с моим другом Трокаром. Но сейчас мы на время разошлись.
 	};
 	AI_Output(self,other,"DIA_Bartok_Alone_04_02");	//Я его уже несколько дней не видел. Понятия не имею, куда он отправился.
-	if (C_HeroIs_Sarah() || C_HeroIs_Elena())	{
-		AI_Output(self,other,"DIA_Bartok_Alone_04_03");	//Если вдруг встретишь его, будь добра, скажи, чтобы зашел в Мертвую гарпию. Он там у Орлана на стойке нож забыл.
-	}
-	else if (C_HeroIs_Erol())	{
-		AI_Output(self,other,"DIA_Bartok_Alone_04_04");	//Если вдруг встретите его, передайте, что он в Мертвой гарпии нож забыл.
-			AI_Output(other,self,"DIA_Bartok_Alone_10_05");	//А, так это его нож у Орлана третий день на стойке валяется.
-	} 
-	else 	{
-		AI_Output(self,other,"DIA_Bartok_Alone_04_06");	//Если вдруг встретишь его, скажи, чтобы двигал к Мертвой гарпии. Он у Орлана на стойке нож забыл.
+	if (!Npc_IsDead(OUT_1230_Trocar))	{
+		if (C_HeroIs_Sarah() || C_HeroIs_Elena())	{
+			AI_Output(self,other,"DIA_Bartok_Alone_04_03");	//Если вдруг встретишь его, будь добра, скажи, чтобы зашел в Мертвую гарпию. Он там у Орлана на стойке нож забыл.
+		}
+		else if (C_HeroIs_Erol())	{
+			AI_Output(self,other,"DIA_Bartok_Alone_04_04");	//Если вдруг встретите его, передайте, что он в Мертвой гарпии нож забыл.
+				AI_Output(other,self,"DIA_Bartok_Alone_10_05");	//А, так это его нож у Орлана третий день на стойке валяется.
+		} 
+		else 	{
+			AI_Output(self,other,"DIA_Bartok_Alone_04_06");	//Если вдруг встретишь его, скажи, чтобы двигал к Мертвой гарпии. Он у Орлана на стойке нож забыл.
+		};
+		MIS_FindTrocar = LOG_Running;
+		B_LogEntry_Create(TOPIC_FindTrocar, LOG_MISSION, TOPIC_FindTrocar_Start);
 	};
-	B_LogEntry_Create(TOPIC_FindTrocar, LOG_MISSION, TOPIC_FindTrocar_Start);
 };
 
 //=====================================================

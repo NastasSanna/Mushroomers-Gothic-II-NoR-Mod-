@@ -266,6 +266,7 @@ func void DIA_Trocar_MsgFromBartok_info()
 	else	{
 		AI_Output(self,other,"DIA_Trocar_MsgFromBartok_12_03");	//О, спасибо. А я думал, что потерял, когда за кабаном гнался.
 	};
+	MIS_FindTrocar = LOG_SUCCESS;
 	if (other.aivar[AIV_Gender] == MALE)	{
 		B_LogEntry_Status(TOPIC_FindTrocar, LOG_SUCCESS, TOPIC_FindTrocar_Told);
 	}

@@ -463,7 +463,8 @@ func void DIA_Sagitta_Odo_HasPermHerb_info()
 		AI_Output(other,self,"DIA_Sagitta_Odo_HasPermHerb_03_09");	//Так тебе нужно наше вино?
 	AI_Output(self,other,"DIA_Sagitta_Odo_HasPermHerb_17_10");	//Нет. Я хочу узнать, как оно получается таким.
 	AI_Output(self,other,"DIA_Sagitta_Odo_HasPermHerb_17_11");	//В чем ваш секрет? Особый виноград, магия или какие-то добавки?
-	B_LogEntry(TOPIC_Odo_Wine,TOPIC_Odo_Wine_PermSagitta);
+	B_LogEntry_Create(TOPIC_Odo_Wine, LOG_MISSION,TOPIC_Odo_Wine_PermSagitta);
+	MIS_Odo_Wine = LOG_Running;
 	MIS_Odo_Wine_SecretAsk = TRUE;
 };
 //------------------------------------------------------
@@ -511,6 +512,7 @@ func void DIA_Sagitta_Odo_TellWine_info()
 	AI_Output(self,other,"DIA_Sagitta_Odo_TellWine_17_04");	//Вот твой царский щавель, как я и обещала.
 	B_GiveInvItems(self,other,ItPl_Perm_Herb,1);
 	B_LogEntry_Status(TOPIC_Odo_Wine, LOG_SUCCESS, TOPIC_Odo_Wine_Success);
+	MIS_Odo_Wine = LOG_SUCCESS;
 };
 
 
