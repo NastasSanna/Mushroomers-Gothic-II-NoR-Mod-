@@ -47,7 +47,7 @@ func void B_Print_LogEntry(var string message, var string topic)
 
 // новая запись в журнале (дневнике) с/без указания времени
 //WriteDayTime == FALSE - без, WriteDayTime == TRUE - с
-func void B_LogEntry_DateTime(var string topic, var string entry, var int WriteDayTime)
+func void B_LogEntry_DateTime(var string topic, var int Log_Status, var string entry, var int WriteDayTime)
 {
 	//время и дата записи
 	var string DayTime; DayTime = C_GetDayTimeString();
@@ -60,17 +60,25 @@ func void B_LogEntry_DateTime(var string topic, var string entry, var int WriteD
 		Log_LastDayTime = DayTime;
 	};
 	// вывести сообщение
-	B_Print_LogEntry(PRINT_NewLogEntry, topic);
+	if (Log_Status == LOG_SUCCESS) {
+		B_Print_LogEntry(PRINT_LogEntrySuccess, topic);
+	}
+	else if (Log_Status == LOG_FAILED) {
+		B_Print_LogEntry(PRINT_LogEntryFailed, topic);
+	}
+	else	{
+		B_Print_LogEntry(PRINT_NewLogEntry, topic);
+	};
 };
 
 func void B_LogEntry(var string topic,var string entry)
 {
-	B_LogEntry_DateTime(topic,entry,TRUE);
+	B_LogEntry_DateTime(topic,LOG_Running,entry,TRUE);
 };
 
 func void B_LogEntry_Status(var string topic,var int Log_Status, var string entry)
 {
-	B_LogEntry_DateTime(topic,entry,TRUE);
+	B_LogEntry_DateTime(topic,Log_Status,entry,TRUE);
 	Log_SetTopicStatus(topic,Log_Status);
 };
 
@@ -84,12 +92,12 @@ func void B_LogEntry_Create(var string topic,var int section, var string entry)
 {
 	Log_CreateTopic(topic,section);
 	Log_SetTopicStatus(topic,LOG_Running);
-	B_LogEntry_DateTime(topic,entry,TRUE);
+	B_LogEntry_DateTime(topic,LOG_Running,entry,TRUE);
 };
 
 func void B_LogNote(var string topic, var string entry)
 {
 	Log_CreateTopic(topic,LOG_NOTE);
-	B_LogEntry_DateTime(topic,entry,FALSE);
+	B_LogEntry_DateTime(topic,LOG_Running,entry,FALSE);
 };
 

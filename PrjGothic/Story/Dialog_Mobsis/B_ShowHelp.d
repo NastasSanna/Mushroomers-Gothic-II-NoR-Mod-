@@ -26,7 +26,7 @@ func void B_ShowHelp_HeroChoice()
 	//*/
 	Log_CreateTopic(HELP_START_TOPIC,LOG_MISSION);
 	Log_SetTopicStatus(HELP_START_TOPIC,LOG_Running);
-	B_LogEntry_DateTime(HELP_START_TOPIC, HELP_START_01, FALSE);
+	B_LogEntry_DateTime(HELP_START_TOPIC,LOG_Running, HELP_START_01, FALSE);
 	Log_AddEntry(HELP_START_TOPIC, HELP_START_02);
 	Log_AddEntry(HELP_START_TOPIC, HELP_START_03);
 	Log_AddEntry(HELP_START_TOPIC, HELP_START_04);
