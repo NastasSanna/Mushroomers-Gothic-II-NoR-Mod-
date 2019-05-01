@@ -648,6 +648,19 @@ func void DIA_Halvor_AboutMoney_WhatJob()
 	Info_ClearChoices(DIA_Halvor_AboutMoney);
 	MIS_KhorinisPost_Stage_FromHalvor = TRUE;
 	B_LogEntry(TOPIC_KhorinisPost, TOPIC_KhorinisPost_HalvorJob);
+	//все живы?
+	if (Npc_IsDead(VLK_421_Valentino)) {
+		B_CloseLogOnDeath(VLK_421_Valentino);
+	};
+
+	if (Npc_IsDead(VLK_405_Fernando)) {
+		B_CloseLogOnDeath(VLK_405_Fernando);
+	};
+
+	if (Npc_IsDead(VLK_407_Hakon)) {
+		B_CloseLogOnDeath(VLK_407_Hakon);
+	};
+
 };
 
 // ==============================================================

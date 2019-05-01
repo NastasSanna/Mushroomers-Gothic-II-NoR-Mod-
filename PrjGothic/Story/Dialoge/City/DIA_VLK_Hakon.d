@@ -38,14 +38,16 @@ func void DIA_Hakon_YourPost_info()
 	B_GiveInvItems(other,self,ItMi_Nugget,3);
 	AI_Output(self,other,"DIA_Hakon_YourPost_12_01");	//Отлично! Вот 150 золотых, как и договаривались.
 	B_GiveGold(self,other,150);
-	AI_Output(self,other,"DIA_Hakon_YourPost_12_02");	//Но, может быть, ты хочешь заработать еще 10 золотых?
-	AI_Output(self,other,"DIA_Hakon_YourPost_12_03");	//Нужно всего лишь передать эту руду кузнецу Гараду.
-	B_GivePlayerXP(XP_KhorinisPost_HakonDelivered);
-	MIS_KhorinisPost_HakonDelivered = TRUE;
-	B_LogEntry_HalvorPost(TOPIC_KhorinisPost_HakonDelivered);
-	Info_ClearChoices(DIA_Hakon_YourPost);
-	Info_AddChoice(DIA_Hakon_YourPost,"Нет, мне некогда.",DIA_Hakon_YourPost_No);
-	Info_AddChoice(DIA_Hakon_YourPost,"Хорошо.",DIA_Hakon_YourPost_Yes);
+	if (!Npc_IsDead(VLK_412_Harad))	{
+		AI_Output(self,other,"DIA_Hakon_YourPost_12_02");	//Но, может быть, ты хочешь заработать еще 10 золотых?
+		AI_Output(self,other,"DIA_Hakon_YourPost_12_03");	//Нужно всего лишь передать эту руду кузнецу Гараду.
+		B_GivePlayerXP(XP_KhorinisPost_HakonDelivered);
+		MIS_KhorinisPost_HakonDelivered = TRUE;
+		B_LogEntry_HalvorPost(TOPIC_KhorinisPost_HakonDelivered);
+		Info_ClearChoices(DIA_Hakon_YourPost);
+		Info_AddChoice(DIA_Hakon_YourPost,"Нет, мне некогда.",DIA_Hakon_YourPost_No);
+		Info_AddChoice(DIA_Hakon_YourPost,"Хорошо.",DIA_Hakon_YourPost_Yes);
+	};
 };
 //---------------------------------------
 func void DIA_Hakon_YourPost_No()

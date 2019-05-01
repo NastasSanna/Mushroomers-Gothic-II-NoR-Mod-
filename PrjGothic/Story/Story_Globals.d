@@ -135,7 +135,6 @@ var int MIS_KhorinisPost;
 	var int MIS_KhorinisPost_HakonTime;	//когда Хакон начнет ругаться за недоставку
 	//провалы
 	var int MIS_KhorinisPost_FailChief;	//поругались с контрабандистами
-	var int MIS_KhorinisPost_FailChief;	//поругались с контрабандистами
 	
 // Кулинарные изыски
 var int MIS_Cookery;

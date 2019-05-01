@@ -87,26 +87,37 @@ func void B_CloseLogOnDeath(var C_NPC slf)
 	//Доставка почты. Все сложно
 	if (MIS_KhorinisPost == LOG_Running)	{
 		if (C_NpcIs(slf, BAU_952_Vino))	{	//Вино
-			if (MIS_KhorinisPost_VinoDelivered)	{
-				
-			}
-			else	{
-				
+			if (MIS_KhorinisPost_VinoDelivered && !MIS_KhorinisPost_Stage_FromBootlegger)	{
+				MIS_KhorinisPost = LOG_FAILED;
+				B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_VinoDead);
 			};
 		};
 		if (C_NpcIs(slf, BDT_801_Chief) && !MIS_KhorinisPost_VinoDelivered)	{	//контрабандисты
 			MIS_KhorinisPost_FailChief = TRUE;
 			B_LogEntry_KhorinisPost_FailChief();
 		};
-		if (C_NpcIs(slf, VLK_469_Halvor))	{
+		if (C_NpcIs(slf, VLK_469_Halvor) 
+			&& (MIS_KhorinisPost_Stage_FromBootlegger || MIS_KhorinisPost_Stage_FromHalvor))	{
+			MIS_KhorinisPost = LOG_FAILED;
+			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_Fail_HalvorDead);
 		};
-		if (C_NpcIs(slf, VLK_421_Valentino))	{
+		if (C_NpcIs(slf, VLK_421_Valentino) 
+				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_ValentinoDelivered)	{
+			MIS_KhorinisPost_ValentinoDelivered = TRUE;
+			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_ValentinoDead);
 		};
-		if (C_NpcIs(slf, VLK_405_Fernando))	{
+		if (C_NpcIs(slf, VLK_405_Fernando)
+				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_FernandoDelivered)	{
+			MIS_KhorinisPost_FernandoDelivered = TRUE;
+			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_FernandoDead);
 		};
-		if (C_NpcIs(slf, VLK_407_Hakon))	{
+		if (C_NpcIs(slf, VLK_407_Hakon)
+				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_HakonDelivered)	{
+			MIS_KhorinisPost_HakonDelivered = TRUE;
+			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_HakonDead);
 		};
-		if (C_NpcIs(slf, VLK_412_Harad))	{
+		if (C_NpcIs(slf, VLK_412_Harad) && MIS_KhorinisPost_Stage_FromHakon)	{
+			MIS_KhorinisPost_HakonTime = 0;
 		};
 	};
 	

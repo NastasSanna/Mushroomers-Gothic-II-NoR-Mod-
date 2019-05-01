@@ -204,6 +204,9 @@ func void DIA_Chief_Payment_GiveMyMoney()
 	AI_StopProcessInfos(self);
 	x = 1;	if (x == 1)	{
 		B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_BootleggerVinoPay);
+		if (Npc_IsDead(BAU_952_Vino)) {
+			B_CloseLogOnDeath(BAU_952_Vino);
+		};
 	};
 };
 //------------------------------------------------
@@ -226,6 +229,9 @@ func void DIA_Chief_Payment_Yes()
 	MIS_KhorinisPost_Stage_FromBootlegger = TRUE;
 	B_GiveInvItems(self,other,ItMi_Packet_Halvor,1);
 	B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_BootleggerNewJob);
+	if (Npc_IsDead(VLK_469_Halvor)) {
+		B_CloseLogOnDeath(VLK_469_Halvor);
+	};
 };
 
 //===================================================

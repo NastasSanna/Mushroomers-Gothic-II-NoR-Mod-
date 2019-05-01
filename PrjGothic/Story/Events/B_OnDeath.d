@@ -77,7 +77,7 @@ func void B_OnDeath(var C_NPC slf)
 		B_LogEntry(TOPIC_Talbin_WhiteWolf,TOPIC_Talbin_WhiteWolf_Dead);
 		MIS_Talbin_WhiteWolf_Dead = TRUE;
 		if (Npc_IsDead(BAU_961_Gaan) && Npc_IsDead(BAU_963_Malak)) {
-			B_LogEntry_Status(TOPIC_Talbin_WhiteWolf. LOG_FAILED,TOPIC_Talbin_WhiteWolf_Fail);
+			B_LogEntry_Status(TOPIC_Talbin_WhiteWolf, LOG_FAILED,TOPIC_Talbin_WhiteWolf_Fail);
 		};
 		return;
 	};

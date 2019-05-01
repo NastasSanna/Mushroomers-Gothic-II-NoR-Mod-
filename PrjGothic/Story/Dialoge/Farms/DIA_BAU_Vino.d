@@ -281,7 +281,8 @@ instance DIA_Vino_Payment2(C_INFO)
 };
 func int DIA_Vino_Payment2_cond()
 {
-	if (MIS_KhorinisPost_VinoDelivered && (MIS_KhorinisPost == LOG_Running) && Npc_KnowsInfo(other,DIA_Vino_Payment))	{	return TRUE;	};
+	if (MIS_KhorinisPost_VinoDelivered && (MIS_KhorinisPost == LOG_Running) && !MIS_KhorinisPost_Stage_FromBootlegger
+		&& Npc_KnowsInfo(other,DIA_Vino_Payment))	{	return TRUE;	};
 };
 func void DIA_Vino_Payment2_info()
 {
@@ -322,6 +323,7 @@ func void DIA_Vino_Payment2_No()
 	};
 	AI_Output(self,other,"DIA_Vino_Payment_No_05_01");	//Я знал, что ты не из таких людей! Вот, угостись вином. Это хорошее, не сомневайся!
 	B_GiveInvItems(self,other,ItFo_Wine_Vino,1);
+	MIS_KhorinisPost = LOG_SUCCESS;
 	B_LogEntry_Status(TOPIC_KhorinisPost,LOG_SUCCESS,TOPIC_KhorinisPost_VinoWine);
 	Info_ClearChoices(DIA_Vino_Payment2);
 };
@@ -346,6 +348,7 @@ func void DIA_Vino_Payment2_Yes()
 		B_GiveInvItems(self,other,ItMi_Gold,10);
 		B_LogEntry_Status(TOPIC_KhorinisPost,LOG_SUCCESS,TOPIC_KhorinisPost_Vino10gold);
 	};
+	MIS_KhorinisPost = LOG_SUCCESS;
 	Info_ClearChoices(DIA_Vino_Payment2);
 };
 //*/

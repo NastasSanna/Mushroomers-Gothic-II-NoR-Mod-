@@ -1,6 +1,7 @@
 
 var int Print_Log_Line;
 var string Log_LastMessage;
+var string Log_LastTopic;
 var string Log_LastDayTime;
 
 

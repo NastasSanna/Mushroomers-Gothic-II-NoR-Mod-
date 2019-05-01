@@ -91,7 +91,7 @@ func void B_LogEntry_KhorinisPost_FailChief()
 	if (MIS_KhorinisPost == LOG_Running)	{
 		if (MIS_KhorinisPost_FailChief) {
 			MIS_KhorinisPost = LOG_FAILED;
-		B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_VinoFailed);
+			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_VinoFailed);
 		};
 	};
 };
