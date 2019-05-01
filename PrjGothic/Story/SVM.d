@@ -3808,7 +3808,7 @@ instance SVM_24(C_SVM)
 	CheerFriend01_FV = "SVM_24_CheerFriend01_F";	//Задай ей!
 	CheerFriend03_FV = "SVM_24_CheerFriend03_F";	//Покажи ей!
 	sheepkiller_crime_F = "SVM_24_SHEEPKILLER_CRIME_F";	//Она убивала наших овец!
-	attack_crime_F = "SVM_24_ATTACK_CRIME_F";	//Оставь меня в покое, неромальная!
+	attack_crime_F = "SVM_24_ATTACK_CRIME_F";	//Оставь меня в покое, ненормальная!
 	theft_crime_F = "SVM_24_THEFT_CRIME_F";	//Оставь меня в покое, воровка!
 	toughguy_attacklost_F = "SVM_24_TOUGHGUY_ATTACKLOST_F";	//Хорошо, ты показала, что умеешь драться. Чего ты хочешь?
 	toughguy_playerattack_F = "SVM_24_TOUGHGUY_PLAYERATTACK_F";	//Ты вроде хотела сразиться со мной. Передумала? Предпочитаешь поболтать, да? (смеется)

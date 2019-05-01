@@ -537,15 +537,11 @@ instance ItWr_Stoneplate_Ren(C_ITEM)
 	on_state[0] = Use_Stoneplate_Ren;
 };
 
-var int Use_Stoneplate_Once;
 func void Use_Stoneplate_Ren()
 {
+	MEM_Debug("EVT_SNOWGALLERY_REN");
 	if (Npc_IsPlayer(self))	{
-		if (!Use_Stoneplate_Once) {
-			B_GiveAchievement_SnowStudio();
-			B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_Ren);
-			Use_Stoneplate_Once = TRUE;
-		};
-		Snd_Play3D(self,"SNOWSTUDIO_REN");
+		Snd_Play3D(hero,"SNOWSTUDIO_REN2");
+		PrintInInventory("...это секрет...");
 	};
 };

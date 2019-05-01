@@ -166,6 +166,18 @@ func void EVT_SNOWGALLERY_NASTASSANNA()
 	};
 };
 
+var int EVT_SNOWGALLERY_REN_Once;
+func void EVT_SNOWGALLERY_REN()
+{
+	MEM_Debug("EVT_SNOWGALLERY_REN");
+	Snd_Play3D(hero,"SNOWSTUDIO_REN");
+	if (!EVT_SNOWGALLERY_REN_Once) {
+		EVT_SNOWGALLERY_REN_Once = TRUE;
+		B_GiveAchievement_SnowStudio();
+		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_REN);
+	};
+};
+
 func void EVT_SNOWGALLERY_BLOODWINSNOW()
 {
 	MEM_Debug("EVT_SNOWGALLERY_BloodwinSnow");
@@ -254,6 +266,10 @@ func void EVT_SnowStudio_Portrait()
 			else if (Hlp_StrCmp(fv._zCObject_objectName,"ITMR_YELLOWFUN")) {
 				SnowStudio_Portrait_Timer = 6;
 				EVT_SNOWGALLERY_2KHAOS();
+			}
+			else if (Hlp_StrCmp(fv._zCObject_objectName,"ITWR_STONEPLATE_REN")) {
+				SnowStudio_Portrait_Timer = 6;
+				EVT_SNOWGALLERY_REN();
 			};
 			HERO_LastFocusVob = h.focus_vob;
 		};

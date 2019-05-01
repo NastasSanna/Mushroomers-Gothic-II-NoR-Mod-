@@ -10,6 +10,7 @@ INSTANCE 		SNOWSTUDIO_GORNADRAK		(C_SFX_DEF)		{file="DIA_Isgaroth_Advice_01_02.w
 INSTANCE 		SNOWSTUDIO_MAKSSUHOCHEV		(C_SFX_DEF)		{file="DIA_VLK_NEWS_08_03.wav";						vol=127;						};
 INSTANCE 		SNOWSTUDIO_NAEMNIK			(C_SFX_DEF)		{file="DIA_Farim_TrueRain_11_00.wav";				vol=127;						};
 INSTANCE 		SNOWSTUDIO_REN				(C_SFX_DEF)		{file="SVM_18_ATTACK_CRIME_F.wav";					vol=127;						};
+INSTANCE 		SNOWSTUDIO_REN2				(C_SFX_DEF)		{file="SVM_18_SMALLTALK19.wav";						vol=255;		loopStartOffset = 2;				};
 INSTANCE 		SNOWSTUDIO_2KHAOS			(C_SFX_DEF)		{file="SNOWSTUDIO_2KHAOS.wav";						vol=127;						};
 INSTANCE 		SNOWSTUDIO_BLOODWINSNOW		(C_SFX_DEF)		{file="Byli_vremena.wav";							vol=127;						};
 

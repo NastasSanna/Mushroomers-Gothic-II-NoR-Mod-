@@ -316,7 +316,7 @@ INSTANCE Piss_End     			    	(C_SFX_DEF) {file= "piss_end.wav";			vol = 10;			}
 				INSTANCE Inst_Alarm						(C_SFX_DEF) {file= "trumpet_01.wav";				vol = 120;			};
 		
 /* Paper */	
-				INSTANCE Map_Unfold						(C_SFX_DEF) {file= "Paperhandle.wav";				vol = 80;			};
+				INSTANCE Map_Unfold						(C_SFX_DEF) {file= "Paperhandle.wav";				vol = 60;			};
 				INSTANCE Scroll_Unfold					(C_SFX_DEF) {file= "Wurschtel.wav";					vol = 80;			};
 		
 /* Misc  */
