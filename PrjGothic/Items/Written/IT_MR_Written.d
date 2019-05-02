@@ -224,3 +224,39 @@ instance ItWr_TuskCertificate(C_Item)
 	text[4] = "правый: 4 и 1/12 пальца";
 };
 
+//===================================================
+instance ItWr_Letter_Dikar(C_Item)
+{
+	name = "Письмо Дикаря";
+	mainflag = ITEM_KAT_DOCS;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItWr_Scroll_01.3DS";
+	material = MAT_LEATHER;
+	on_state[0] = Use_Letter_Dikar;
+	scemeName = "MAP";
+	description = name;
+	text[2] = "Искателю грибов от Дикаря";
+};
+func void Use_Letter_Dikar()
+{
+	if (Npc_IsPlayer(self))	{
+		var int nDocID;
+		nDocID = Doc_Create();
+		Doc_SetPages(nDocID,1);
+		Doc_SetPage(nDocID,0,"letters.TGA",0);
+		Doc_SetMargins(nDocID,-1,70,100,50,70,1);
+		Doc_SetFont(nDocID,0,FONT_Book);
+		Doc_PrintLines(nDocID,0,"Приветствую тебя, путник!");
+		Doc_PrintLine(nDocID,0,"");
+		Doc_PrintLines(nDocID,0,"Если ты читаешь эту записку, то, значит, в своих странствиях ты забрел в мою пещеру.");
+		Doc_PrintLine(nDocID,0,"");
+		Doc_PrintLines(nDocID,0,"Меня сейчас нет дома, но в моём скромном жилище ты можешь переждать ненастье, укрыться от опасности и дождаться утра. Располагайся поудобнее и не стесняйся.");
+		Doc_PrintLine(nDocID,0,"");
+		Doc_PrintLines(nDocID,0,"А чтобы тебе было не скучно коротать здесь время, я оставил для тебя книгу. Надеюсь, она тебе понравится.");
+		Doc_PrintLine(nDocID,0,"");
+		Doc_PrintLine(nDocID,0,"");
+		Doc_PrintLines(nDocID,0,"Дикарь");
+		Doc_Show(nDocID);
+	};
+};
