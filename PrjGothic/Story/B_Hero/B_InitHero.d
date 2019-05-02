@@ -3,6 +3,7 @@
 //при каждом запуске игры
 func void B_InitHero_Overlays(var C_NPC slf)
 {
+	MEM_Debug(slf.name);
 	if (slf.aivar[AIV_Gender] == FEMALE)	{
 		var C_ITEM arm;	arm = Npc_GetEquippedArmor(slf);
 		if (Hlp_IsItem(arm,ITAR_Leather_Baby))	{
@@ -15,7 +16,9 @@ func void B_InitHero_Overlays(var C_NPC slf)
 	B_SetSkillOverlay(slf);
 	if (Npc_GetTalentSkill(slf,NPC_TALENT_ACROBAT))	{
 		MEM_Debug("NPC_TALENT_ACROBAT");
-		Mdl_ApplyOverlayMds(slf,"Humans_Acrobatic.MDS");
+		//Mdl_ApplyOverlayMds(slf,"Humans_Acrobatic.MDS");
+		Npc_SetTalentSkill(slf,NPC_TALENT_ACROBAT,0);
+		Npc_SetTalentSkill(slf,NPC_TALENT_ACROBAT,1);
 	};
 };
 
