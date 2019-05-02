@@ -119,7 +119,7 @@ instance DIA_Thorben_ElvrichInPuff(C_Info)
 };
 func int DIA_Thorben_ElvrichInPuff_Cond()
 {
-	if (Npc_KnowsInfo(other,DIA_Elvrich_USleepInPuff))	{
+	if (Npc_KnowsInfo(other,DIA_Elvrich_USleepInPuff) || Kardif_RumorsTold[4])	{
 		return TRUE;
 	};
 };

@@ -454,7 +454,7 @@ func void DIA_Borka_Sarah_LetMeInToLucia_AddNone()
 {
 		AI_Output(other,self,"DIA_Borka_Sarah_TellInsider_AddNone_16_00");	//ћожет, все-таки договоримс€?
 	AI_Output(self,other,"DIA_Borka_Sarah_AddNone_11_01");	//ƒоговоримс€ - если у теб€ будет достаточно золота.
-	AI_StopProcessInfos(self);
+	Info_ClearChoices(DIA_Borka_Sarah_LetMeInToLucia);
 };
 
 
@@ -474,7 +474,7 @@ instance DIA_Borka_Hello_Male(C_INFO)
 func int DIA_Borka_Hello_Male_cond()
 {
 	if ((other.aivar[AIV_Gender] == MALE)
-		 && ((Npc_GetDistToWP(other,Borka_Checkpoint) < 600) && DIA_Borka_Hello_Male_Once || DIA_WhenAsked_cond()))	{
+		 && ((Npc_GetDistToWP(other,Borka_Checkpoint) < 600) && !DIA_Borka_Hello_Male_Once || DIA_WhenAsked_cond()))	{
 		return TRUE;
 	};
 };

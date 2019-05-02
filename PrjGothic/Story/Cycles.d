@@ -456,7 +456,7 @@ func void CYCLE_TRIGGER_FUNC()
 			AI_SetWalkmode(OUT_1210_Grimbald,NPC_RUN);
 			AI_GotoWP(OUT_1210_Grimbald,"NW_XARDAS_GOBBO_01");
 			MIS_GrimbaldOrcs_Timer = Wld_GetFullTime() + 6;
-			PrintScreen(PRINT_Grimbald_FarAway,-1,15,FONT_Screen,4);
+			PrintScreen(PRINT_Grimbald_FarAway,-1,15,FONT_Screen,5);
 //			MEM_Debug("MIS_GrimbaldOrcs_GetBow_Go");
 		};
 	};
@@ -480,13 +480,13 @@ func void CYCLE_TRIGGER_FUNC()
 		}
 		else	{
 			//UNFINISHED - орки вернулись
-			PrintScreen("Орки возвращаются!",-1,15,FONT_Screen,3);
-			PrintScreen("Надо срочно их увести",-1,20,FONT_Screen,3);
+			PrintScreen("Орки возвращаются!",-1,15,FONT_Screen,4);
+			PrintScreen("Надо срочно их увести",-1,20,FONT_Screen,4);
 			MIS_GrimbaldOrcs_Timer = Wld_GetFullTime() + 5;
 		};
 		if (C_GrimbaldOrcs_FarAway() && MIS_GrimbaldOrcs_Timer == Wld_GetFullTime())
 		{
-			PrintScreen(PRINT_Grimbald_Returned,-1,15,FONT_Screen,4);
+			PrintScreen(PRINT_Grimbald_Returned,-1,15,FONT_Screen,5);
 			MIS_GrimbaldOrcs_GetBow = MIS_GrimbaldOrcs_GetBow_Return;
 		};
 	};

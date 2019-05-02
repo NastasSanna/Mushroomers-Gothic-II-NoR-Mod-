@@ -25,6 +25,7 @@ func void DIA_IdolKadar_Hallo_info()
 		B_StartOtherRoutine(self, "REST");
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_IdolKadar);
 	};
+	DIA_IdolKadar_Hallo.important = FALSE;
 	AI_StopProcessInfos(self);
 };
 

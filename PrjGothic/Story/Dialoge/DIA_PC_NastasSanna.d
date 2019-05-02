@@ -128,6 +128,7 @@ func void DIA_NastasSanna_Scripts_info()
 		AI_Output(self,other,"DIA_NastasSanna_Scripts_19_04");	//А это вам.
 		
 		AI_Output(other,self,"XXX");
+		Wld_PlayEffect("SPELLFX_HEAL",self,self,1,0,0,0);
 		//след. уровень сразу
 		LevelUp();
 	};
