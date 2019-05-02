@@ -139,8 +139,29 @@ func void DIA_Sekob_Start_Elena_Info()
 		AI_Output(other,self,"DIA_Sekob_Start_Elena_16_03");	//Я собираю грибы.
 	AI_Output(self,other,"DIA_Sekob_Start_Elena_01_04");	//Так ты участвуешь в грибном конкурсе? Мой Тилл тоже решил попытать счастья.
 	AI_Output(self,other,"DIA_Sekob_Start_Elena_01_05");	//Вы были бы чудесной парой...
+	AI_StopProcessInfos(self);
 };
-
+//===================================================
+instance DIA_Sekob_Perm_Elena(C_Info)
+{
+	npc = BAU_930_Sekob;
+	nr = 11;
+	condition = DIA_Sekob_Perm_Elena_Cond;
+	information = DIA_Sekob_Perm_Elena_Info;
+	important = TRUE;
+	permanent = TRUE;
+};
+func int DIA_Sekob_Perm_Elena_Cond()
+{
+	if (C_HeroIs_Elena() && DIA_WhenAsked_cond() && Npc_KnowsInfo(other,DIA_Sekob_Start_Elena))	{
+		return TRUE;
+	};
+};
+func void DIA_Sekob_Perm_Elena_Info()
+{
+	AI_Output(self,other,"DIA_Sekob_Start_Elena_01_05");	//Вы были бы чудесной парой...
+	AI_StopProcessInfos(self);
+};
 /////////////////////////////////////// ОДО /////////////////////////////////////////////
 
 // ==================================================================

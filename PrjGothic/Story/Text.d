@@ -38,6 +38,7 @@ const string MOBNAME_CRATE = "Ящик";
 const string MOBNAME_CHEST = "Сундук";
 const string MOBNAME_BED = "Кровать";
 const string MOBNAME_BED_ODO = "Кровать";
+const string MOBNAME_BED_DIKAR = "Постель из шкур";
 const string MOBNAME_DOOR = "Дверь";
 const string MOBNAME_CAMPFIRE = "";
 const string MOBNAME_TORCH = "";
