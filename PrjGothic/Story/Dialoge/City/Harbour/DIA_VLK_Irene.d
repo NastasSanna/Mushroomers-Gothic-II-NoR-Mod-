@@ -371,7 +371,9 @@ func void DIA_Irene_WhoRepairHammer_info()
 	};
 	AI_Output(self,other,"DIA_Irene_WhoRepairHammer_17_01");	//Поговори с кузнецом Карлом.
 	B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerSmith);
-	B_CloseLogOnDeath(VLK_461_Carl);
+	if (Npc_IsDead(VLK_461_Carl))	{
+		B_CloseLogOnDeath(VLK_461_Carl);
+	};
 };
 
 //============================================================

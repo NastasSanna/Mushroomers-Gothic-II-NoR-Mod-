@@ -224,6 +224,8 @@ func void DIA_Thorben_HammerWood_Info()
 	};
 	AI_Output(self,other,"DIA_Thorben_HammerWood_06_08");	//К сожалению, нет. Попробуй поспрашивать в городе, возможно, тебе повезет.
 	B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerThorben);
-	B_CloseLogOnDeath(VLK_442_Arbeiter);
+	if (Npc_IsDead(VLK_442_Arbeiter))	{
+		B_CloseLogOnDeath(VLK_442_Arbeiter);
+	};
 };
 

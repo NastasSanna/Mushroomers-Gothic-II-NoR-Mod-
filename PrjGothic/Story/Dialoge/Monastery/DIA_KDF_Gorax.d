@@ -33,10 +33,18 @@ func void DIA_Gorax_Odo_HasJob_info()
 	AI_Output(self,other,"DIA_Gorax_Odo_HasJob_14_06");	//После я решу, где лучше его купить.
 	B_LogEntry_Create(TOPIC_Odo_Straw,LOG_MISSION,TOPIC_Odo_Straw_Start);
 	MIS_Odo_Straw = LOG_Running;
-	B_CloseLogOnDeath(BAU_940_Akil);
-	B_CloseLogOnDeath(BAU_950_Lobart);
-	B_CloseLogOnDeath(BAU_930_Sekob);
-	B_CloseLogOnDeath(BAU_960_Bengar);
+	if (Npc_IsDead(BAU_940_Akil))	{
+		B_CloseLogOnDeath(BAU_940_Akil);
+	};
+	if (Npc_IsDead(BAU_950_Lobart))	{
+		B_CloseLogOnDeath(BAU_950_Lobart);
+	};
+	if (Npc_IsDead(BAU_930_Sekob))	{
+		B_CloseLogOnDeath(BAU_930_Sekob);
+	};
+	if (Npc_IsDead(BAU_960_Bengar))	{
+		B_CloseLogOnDeath(BAU_960_Bengar);
+	};
 };
 
 // ==============================================
