@@ -259,7 +259,7 @@ func void TRIA_Start() {
 
     // Npc_ClearAIQueue(self); //Mit diesem Befehl beendet sich der Dialog nicht richtig, daher auskommentiert. Ich habe Angst, dass ich irgendwas anderes kaputt gemacht habe, aber bisher konnte ich keine Probleme feststellen.
     Npc_ClearAIQueue(hero);
-    Ai_Output(hero,self,"");
+    Ai_Output(hero,self,"XXX");
 
     var c_npc selfCopy; selfCopy = Hlp_GetNpc(self);
     self = MEM_NullToInst();

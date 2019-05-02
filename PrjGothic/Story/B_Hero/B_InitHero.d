@@ -14,7 +14,7 @@ func void B_InitHero_Overlays(var C_NPC slf)
 		};
 	};
 	B_SetSkillOverlay(slf);
-	if (Npc_GetTalentSkill(slf,NPC_TALENT_ACROBAT))	{
+	if (!Hero_Acrobat && Npc_GetTalentSkill(slf,NPC_TALENT_ACROBAT))	{
 		MEM_Debug("NPC_TALENT_ACROBAT");
 		//Mdl_ApplyOverlayMds(slf,"Humans_Acrobatic.MDS");
 		Npc_SetTalentSkill(slf,NPC_TALENT_ACROBAT,0);
