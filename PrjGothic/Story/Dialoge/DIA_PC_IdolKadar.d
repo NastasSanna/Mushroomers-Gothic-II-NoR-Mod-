@@ -9,10 +9,16 @@ var int DIA_IdolKadar_Hallo_Once;
 instance DIA_IdolKadar_Hallo(C_INFO)
 {
 	npc = PC_IdolKadar;		nr = 1;
-	condition = DIA_WhenAsked_cond;
+	condition = DIA_IdolKadar_Hallo_cond;
 	information = DIA_IdolKadar_Hallo_info;
 	important = TRUE;
 	permanent = TRUE;
+};
+func int DIA_IdolKadar_Hallo_cond()
+{
+	if (!DIA_IdolKadar_Hallo_Once || DIA_WhenAsked_cond())	{
+		return TRUE;
+	};
 };
 func void DIA_IdolKadar_Hallo_info()
 {
@@ -25,7 +31,6 @@ func void DIA_IdolKadar_Hallo_info()
 		B_StartOtherRoutine(self, "REST");
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_IdolKadar);
 	};
-	DIA_IdolKadar_Hallo.important = FALSE;
 	AI_StopProcessInfos(self);
 };
 
