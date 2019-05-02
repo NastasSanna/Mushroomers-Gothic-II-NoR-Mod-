@@ -73,7 +73,12 @@ func void DIA_Lucia_Sarah_GiveKey_info()
 	AI_Output(self,other,"DIA_Lucia_Sarah_GiveKey_16_02");	//Но если она проспорит, это не мои проблемы.
 	B_LogEntry(TOPIC_Sarah_BadHabit,TOPIC_Sarah_BadHabit_GiveLuciaKey);
 	B_GivePlayerXP(XP_Sarah_Nadja_LuciaTalked);
-	MIS_Sarah_BadHabit_LuciaTalkTime = (Wld_GetDay() * 24 + 21) * 60; //разговор по расписанию 21:30-21:45
+	if (C_GetHour() < 7)	{
+		MIS_Sarah_BadHabit_LuciaTalkTime = (Wld_GetDay() * 24 - 3) * 60; //разговор по расписанию 21:30-21:45
+	}
+	else {
+		MIS_Sarah_BadHabit_LuciaTalkTime = (Wld_GetDay() * 24 + 21) * 60; //разговор по расписанию 21:30-21:45
+	};
 };
 
 //////////////////////////////////ОСТАЛЬНЫЕ////////////////////////////////////////

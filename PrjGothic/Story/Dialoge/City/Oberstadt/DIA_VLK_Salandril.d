@@ -58,6 +58,9 @@ func void DIA_Salandril_Sarah_WhatIngredients_info()
 	MIS_Sarah_BadHabit_PotionIngredients = TRUE;	//теперь ищем ингредиенты
 	_SpawnBySPName("SP_REDMOSS_01_NP",ItPl_RedMoss);
 	_SpawnBySPName("SP_REDMOSS_02_NP",ItPl_RedMoss);
+	B_CreateTradeItems_Bootlegger(ItPl_SwampHerb,1);
+	B_CreateTradeItems_Ignaz(ItPl_SwampHerb,2);
+	B_CreateTradeItems_Sagitta(ItPl_SwampHerb,1);
 };
 
 // ==============================================
