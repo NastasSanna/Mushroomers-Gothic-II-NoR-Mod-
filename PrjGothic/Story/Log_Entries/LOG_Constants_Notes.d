@@ -505,6 +505,7 @@ const string TOPIC_Misk = "Разное";
 	const string TOPIC_Misk_EddaFishSoup = "Эдда угощает всех ухой в обмен на сырую рыбу.";
 	const string TOPIC_Misk_KardifRumors = "Кардиф, кабатчик в Порту, готов рассказать последние новости за несколько золотых.";
 	const string TOPIC_Misk_UlfBeer = "Надо отблагодарить брата Ульфа. Он обожает темное паладинское пиво.";
+	const string TOPIC_Misk_Farim = "А ведь Фарим был прав - пришла гроза. Надо будет еще разок заглянуть к ним с Вильямом.";
 
 const string TOPIC_Rumors = "Слухи";
 	const string Topic_Rumors_Fellan = "Говорят, Феллан ушел из дому и поселился прямо на пристани. Его жена Ирина никак не может уговорить его вернуться домой.";

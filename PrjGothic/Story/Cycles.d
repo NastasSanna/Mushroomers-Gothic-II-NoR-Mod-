@@ -436,6 +436,7 @@ func void CYCLE_TRIGGER_FUNC()
 			Fishers_Rain_Started = 1;
 			PrintScreen(PRINT_Fishers_Rain1,-1,15,FONT_ScreenSmall,5);
 			PrintScreen(PRINT_Fishers_Rain2,-1,18,FONT_ScreenSmall,5);
+			B_LogNote(TOPIC_Misk, TOPIC_Misk_Farim);
 		}
 		else if (Wld_GetDay() < Fishers_Rain_Day)	{	//до этого дождя не будет
 			MEM_SkyController.rainFX_timeStartRain = 0;

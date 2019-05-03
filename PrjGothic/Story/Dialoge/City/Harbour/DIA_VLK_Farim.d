@@ -75,6 +75,12 @@ func int DIA_Farim_TrueRain_cond()
 func void DIA_Farim_TrueRain_Info()
 {
 	AI_Output(self,other,"DIA_Farim_TrueRain_11_00");	//Я же говорил, что погода испортится!
+	AI_Output(self,other,"DIA_Farim_MR_Hello_11_04");	//Через пару дней море успокоится и можно будет спокойно рыбачить.
+	if (!DIA_Farim_TellTales)	{
+		AI_Output(self,other,"DIA_Farim_MR_Hello_11_05");	//Если, конечно, не наткнемся на морского змея.
+		DIA_Farim_TellTales = TRUE;
+	};
+	B_GivePlayerXP(XP_Ambient);
 };
 
 // БАЙКИ ОХОТНИКОВ ====================================
