@@ -415,6 +415,17 @@ func void ZS_Attack_End()
 			B_Say_AttackEnd();
 		};
 	};
+	//запоминаем результат драки с ГГ (нужно, т.к. могут нападать группой - а победили все)
+	if (Hlp_IsValidNpc(other) && Npc_IsPlayer(other))	{
+		//если ГГ побежден - я считаю себя победителем, даже если не я нанес последний удар
+		if (C_NpcIsDown(other))	{
+			self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_WON;
+		}
+		//иначе - драка с ГГ отменена
+		else	{
+			self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_CANCEL;
+		};
+	};
 	// если его убил ГГ и мы не с ГГ не во вражеских гильдиях
 	if((other.aivar[AIV_KilledByPlayer] == TRUE) && (Wld_GetGuildAttitude(self.guild,hero.guild) != ATT_HOSTILE))
 	{
