@@ -25,6 +25,12 @@ func int C_NpcIsBotheredByWeapon(var C_Npc slf,var C_Npc oth)
 		return FALSE;
 	};
 	
+	// у нас натянутые отношения - волнует
+	if(C_NpcGetAttitude(slf,oth) == ATT_ANGRY)
+	{
+		return TRUE;
+	};
+	
 	// я крутой парень, а он достал оружие ближнего боя
 	if(C_NpcIsToughGuy(slf) && Npc_IsInFightMode(oth,FMODE_MELEE))
 	{

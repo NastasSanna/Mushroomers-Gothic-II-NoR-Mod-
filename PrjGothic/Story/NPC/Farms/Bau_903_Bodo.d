@@ -1,8 +1,8 @@
 
 instance Bau_903_Bodo(Npc_Default)
 {
-	name[1] = "Бодо";
-	name[0] = NAME_Bauer;
+	name[0] = "Бодо";
+	//name[0] = NAME_Bauer;
 	guild = GIL_BAU;
 	id = 903;
 	voice = 1;

@@ -323,6 +323,13 @@ func void B_AssessPlayer()
 		};
 	};
 	
+	//У нас с ГГ натянутые отношения
+	if(C_NpcGetAttitude(self,other) == ATT_ANGRY)
+	{
+		//лучше за ним приглядывать
+		AI_StartState(self,ZS_ObservePlayer,1,"");
+	};
+	
 	//квестовые
 	B_OnAssessPlayer();
 };
