@@ -9,17 +9,23 @@ instance ItMi_Packet_Halvor(C_Item)
 	flags = ITEM_MISSION;
 	visual = "ItMi_Packet.3ds";
 	material = MAT_LEATHER;
-	scemeName = "MAP";
-//	on_state[0] = Use_Packet_Halvor;
+	scemeName = "MAPSEALED";
+	on_state[0] = Use_Packet_Halvor;
 	description = name;
 	text[2] = "Пакет с товарами для Халвора.";
 };
 func void Use_Packet_Halvor()
 {
 	if (Npc_IsPlayer(self))	{
-		B_PlayerFindItem(ItMi_Nugget,3);
-		B_PlayerFindItem(ItAt_SharkSkin,1);
-		B_PlayerFindItem(ItRi_ValentinosRing,1);
+		if (MIS_KhorinisPost == LOG_Running)	{
+			PrintInInventory("Нужно отдать этот пакет Халвору.");
+			CreateInvItems(self,ItMi_Packet_Halvor,1);
+		}
+		else {
+			B_PlayerFindItem(ItMi_Nugget,3);
+			B_PlayerFindItem(ItAt_SharkSkin,1);
+			B_PlayerFindItem(ItRi_ValentinosRing,1);
+		};
 	}
 	else	{
 		CreateInvItems(self,ItMi_Nugget,3);

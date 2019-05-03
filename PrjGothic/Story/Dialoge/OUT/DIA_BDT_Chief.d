@@ -64,6 +64,7 @@ func void DIA_Chief_Start_Vino()
 		AI_Output(other,self,"DIA_Chief_Start_Vino_16_00");	//У меня письмо от Вино.
 	};
 	AI_Output(self,other,"DIA_Chief_Start_Vino_01_01");	//Покажи!
+	
 //------------------------------------------------
 	if (Npc_HasItems(other,ItWr_Letter_Vino2Chief))	{
 		if (hero.voice == 3)	{			//Одо/Руперт
@@ -118,11 +119,13 @@ func void DIA_Chief_Start_Vino()
 		AI_Output(self,other,"DIA_Chief_Start_Vino_01_06");	//Э нет, со мной такие фокусы не пройдут. Я шпионов за милю чую.
 		AI_Output(self,other,"DIA_Chief_Start_Vino_01_07");	//Эй, ребята, тут кое-кто создает нам проблемы!
 		AI_StopProcessInfos(self);
-		B_Attack(self,other,AR_KILL,1);
+		
 		B_Attack(BDT_802_Bootlegger,other,AR_KILL,0);
 		B_Attack(BDT_803_Bootlegger,other,AR_KILL,0);
 		B_Attack(BDT_804_Bootlegger,other,AR_KILL,0);
+		MIS_KhorinisPost_FailChief = TRUE;
 		B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_BootleggerUnfriendly);
+		B_LogEntry_KhorinisPost_FailChief();
 	};
 };
 
@@ -131,9 +134,15 @@ instance DIA_Chief_Payment(C_INFO)
 {
 	npc = BDT_801_Chief;
 	nr = 1;
-	condition = DIA_NoCond_cond;
+	condition = DIA_Chief_Payment_cond;
 	information = DIA_Chief_Payment_info;
 	description = "Как насчет награды?";
+};
+func int DIA_Chief_Payment_cond()
+{
+	if (MIS_KhorinisPost_VinoDelivered)	{
+		return TRUE;
+	};
 };
 func void DIA_Chief_Payment_info()
 {

@@ -128,7 +128,8 @@ var int MIS_KhorinisPost;
 	var int MIS_KhorinisPost_HalvorPayed;	//сколько Халвор заплатил за посылку
 	var int MIS_KhorinisPost_HalvorTime100;	//когда приходить за 100
 	var int MIS_KhorinisPost_HalvorGoWithMe;	//Халвор отводит нас в сторонку
-	var int MIS_KhorinisPost_HalvorFight;	//деремся за пакет
+	var int MIS_KhorinisPost_HalvorFight;	//деремся за пакет (1 раз!)
+	var int MIS_KhorinisPost_HalvorGimmePacket;	//Халвор хочет забрать пакет с тела ГГ
 	var int MIS_KhorinisPost_HalvorGotPacket;	//Халвор забрал/получил пакет
 	var int MIS_KhorinisPost_HalvorShareGiven;	//дали Халвору его долю
 	var int MIS_KhorinisPost_HalvorShareDay;	//когда Халвор ждет от нас свою долю

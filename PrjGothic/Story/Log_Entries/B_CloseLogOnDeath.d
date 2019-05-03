@@ -104,17 +104,17 @@ func void B_CloseLogOnDeath(var C_NPC slf)
 		if (C_NpcIs(slf, VLK_421_Valentino) 
 				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_ValentinoDelivered)	{
 			MIS_KhorinisPost_ValentinoDelivered = TRUE;
-			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_ValentinoDead);
+			B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_ValentinoDead);
 		};
 		if (C_NpcIs(slf, VLK_405_Fernando)
 				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_FernandoDelivered)	{
 			MIS_KhorinisPost_FernandoDelivered = TRUE;
-			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_FernandoDead);
+			B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_FernandoDead);
 		};
 		if (C_NpcIs(slf, VLK_407_Hakon)
 				&& MIS_KhorinisPost_Stage_FromHalvor && !MIS_KhorinisPost_HakonDelivered)	{
 			MIS_KhorinisPost_HakonDelivered = TRUE;
-			B_LogEntry_Status(TOPIC_KhorinisPost,LOG_FAILED,TOPIC_KhorinisPost_HakonDead);
+			B_LogEntry(TOPIC_KhorinisPost,TOPIC_KhorinisPost_HakonDead);
 		};
 		if (C_NpcIs(slf, VLK_412_Harad) && MIS_KhorinisPost_Stage_FromHakon)	{
 			MIS_KhorinisPost_HakonTime = 0;

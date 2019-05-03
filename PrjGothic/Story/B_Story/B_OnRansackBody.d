@@ -97,11 +97,11 @@ func int B_OnRansackBody()
 			};
 		};
 		//Халвор - жадность это плохо! ====================================================
-		if ((C_NpcIs(self,VLK_494_Attila) || C_NpcIs(self,VLK_469_Halvor)) && MIS_KhorinisPost_HalvorFight)	{
+		if ((C_NpcIs(self,VLK_494_Attila) || C_NpcIs(self,VLK_469_Halvor)) && MIS_KhorinisPost_HalvorGimmePacket)	{
+			MEM_Debug("MIS_KhorinisPost_HalvorFight");
 			if(Npc_HasItems(other,ItMi_Packet_Halvor) > 0)
 			{
 				Npc_RemoveInvItems(other,ItMi_Packet_Halvor,1);
-				MIS_KhorinisPost_HalvorFight = FALSE;
 			}
 			else	{
 				Npc_PerceiveAll(self);
@@ -112,11 +112,11 @@ func int B_OnRansackBody()
 						if(Hlp_IsItem(item,ItMi_Packet_Halvor))
 						{
 							AI_TakeItem(self,item);
-							MIS_KhorinisPost_HalvorFight = FALSE;
 						};
 					};
 				};
 			};
+			MIS_KhorinisPost_HalvorGimmePacket = FALSE;
 			MIS_KhorinisPost_HalvorGotPacket = TRUE;
 			return TRUE;
 		};

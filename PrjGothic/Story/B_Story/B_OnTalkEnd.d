@@ -235,6 +235,7 @@ func void B_OnTalkEnd()
 			AI_WaitTillEnd(VLK_494_Attila,self);
 			B_Attack(VLK_494_Attila,other,AR_NONE,0);
 			MIS_KhorinisPost_HalvorFight = FALSE;
+			MIS_KhorinisPost_HalvorGimmePacket = TRUE;
 		};
 		return;
 	};
@@ -263,6 +264,11 @@ func void B_OnTalkEnd()
 		if (Borka_Sarah_AgreedToPass)	{
 			AI_GotoWP(self,"NW_CITY_HABOUR_POOR_AREA_PATH_06");
 		};
+	};
+	
+	//главарь контрабандистов тоже атакует
+	if (C_NpcIs(self, BDT_801_Chief) && MIS_KhorinisPost_FailChief)	{
+		B_Attack(self, hero, AR_KILL, 1);
 	};
 	
 	//старик Берни исчезает после разговора
