@@ -22,15 +22,17 @@ func int DIA_IdolKadar_Hallo_cond()
 };
 func void DIA_IdolKadar_Hallo_info()
 {
-	AI_Output(self,other,"DIA_IdolKadar_Hallo");	 //Смертный! Запомни: чтобы найти грибы, ты должен действовать как гриб, ты должен думать как гриб, ты должен СТАТЬ грибом! Теперь ступай!
 	if (!DIA_IdolKadar_Hallo_Once) {
 		DIA_IdolKadar_Hallo_Once = TRUE;
 		CreateInvItem(self, ItAr_Guru_M);
 		AI_EquipArmor(self, ItAr_Guru_M);
+		CreateInvItem(self,ItMW_Addon_Stab02);
+		AI_EquipBestMeleeWeapon(self);
 		B_GiveAchievement_SnowStudio();
 		B_StartOtherRoutine(self, "REST");
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_IdolKadar);
 	};
+	AI_Output(self,other,"DIA_IdolKadar_Hallo");	 //Смертный! Запомни: чтобы найти грибы, ты должен действовать как гриб, ты должен думать как гриб, ты должен СТАТЬ грибом! Теперь ступай!
 	AI_StopProcessInfos(self);
 };
 

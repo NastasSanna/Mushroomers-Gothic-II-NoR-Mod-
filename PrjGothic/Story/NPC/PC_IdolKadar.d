@@ -8,7 +8,6 @@ instance PC_IdolKadar(Npc_Default)
 	npcType = npctype_main;
 	
 	B_SetNpcVisual(self,MALE,"Hum_Head_Psionic",Face_N_IdolKadar,BodyTex_N,ITAR_Dementor);
-	CreateInvItem(self,ItMW_Addon_Stab02);
 	
 	B_SetAttributesToChapter(self, 6);
 	B_SetFightSkills(self,70);
