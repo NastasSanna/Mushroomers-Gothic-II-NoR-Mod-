@@ -346,6 +346,7 @@ var int Hero_ThrowOut_Monastery;	//ГГ вышвырнули из Монастыря
 
 var int TEACH_Neoras;	//Неорас учит варить зелья
 
+var int OldShepherd_MaxCheese;	//сколько максимум сыра дает старый пастух
 var int OldShepherdSheeps_Dead_Cnt;	//сколько погибло овец у старого пастуха (по любым причинам)
 var int MonasterySheep_Dead_Cnt;	//сколько погибло овец в монастыре (по любым причинам)
 var int Vino_Search;	//Лобарт попросил найти Вино

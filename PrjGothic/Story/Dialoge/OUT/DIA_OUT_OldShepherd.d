@@ -105,6 +105,7 @@ func void DIA_OldShepherd_HowAU_Like()
 	AI_Output(self,other,"DIA_OldShepherd_HowAU_Like_01_01");	//(улыбаетс€) “о-то и оно! я варю этот сыр так, как это делали прадеды моих прадедов.
 	AI_Output(self,other,"DIA_OldShepherd_HowAU_Like_01_02");	//¬р€д ли кто-то еще на острове хранит эту традицию...
 	Info_ClearChoices(DIA_OldShepherd_HowAU);
+	OldShepherd_MaxCheese = 4;
 };
 func void DIA_OldShepherd_HowAU_DisLike()
 {
@@ -124,6 +125,7 @@ func void DIA_OldShepherd_HowAU_DisLike()
 	AI_Output(self,other,"DIA_OldShepherd_HowAU_DisLike_01_02");	//я ведь, наверное, последний, кто варит сыр по старинному рецепту нашего острова.
 	Mdl_StartFaceAni(self,"S_NEUTRAL",1.0,-1);
 	Info_ClearChoices(DIA_OldShepherd_HowAU);
+	OldShepherd_MaxCheese = 2;
 };
 
 //==================================================
@@ -165,7 +167,7 @@ func void DIA_OldShepherd_MoreCheese_Info()
 	//нет овец - нет сыра
 	if (!DIA_OldShepherd_NoSheeps())	{
 		AI_Output(self,other,"DIA_OldShepherd_MoreCheese_01_01");		// онечно, держи.
-		B_GiveInvItems(self,other,ItFo_Cheese_OldShepherd,1 + C_Random(3));
+		B_GiveInvItems(self,other,ItFo_Cheese_OldShepherd,1 + C_Random(OldShepherd_MaxCheese));
 		AI_Output(self,other,"DIA_OldShepherd_MoreCheese_01_02");		//ћожешь приходить хоть каждый день, € с удовольствием с тобой поделюсь.
 		B_LogNote(Topic_Misk,TOPIC_Misk_OldShepherdCheese);
 		OldShepherd_Cheese_Day = Wld_GetDay() + 1;
@@ -202,7 +204,7 @@ func void DIA_OldShepherd_AskCheese_Info()
 	if (!DIA_OldShepherd_NoSheeps())	{
 		if (OldShepherd_Cheese_Day <= Wld_GetDay())	{
 			AI_Output(self,other,"DIA_OldShepherd_AskCheese_01_01");	//”гощайс€.
-			B_GiveInvItems(self,other,ItFo_Cheese_OldShepherd,1 + C_Random(3));
+			B_GiveInvItems(self,other,ItFo_Cheese_OldShepherd,1 + C_Random(OldShepherd_MaxCheese));
 		}
 		else
 		{
