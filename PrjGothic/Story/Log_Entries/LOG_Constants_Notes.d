@@ -374,6 +374,8 @@ const string TOPIC_Cookery = "Кулинарные изыски";
 	const string TOPIC_Cookery_SagittaTold = "За рецепт Сагитты Гром дал мне разных грибов, которые он собрал в лесу.";
 	const string TOPIC_Cookery_AskSpices = "Грому нужны специи, чтобы приготовить грибное рагу. Что-нибудь острое.";
 	const string TOPIC_Cookery_SpicesGiven = "Красный жгучий перец пришелся Грому по вкусу.";
+	const string TOPIC_Cookery_NSparklesKnown = "Маленькие ночные искры на вкус острые и жгучие, почти как перец.";
+	const string TOPIC_Cookery_NSparklesGiven = "Да, приправа к грибам из грибов - звучит немного странно, но Грому пришлось по вкусу.";
 	const string TOPIC_Cookery_SagittaDead = "Сагитта погибла. А она могла знать какой-то рецепт...";
 
 	const string TOPIC_Cookery_Hilda = "У Хильды есть бабушкин рецепт маринованых “ушек“. Она отдаст его мне, если я заточу ее кухонный нож у кузнеца.";

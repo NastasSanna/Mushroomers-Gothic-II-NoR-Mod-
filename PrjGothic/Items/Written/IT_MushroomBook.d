@@ -560,6 +560,10 @@ func void MRBook_Show_NightSparcles(var int docID)
 	Doc_PrintLines(docID,1,"Сезон: лето-осень.");
 	Doc_PrintLine(docID,1,"");
 	Doc_PrintLines(docID,1,"Свойства: Ценный алхимический гриб! Используется для приготовления ряда целебных зелий и мазей. К сожалению, слишком редок для широкого использования. В сыром виде обладает слабым целебным эффектом. Изредка употребляется в качестве приправы, поскольку имеет островатый привкус. Подобное применение этих грибов – настоящее варварство и расточительство!");
+	if (MIS_Cookery_AskSpices && !MIS_Cookery_SpicesGiven && !MIS_Cookery_NSparclesKnown)	{
+		B_LogEntry(TOPIC_Cookery,TOPIC_Cookery_NSparklesKnown);
+		MIS_Cookery_NSparclesKnown = TRUE;
+	};
 };
 //================================================================
 func void MRBook_Show_GoldPlate(var int docID)

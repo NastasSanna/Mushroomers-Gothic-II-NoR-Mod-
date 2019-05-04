@@ -116,7 +116,7 @@ func void DIA_Grom_MR_Hello_Info()
 	} else if (hero.voice == 14)	{	//Тилл
 		AI_Output(other,self,"DIA_Grom_MR_Hello_14_14");	//(со смехом) А я погляжу, ты в этом знаешь толк! Я постараюсь узнать рецепт.
 	} else	{							//Елена/Сара
-		AI_Output(other,self,"DIA_Grom_MR_Hello_16_14");	//(со смехом) А я погляжу, ты в этом знаешь толк! Я постараюсь узнать рецепт.
+		AI_Output(other,self,"DIA_Grom_MR_Hello_16_14");	//(со смехом) А я погляжу, ты знаешь в этом толк! Я постараюсь узнать рецепт.
 	};
 	MIS_Cookery = LOG_Running;
 	B_LogEntry_Create(TOPIC_Cookery,LOG_MISSION,TOPIC_Cookery_Start);
@@ -135,10 +135,11 @@ func void DIA_Grom_MR_Hello_Info()
 //===================================================
 instance DIA_Grom_WhereRecipe(C_Info)
 {
-	npc = OUT_1204_Grom;				nr = 20;
+	npc = OUT_1204_Grom;				nr = 50;
 	condition = DIA_Grom_WhereRecipe_Cond;
 	information = DIA_Grom_WhereRecipe_Info;
 	description = "Как думаешь, кто может знать рецепт?";
+	permanent = TRUE;
 };
 func int DIA_Grom_WhereRecipe_Cond()
 {
@@ -163,7 +164,7 @@ func void DIA_Grom_WhereRecipe_Info()
 	AI_Output(self,other,"DIA_Grom_WhereRecipe_08_02");	//Может из крестьян еще кто знает, но не на ферме Онара, это точно.
 	AI_Output(self,other,"DIA_Grom_WhereRecipe_08_03");	//Ну и господ алхимиков надо поспрашивать.
 	AI_Output(self,other,"DIA_Grom_WhereRecipe_08_04");	//Да, еще Сагитта. Она хоть и ведьма, а про все, что в лесу растет, знает.
-	B_LogEntry(TOPIC_Cookery, TOPIC_Cookery_WhereSearch);
+	//B_LogEntry(TOPIC_Cookery, TOPIC_Cookery_WhereSearch);
 };
 
 //===================================================
@@ -356,6 +357,10 @@ func void DIA_Grom_TellSagittaRecipe_Yes()
 	B_GiveInvItems(self,other,ItMi_Gold,20);
 	DIA_Grom_TellSagittaRecipe_Thanks();
 	Info_ClearChoices(DIA_Grom_TellSagittaRecipe);
+	if (MR_Eaten[MR_NightSparkles] > 0)	{
+		B_LogEntry(TOPIC_Cookery,TOPIC_Cookery_NSparklesKnown);
+		MIS_Cookery_NSparclesKnown = TRUE;
+	};
 };
 
 
@@ -370,10 +375,19 @@ instance DIA_Grom_SpicesRed(C_Info)
 };
 func int DIA_Grom_SpicesRed_Cond()
 {
-	if (MIS_Cookery_AskSpices
+	if (MIS_Cookery_AskSpices && !MIS_Cookery_SpicesGiven
 		 && Npc_HasItems(other,ItFo_Addon_Pfeffer_01))	{
 		return TRUE;
 	};
+};
+func void DIA_Grom_Spices_Reward(var string logEntry)
+{
+	AI_Output(self,other,"DIA_Grom_SpicesRed_08_02");	//Я недавно рискнул подняться к старой шахте в горах. Там было полно мертвяков, так что я убежал.
+	AI_Output(self,other,"DIA_Grom_SpicesRed_08_03");	//Но перед этим успел приметить кусок руды в дорожной пыли. Возьми, мне он вряд ли пригодится.
+	B_GiveInvItems(self,other,ItMi_Nugget,1);
+	MIS_Cookery_SpicesGiven = TRUE;
+	B_GivePlayerXP(XP_Cookery_SpicesGiven);
+	B_LogEntry_Cookery_SuccessAll(logEntry);	
 };
 func void DIA_Grom_SpicesRed_Info()
 {
@@ -390,12 +404,40 @@ func void DIA_Grom_SpicesRed_Info()
 	};
 	B_GiveInvItems(other,self,ItFo_Addon_Pfeffer_01,1);
 	AI_Output(self,other,"DIA_Grom_SpicesRed_08_01");	//О, это то, что надо! Надеюсь, я не разорил тебя.
-	AI_Output(self,other,"DIA_Grom_SpicesRed_08_02");	//Я недавно рискнул подняться к старой шахте в горах. Там было полно мертвяков, так что я убежал.
-	AI_Output(self,other,"DIA_Grom_SpicesRed_08_03");	//Но перед этим успел приметить кусок руды в дорожной пыли. Возьми, мне он вряд ли пригодится.
-	B_GiveInvItems(self,other,ItMi_Nugget,1);
-	MIS_Cookery_SpicesGiven = TRUE;
-	B_GivePlayerXP(XP_Cookery_SpicesGiven);
-	B_LogEntry_Cookery_SuccessAll(TOPIC_Cookery_SpicesGiven);	
+	DIA_Grom_Spices_Reward(TOPIC_Cookery_SpicesGiven);	
+};
+
+//===================================================
+instance DIA_Grom_SpicesNSparkles(C_Info)
+{
+	npc = OUT_1204_Grom;				nr = 21;
+	condition = DIA_Grom_SpicesNSparkles_Cond;
+	information = DIA_Grom_SpicesNSparkles_Info;
+	description = "Эти грибы можно использовать как приправу. (отдать ночные искры)";
+};
+func int DIA_Grom_SpicesNSparkles_Cond()
+{
+	if (MIS_Cookery_AskSpices && !MIS_Cookery_SpicesGiven && MIS_Cookery_NSparclesKnown
+		 && Npc_HasItems(other,ItMr_NightSparkles))	{
+		return TRUE;
+	};
+};
+func void DIA_Grom_SpicesNSparkles_Info()
+{
+	if (hero.voice == 3)	{			//Одо/Руперт
+		AI_Output(other,self,"DIA_Grom_SpicesNSparkles_03_00");	//Эти грибы можно использовать как приправу - они острые.
+	} else if (hero.voice == 7)	{		//Талбин
+		AI_Output(other,self,"DIA_Grom_SpicesNSparkles_07_00");	//Эти грибы можно использовать как приправу. Они острые как добрый перец.
+	} else if (hero.voice == 10)	{	//Эрол
+		AI_Output(other,self,"DIA_Grom_SpicesNSparkles_10_00");	//Эти грибы можно использовать как приправу. Они острые как добрый перец.
+	} else if (hero.voice == 14)	{	//Тилл
+		AI_Output(other,self,"DIA_Grom_SpicesNSparkles_14_00");	//Эти грибы можно использовать как приправу - они острые.
+	} else	{							//Елена/Сара
+		AI_Output(other,self,"DIA_Grom_SpicesNSparkles_16_00");	//Эти грибы можно использовать как приправу - они остренькие.
+	};
+	B_GiveInvItems(other,self,ItMr_NightSparkles,1);
+	AI_Output(self,other,"DIA_Grom_SpicesNSparkles_08_01");	//Попробуем! Никогда не приправлял грибы грибами.
+	DIA_Grom_Spices_Reward(TOPIC_Cookery_NSparklesGiven);	
 };
 
 //===================================================

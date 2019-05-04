@@ -564,6 +564,10 @@ func void Use_Mushroom_NightSparkles()
 			PrintInInventory("Чувствую странное покалывание...");
 			self.protection[PROT_FIRE] += ProtFire_Mr_NightSparkles;
 		};
+		if (MIS_Cookery_AskSpices && !MIS_Cookery_SpicesGiven && !MIS_Cookery_NSparclesKnown)	{
+			B_LogEntry(TOPIC_Cookery,TOPIC_Cookery_NSparklesKnown);
+			MIS_Cookery_NSparclesKnown = TRUE;
+		};
 		TIMER_NightSparkles = TIMER_NightSparkles_Max;
 	};
 };

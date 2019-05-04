@@ -149,6 +149,7 @@ var int MIS_Cookery;
 	var int MIS_Cookery_SagittaAsked;	//спросили у Сагитты рецепт
 	var int MIS_Cookery_AskSpices;	//Гром попросил найти специи
 	var int MIS_Cookery_SpicesGiven;	//дали специи Грому
+	var int MIS_Cookery_NSparclesKnown;	//узнали, что ночные искры можно использовать как приправу
 	var int MIS_Cookery_TheklaTime;	//когда Текла приготовит
 
 // Плотник на мели
