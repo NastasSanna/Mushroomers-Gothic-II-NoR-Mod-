@@ -376,6 +376,7 @@ func void DIA_Vatras_Erol_ChargeAmul_Info()
 	AI_Output(self,other,"DIA_Vatras_Erol_ChargeAmul_05_08");	//Ќо, боюсь, этого недостаточно, чтобы огонек возродилс€.
 	AI_Output(self,other,"DIA_Vatras_Erol_ChargeAmul_05_09");	//ѕридетс€ рассе€ть один блуждающий огонек. “огда амулет должен заработать.
 	B_LogEntry(TOPIC_Erol_Plates,TOPIC_Erol_Plates_AmulCharge);
+	Wld_InsertNpc(Wisp,"NW_TROLLAREA_PATH_71");
 };
 //===================================================
 instance DIA_Vatras_Erol_LestReplaceOre(C_Info)
@@ -513,8 +514,8 @@ func void DIA_Vatras_Erol_GoldPlate_Info()
 	AI_UseItemToState(self,ItWr_Stoneplate_Gold,1);
 	AI_Wait(self, 1.5);
 	AI_UseItemToState(self,ItWr_Stoneplate_Gold,-1);
-	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_06");	//ћне потребуетс€ больше времени, чтобы пон€ть ее полностью, но в целом здесь идет речь о неком великом целителе.
-	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_07");	//¬озможно, он был похоронен на том кладбище.
+	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_06");	//ћне потребуетс€ больше времени, чтобы пон€ть ее полностью, но в целом здесь идет речь о каком-то великом целителе.
+	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_07");	//¬озможно, он был похоронен на этом кладбище.
 		AI_Output(other,self,"DIA_Vatras_Erol_GoldPlate_10_08");	//“очно! “от скелет не был воином. ќн был довольно слаб и вооружен серпом.
 	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_09");	//≈сли это действительно место его захоронени€, то там может быть что-то еще.
 	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_10");	//ѕопробуй поискать в земле. Ќехорошо беспокоить мертвых, но эти знани€ могут оказатьс€ очень важными.

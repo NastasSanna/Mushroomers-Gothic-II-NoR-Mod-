@@ -34,9 +34,6 @@ prototype Mst_Default_Wisp(C_Npc)
 	aivar[AIV_MM_FollowTime] = FOLLOWTIME_SHORT;
 	start_aistate = ZS_MM_AllScheduler;
 	aivar[AIV_MM_WuselStart] = OnlyRoutine;
-	
-	//возрождается в течение 1-3 игровых суток
-	SpawnDelay = 5 * 60 * (24 + Hlp_Random(48));
 };
 
 func void B_SetVisuals_Wisp()

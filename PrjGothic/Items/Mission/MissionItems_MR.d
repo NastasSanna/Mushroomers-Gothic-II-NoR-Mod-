@@ -80,7 +80,7 @@ func void Use_Vatras_AmulScroll()
 				CreateInvItem(self,ItAm_MR_WispDetector_Charged);
 				B_LogEntry(TOPIC_Erol_Plates,TOPIC_Erol_Plates_AmulCharged);
 				Wld_InsertNpc(Wisp,"FP_ROAM_NW_TROLLAREA_LAKE_05");
-				Wld_InsertNpc(Wisp,"FP_ROAM_NW_TROLLAREA_LAKE_06");
+				Wld_InsertNpc(Wisp,"FP_ROAM_NW_FOREST_PATH_63_UP_01");
 			};
 		}
 		else	{

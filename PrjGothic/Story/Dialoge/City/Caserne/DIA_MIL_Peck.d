@@ -215,6 +215,7 @@ func void DIA_Peck_Training_Start()
 	{
 		CreateInvItems(self,ItPo_Health_03,1);
 		B_UseItem(self,ItPo_Health_03);
+		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 	};
 	//AI_Output(self,other,"DIA_Peck_Training_Start_12_01");	//Начали.
 	AI_WaitTillEnd(self,other);
