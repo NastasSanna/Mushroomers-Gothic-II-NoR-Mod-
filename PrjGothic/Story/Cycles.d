@@ -672,9 +672,7 @@ func void CYCLE_TRIGGER_FUNC()
 			};
 		};
 		//белый волк
-		if (MIS_Talbin_WhiteWolf == LOG_Running)	{
-			EVT_WhiteWolf_Check();
-		};
+		EVT_WhiteWolf_Check();
 	};
 	
 	// ќдо -----------------------------------------------------------------------
