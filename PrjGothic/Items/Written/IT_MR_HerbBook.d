@@ -3,13 +3,14 @@
 
 instance ItWr_HerbBook(C_Item)
 {
-	name = "Диссертация";
+	name = "Трактат";
 	mainflag = ITEM_KAT_DOCS;
 	flags = 0;
 	
 	//UNFINISHED
 	visual = "addon_dungeon_scrolls_01.3DS";
 	material = MAT_LEATHER;
+	value = 300;
 	
 	description = "О травах";
 	text[2] = "Научные изыскания мага Сатураса";
@@ -18,6 +19,8 @@ instance ItWr_HerbBook(C_Item)
 	
 	scemeName = "MAP";
 	on_state[0] = Use_HerbBook;
+	text[5] = NAME_Value;
+	count[5] = value;
 };
 
 const Int HerbBook_Left_Margin = 101;

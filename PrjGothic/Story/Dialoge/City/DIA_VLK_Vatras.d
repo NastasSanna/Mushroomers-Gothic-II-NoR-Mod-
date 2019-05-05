@@ -511,6 +511,7 @@ func void DIA_Vatras_Erol_GoldPlate_Info()
 	AI_Output(self,other,"DIA_Vatras_Erol_GoldPlate_05_04");	//Где ты ее нашел?
 		AI_Output(other,self,"DIA_Vatras_Erol_GoldPlate_10_05");	//Я снял ее со скелета на заброшенном кладбище в лесу.
 	//Ватрас читает табличку
+	AI_StandUp(self);
 	AI_UseItemToState(self,ItWr_Stoneplate_Gold,1);
 	AI_Wait(self, 1.5);
 	AI_UseItemToState(self,ItWr_Stoneplate_Gold,-1);

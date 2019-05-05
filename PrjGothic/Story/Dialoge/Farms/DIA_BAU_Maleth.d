@@ -252,9 +252,9 @@ func void DIA_Maleth_Feed_info()
 						{	B_GiveInvItems(self,other,ItFo_Apple,1);	};
 			//иногда ест сам
 			if (C_Random(24) > C_GetHour())	{
-				if (x == 0)	{CreateInvItem(self,ItFo_Bread);AI_UseItem(self,ItFo_Apple);}	else
-				if (x == 2)	{CreateInvItem(self,ItFo_Bread);AI_UseItem(self,ItFo_Stew);}	else
-							{CreateInvItem(self,ItFo_Bread);AI_UseItem(self,ItFo_Bread);};
+				if (x == 0)	{CreateInvItem(self,ItFo_Bread);B_UseItem(self,ItFo_Apple);}	else
+				if (x == 2)	{CreateInvItem(self,ItFo_Bread);B_UseItem(self,ItFo_Stew);}	else
+							{CreateInvItem(self,ItFo_Bread);B_UseItem(self,ItFo_Bread);};
 			};
 			//дает напиток
 			x = C_Random(4);

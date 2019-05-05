@@ -43,7 +43,7 @@ func void DIA_Pedro_Start_Odo_GiveSausage()
 		AI_Output(other,self,"DIA_Pedro_Start_Odo_GiveSausage_03_00");	//Нет, меня отправили собирать целебные травы. Но я могу отдать тебе свою колбасу.
 	AI_Output(self,other,"DIA_Pedro_Start_Odo_GiveSausage_09_01");	//Ты мой спаситель! Спасибо тебе большое. Я ужасно проголодался.
 	B_GiveInvItems(other,self,ItFo_Schafswurst,1);
-	AI_UseItem(self,ItFo_Schafswurst);
+	B_UseItem(self,ItFo_Schafswurst);
 	B_GivePlayerXP(XP_Ambient);
 	Pedro_NotHungryDay = Wld_GetDay() + 1 + Hlp_Random(3);
 	Pedro_FedDay = Wld_GetDay() + 1;

@@ -82,7 +82,7 @@ func void DIA_OldShepherd_HowAU_Yes()
 		B_GiveInvItems(self,other,ItFo_Cheese_OldShepherd,1);
 	};
 	AI_Output(other,self,"XXX");	//
-	AI_UseItem(other,ItFo_Cheese_OldShepherd);
+	B_UseItem(other,ItFo_Cheese_OldShepherd);
 	AI_Output(self,other,"DIA_OldShepherd_HowAU_Yes_01_02");	//Нравится?
 	Info_ClearChoices(DIA_OldShepherd_HowAU);
 	Info_AddChoice(DIA_OldShepherd_HowAU,"Какой-то вкус странный...",DIA_OldShepherd_HowAU_DisLike);

@@ -247,6 +247,7 @@ func void DIA_Grom_GiveConstantinoRecipe_Info()
 	MIS_Cookery_ConstantinoTold = TRUE;
 	//читает
 	CreateInvItem(self,Fakescroll);
+	AI_StandUp(self);
 	AI_UseItemToState(self,Fakescroll,1);
 	AI_Wait(self,1);
 	AI_UseItemToState(self,Fakescroll,-1);

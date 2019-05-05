@@ -29,13 +29,13 @@ func void DIA_Regis_Start_Rupert_Info()
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_02");	//А победителю - вручить какой-то главный приз.
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_03");	//Я, конечно, слышал, что он к грибам неровно дышит, но чтоб так...
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_04");	//Видать, совсем этот Константино умом тронулся. Или в рецепте зелья что напутал...  (смеется)
-	CreateInvItem(self,ItFo_Beer);	AI_UseItem(self,ItFo_Beer);
+	CreateInvItem(self,ItFo_Beer);	B_UseItem(self,ItFo_Beer);
 		AI_Output(other,self,"DIA_Regis_Start_Rupert_03_05");	//Так что, ты пойдешь за грибами?
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_06");	//Я?! Нет, я-то еще в своем уме. В городе грибы не растут, насколько я знаю. 
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_07");	//А в лес меня ни за какие коврижки не заманишь. Не хочу, чтобы из-за пары грибочков меня сожрали волки. Или кто похуже.
 		AI_Output(other,self,"DIA_Regis_Start_Rupert_03_08");	//А я, пожалуй, попытаю счастья. Я сейчас совсем на мели...
 	AI_Output(self,other,"DIA_Regis_Start_Rupert_13_09");	//Дело твое.
-	CreateInvItem(self,ItFo_Beer);	AI_UseItem(self,ItFo_Beer);
+	CreateInvItem(self,ItFo_Beer);	B_UseItem(self,ItFo_Beer);
 	B_StartOtherRoutine(self,"START");
 	AI_StopProcessInfos(self);
 };
@@ -233,16 +233,16 @@ func void DIA_Regis_Rupert_Binge_Info()
 	//после каждой фразы пьем - сначала пиво, потом вино, потом самогон
 	AI_StopLookAt(self);
 	if (Rupert_Binge < 4)	{
-		CreateInvItem(self,ItFo_Beer);		AI_UseItem(self,ItFo_Beer);
-		CreateInvItem(other,ItFo_Beer);		AI_UseItem(other,ItFo_Beer);
+		CreateInvItem(self,ItFo_Beer);		B_UseItem(self,ItFo_Beer);
+		CreateInvItem(other,ItFo_Beer);		B_UseItem(other,ItFo_Beer);
 	}
 	else if (Rupert_Binge < 7)	{
-		CreateInvItem(self,ItFo_Wine);		AI_UseItem(self,ItFo_Wine);
-		CreateInvItem(other,ItFo_Wine);		AI_UseItem(other,ItFo_Wine);
+		CreateInvItem(self,ItFo_Wine);		B_UseItem(self,ItFo_Wine);
+		CreateInvItem(other,ItFo_Wine);		B_UseItem(other,ItFo_Wine);
 	}
 	else	{
-		CreateInvItem(self,ItFo_Booze);		AI_UseItem(self,ItFo_Booze);
-		CreateInvItem(other,ItFo_Booze);	AI_UseItem(other,ItFo_Booze);
+		CreateInvItem(self,ItFo_Booze);		B_UseItem(self,ItFo_Booze);
+		CreateInvItem(other,ItFo_Booze);	B_UseItem(other,ItFo_Booze);
 	};
 	Rupert_Binge += 1;
 	AI_StopProcessInfos(self);

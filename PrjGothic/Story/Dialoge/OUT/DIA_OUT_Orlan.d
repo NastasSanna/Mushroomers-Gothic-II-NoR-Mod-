@@ -30,7 +30,7 @@ func void DIA_Orlan_Start_Erol_Info()
 		AI_Output(other,self,"DIA_Orlan_Start_Erol_10_04");	//Торговля сейчас все равно притихла, а этот остров я знаю, как свои пять пальцев.
 	//выпивает
 	CreateInvItem(other,ItFo_Addon_Grog);
-	AI_UseItem(other,ItFo_Addon_Grog);
+	B_UseItem(other,ItFo_Addon_Grog);
 		AI_Output(other,self,"DIA_Orlan_Start_Erol_10_05");	//Спасибо за грог! Но мне, пожалуй, пора.
 	AI_Output(self,other,"DIA_Orlan_Start_Erol_05_06");	//Заходи. Расскажешь, что там за приз.
 	START_DIA_Finished = TRUE;
@@ -73,10 +73,10 @@ func void DIA_Orlan_MoreGrog_Erol_Yes()
 		AI_Output(self,other,"DIA_Orlan_MoreGrog_Erol_Yes_05_03");	//Это нужно отметить. Держи бутылку.
 		AI_Output(self,other,"DIA_Orlan_MoreGrog_Erol_Yes_05_04");	//За удачу!
 		CreateInvItem(self,ItFo_Addon_Grog);
-		AI_UseItem(self,ItFo_Addon_Grog);
+		B_UseItem(self,ItFo_Addon_Grog);
 	};
 	B_GiveInvItems(self,other,ItFo_Addon_Grog,1);
-	AI_UseItem(other,DIA_Orlan_MoreGrog_Erol);
+	B_UseItem(other,DIA_Orlan_MoreGrog_Erol);
 	Info_ClearChoices(DIA_Orlan_MoreGrog_Erol);
 };
 func void DIA_Orlan_MoreGrog_Erol_No()
@@ -109,8 +109,8 @@ func void DIA_Orlan_Erol_Final_Info()
 		AI_Output(self,other,"DIA_Orlan_Erol_Final_05_WON_01");	//Это надо отметить.
 		B_GiveInvItems(other,self,ItMi_Gold,Value_Grog);
 		CreateInvItem(self,ItFo_Addon_Grog);
-		AI_UseItem(other,ItFo_Addon_Grog);
-		AI_UseItem(self,ItFo_Addon_Grog);
+		B_UseItem(other,ItFo_Addon_Grog);
+		B_UseItem(self,ItFo_Addon_Grog);
 		AI_Output(self,other,"DIA_Orlan_Erol_Final_WON_05_02");	//Так что там за приз?
 			AI_Output(other,self,"DIA_Orlan_Erol_Final_WON_10_03");	//Лучший подарок - книга! (смеется)
 			AI_Output(other,self,"DIA_Orlan_Erol_Final_WON_10_04");	//Константино составил подробный иллюстрированный справочник по грибам Хориниса.

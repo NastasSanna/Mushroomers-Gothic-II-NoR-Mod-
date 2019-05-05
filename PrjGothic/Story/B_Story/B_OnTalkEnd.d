@@ -57,7 +57,7 @@ func void B_OnTalkEnd()
 	//посмотреть список кандидадов
 	if ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(VLK_417_Constantino)) && (Npc_HasItems(other,ItWr_ScoreList)))
 	{
-		AI_UseItem(other,ItWr_ScoreList);
+		B_UseItem(other,ItWr_ScoreList);
 	};
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GameOver_Lost)	{
 		B_GameOver_Lose();

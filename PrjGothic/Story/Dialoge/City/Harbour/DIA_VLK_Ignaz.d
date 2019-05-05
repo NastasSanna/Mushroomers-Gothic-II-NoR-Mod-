@@ -163,7 +163,7 @@ func void DIA_Ignaz_AskRecipe_Drink()
 {
 	B_GivePlayerXP(XP_IgnazEarPotion);
 	AI_Output(other,self,"XXX");	//
-	AI_UseItem(other,ItPo_MR_IgnazEar);
+	B_UseItem(other,ItPo_MR_IgnazEar);
 	AI_Output(self,other,"DIA_Ignaz_AskRecipe_Drink_14_00");	//(восторженно) Работает! Раны затягиваются на глазах!..
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Ignaz_AskRecipe_Drink_03_01");	//Оох, ну и гадость... Голова раскалывается... И все тело ломит!
@@ -193,7 +193,7 @@ func void DIA_Ignaz_AskRecipe_Drink()
 	AI_Output(self,other,"DIA_Ignaz_AskRecipe_Drink_14_03");	//Ничего-ничего. Сейчас пройдет. Выпей водички.
 	B_GiveInvItems(self,other,ItFo_Water,1);
 	AI_Output(other,self,"XXX");	//
-	AI_UseItem(other,ItFo_Water);
+	B_UseItem(other,ItFo_Water);
 	AI_Output(self,other,"DIA_Ignaz_AskRecipe_Drink_14_04");	//Полегчало?
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Ignaz_AskRecipe_Drink_03_05");	//Кажется.

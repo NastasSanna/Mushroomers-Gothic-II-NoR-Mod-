@@ -104,8 +104,8 @@ func void DIA_Rengaru_LetsDrink_Yes()
 	CreateInvItems(self,ItFo_Addon_Grog,2);
 	B_GiveInvItems(self,other,ItFo_Addon_Grog,1);
 	AI_Output(self,other,"DIA_Rengaru_LetsDrink_Yes_07_03");	//Твое здоровье!
-	AI_UseItem(self,ItFo_Addon_Grog);
-	AI_UseItem(other,ItFo_Addon_Grog);
+	B_UseItem(self,ItFo_Addon_Grog);
+	B_UseItem(other,ItFo_Addon_Grog);
 	AI_StopProcessInfos(self);
 };
 

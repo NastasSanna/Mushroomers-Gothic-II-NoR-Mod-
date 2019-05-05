@@ -10,6 +10,7 @@ func void B_UseItem(var C_Npc slf,var int itmInstance)
 	if(Hlp_IsValidNpc(target))
 	{
 		B_StopLookAt(slf);
+		AI_StandUp(slf);
 		AI_UseItem(slf,itmInstance);
 		B_LookAtNpc(slf,target);
 	}

@@ -227,7 +227,7 @@ func void DIA_Halvor_YourPost_Give()
 	B_GiveInvItems(other,self,ItMi_Packet_Halvor,1);
 	MIS_KhorinisPost_HalvorGotPacket = TRUE;
 	//смотрит посылку
-	AI_UseItem(self,ItMi_Packet_Halvor);
+	B_UseItem(self,ItMi_Packet_Halvor);
 	AI_Output(self,other,"DIA_Halvor_YourPost_Give_06_01");	//Отлично! Я давно ее ждал.
 	B_GivePlayerXP(XP_KhorinisPost_HalvorDelivered);
 	MIS_KhorinisPost_HalvorDelivered = TRUE;

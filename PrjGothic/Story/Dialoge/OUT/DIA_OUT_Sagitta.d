@@ -167,7 +167,7 @@ func void DIA_Sagitta_Poisoned_info()
 		};
 		AI_Output(self,other,"DIA_Sagitta_Poisoned_17_04");	//Драконовы слезы! Так, быстро, выпей вот это!
 		B_GiveInvItems(self,other,ItPo_MR_AntiDragTears,1);
-		AI_UseItem(other,ItPo_MR_AntiDragTears);
+		B_UseItem(other,ItPo_MR_AntiDragTears);
 		AI_Output(self,other,"DIA_Sagitta_Poisoned_17_05");	//В другой раз думай, что тянешь в рот!
 	}
 	else if (POISON_Foggy_Timer > 0)	{
@@ -184,7 +184,7 @@ func void DIA_Sagitta_Poisoned_info()
 		};
 		AI_Output(self,other,"DIA_Sagitta_Poisoned_17_07");	//Так-так, туманник. Не смертельно, но крайне неприятно. Выпей-ка вот это.
 		B_GiveInvItems(self,other,ItPo_MR_AntiFoggy,1);
-		AI_UseItem(other,ItPo_MR_AntiFoggy);
+		B_UseItem(other,ItPo_MR_AntiFoggy);
 		if (hero.voice == 3)	{			//Одо/Руперт
 			AI_Output(other,self,"DIA_Sagitta_Poisoned_03_08");	//Фух, жарко!
 		} else if (hero.voice == 7)	{		//Талбин

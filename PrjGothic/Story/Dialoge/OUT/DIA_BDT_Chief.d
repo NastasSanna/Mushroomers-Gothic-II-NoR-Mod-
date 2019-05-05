@@ -79,6 +79,7 @@ func void DIA_Chief_Start_Vino()
 			AI_Output(other,self,"DIA_Chief_Start_Vino_16_02");	//Вот оно.
 		};
 		B_GiveInvItems(other,self,ItWr_Letter_Vino2Chief,1);
+		AI_StandUp(self);
 		AI_UseItemToState(self,ItWr_Letter_Vino2Chief,1);
 		AI_Wait(self,1.0);
 		AI_UseItemToState(self,ItWr_Letter_Vino2Chief,-1);

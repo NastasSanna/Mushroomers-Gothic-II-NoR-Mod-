@@ -2,6 +2,7 @@
 func void ZS_HealSelf()
 {
 	Perception_Set_Minimal();
+	AI_Sta](self);
 };
 
 func int ZS_HealSelf_Loop()
