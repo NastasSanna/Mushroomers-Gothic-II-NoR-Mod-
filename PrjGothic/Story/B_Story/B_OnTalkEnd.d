@@ -273,4 +273,14 @@ func void B_OnTalkEnd()
 	
 	//старик Берни исчезает после разговора
 	B_RemoveGhost();
+	
+	//ОДО - в Ульфа больше не лезет пиво
+	if (C_HeroIs_Odo() && C_NpcIs(self,NOV_602_Ulf)) {
+		IF ((Ulf_Beer_Count >= Wld_GetDay() * 3 + 5) && !Hlp_StrCmp(Npc_GetNearestWP(self),"NW_MONASTERY_GRASS_06"))	{
+			Npc_ClearAIQueue(self);
+			AI_SetWalkmode(self,NPC_RUN);
+			AI_GotoWP(self,"NW_MONASTERY_GRASS_06");
+			AI_StartState(self,ZS_Pee,0,"NW_MONASTERY_GRASS_06");
+		};		
+	};
 };

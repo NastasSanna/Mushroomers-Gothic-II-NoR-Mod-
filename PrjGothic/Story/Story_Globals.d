@@ -203,6 +203,7 @@ var int MIS_Odo_Straw;
 	var int MIS_Odo_Straw_Cnt;
 		const int MIS_Odo_Straw_All = 5;
 	var int MIS_Odo_Straw_BengarChoosen;
+	var int MIS_Odo_Straw_MoneyGiven;
 
 // “јЋЅ»Ќ ќхота пуще неволи
 var int MIS_Talbin_Hunt;

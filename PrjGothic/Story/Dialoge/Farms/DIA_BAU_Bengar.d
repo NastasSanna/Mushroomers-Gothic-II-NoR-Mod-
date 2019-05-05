@@ -38,7 +38,7 @@ instance DIA_Bengar_Odo_StrawBuy(C_INFO)
 };
 func int DIA_Bengar_Odo_StrawBuy_cond()
 {
-	if (C_HeroIs_Odo() && (MIS_Odo_Straw == LOG_Running) && MIS_Odo_Straw_BengarChoosen)	{
+	if (C_HeroIs_Odo() && (MIS_Odo_Straw == LOG_Running) && MIS_Odo_Straw_MoneyGiven)	{
 		return TRUE;
 	};
 };

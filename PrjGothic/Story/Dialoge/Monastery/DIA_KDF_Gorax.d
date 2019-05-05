@@ -61,7 +61,7 @@ func int DIA_Gorax_Odo_AboutStraw_cond()
 {
 	if (C_HeroIs_Odo()
 		 && (MIS_Odo_Straw == LOG_Running)
-		 && !MIS_Odo_Straw_BengarChoosen)	{
+		 && !MIS_Odo_Straw_MoneyGiven)	{
 		return TRUE;
 	};
 };
@@ -103,46 +103,46 @@ func void DIA_Gorax_Odo_AboutStraw_Onar()
 {
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Onar_03_00");	//У Онара сено по 17 золотых за тюк.
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Onar_03_01");	//И оно отменного качества.
-	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Onar[Straw_Told] = 1;
 	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Onar);
+	DIA_Gorax_Odo_AboutStraw_Menu();
 };
 func void DIA_Gorax_Odo_AboutStraw_Sekob()
 {
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Sekob_03_00");	//Секоб просит по 19 золотых за тюк сена.
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Sekob_03_01");	//Но оно никудышное, гнилое.
-	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Sekob[Straw_Told] = 1;
 	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Sekob);
+	DIA_Gorax_Odo_AboutStraw_Menu();
 };
 func void DIA_Gorax_Odo_AboutStraw_Bengar()
 {
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Bengar_03_00");	//У Бенгара тюк сена стоит 16 золотых.
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Bengar_03_01");	//Сено у него отличное, свежее и душистое.
-	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Bengar[Straw_Told] = 1;
 	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Bengar);
+	DIA_Gorax_Odo_AboutStraw_Menu();
 };
 func void DIA_Gorax_Odo_AboutStraw_Akil()
 {
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Akil_03_00");	//Акил предлагает сено всего по 15 золотых за тюк.
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Akil_03_01");	//Сено у него слишком жесткое.
-	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Akil[Straw_Told] = 1;
 	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Akil);
+	DIA_Gorax_Odo_AboutStraw_Menu();
 };
 func void DIA_Gorax_Odo_AboutStraw_Lobart()
 {
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Lobart_03_00");	//Лобарт продает сено по 16 золотых за тюк.
 		AI_Output(other,self,"DIA_Gorax_Odo_AboutStraw_Lobart_03_01");	//Сено неплохое, но и не самое лучшее. Свежести в нем нет.
-	DIA_Gorax_Odo_AboutStraw_Menu();
 	MIS_Odo_Straw_Lobart[Straw_Told] = 1;
 	MIS_Odo_Straw_Cnt += 1;
 	B_GivePlayerXP(XP_Odo_Straw_Lobart);
+	DIA_Gorax_Odo_AboutStraw_Menu();
 };
 func void DIA_Gorax_Odo_AboutStraw_All()
 {
@@ -213,6 +213,7 @@ func void DIA_Gorax_Odo_AboutStraw_BuyOnar()
 };
 func void DIA_Gorax_Odo_AboutStraw_GiveGold()
 {
+	MIS_Odo_Straw_MoneyGiven = TRUE;
 	AI_Output(self,other,"DIA_Gorax_Odo_AboutStraw_GiveGold_14_01");	//Возьми деньги и ступай, купи сено у Бенгара. Да поторопись!
 	B_GiveGold(self,other,512);
 	B_LogEntry(TOPIC_Odo_Straw,TOPIC_Odo_Straw_Told);

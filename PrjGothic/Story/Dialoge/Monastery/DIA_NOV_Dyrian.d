@@ -92,7 +92,8 @@ func int DIA_Dyrian_GiveMrBook_Odo_Cond()
 			|| Npc_HasItems(other,ItWr_MR_SmithGuide)
 			|| Npc_HasItems(other,ItWr_MR_OnAlchemy)
 			|| Npc_HasItems(other,ItWr_MR_OakBranch)
-			|| Npc_HasItems(other,ItWr_MR_BiographyBartosLaran)))	{
+			|| Npc_HasItems(other,ItWr_MR_BiographyBartosLaran)
+			|| Npc_HasItems(other,ItWr_HerbBook)))	{
 		return TRUE;
 	};
 	return FALSE;
@@ -126,6 +127,9 @@ func void DIA_Dyrian_GiveMrBook_Odo_Menu()
 	};
 	if (Npc_HasItems(other,ItWr_MR_UnderInnosEye))	{
 		Info_AddChoice(DIA_Dyrian_GiveMrBook_Odo,"Под Оком Инноса (географический трактат).",DIA_Dyrian_GiveMrBook_Odo_UnderInnosEye);
+	};
+	if (Npc_HasItems(other,ItWr_HerbBook))	{
+		Info_AddChoice(DIA_Dyrian_GiveMrBook_Odo,"О травах (трактат)",DIA_Dyrian_GiveMrBook_Odo_UnderInnosEye);
 	};
 };
 func void DIA_Dyrian_GiveMrBook_Odo_Info()

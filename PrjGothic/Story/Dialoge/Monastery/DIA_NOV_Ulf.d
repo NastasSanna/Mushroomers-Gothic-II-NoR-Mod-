@@ -24,10 +24,10 @@ func int DIA_Ulf_Start_Odo_Cond()
 func void DIA_Ulf_Start_Odo_Info()
 {
 	START_DIA_Finished = TRUE;
-	B_UseItemToState(other,ItMi_Broom,1);
+	AI_UseItemToState(other,ItMi_Broom,1);
 	AI_GotoNpc(self,other);
 	AI_WaitTillEnd(other,self);
-	B_UseItemToState(other,ItMi_Broom,-1);
+	AI_UseItemToState(other,ItMi_Broom,-1);
 		AI_Output(other,self,"DIA_Ulf_Start_Odo_03_00");	//Здравствуй, брат Ульф! Что нового в городе?
 	AI_Output(self,other,"DIA_Ulf_Start_Odo_03_01");	//Да все как обычно... Пиво не подорожало, наше вино не подешевело, так что все в порядке! 
 		AI_Output(other,self,"DIA_Ulf_Start_Odo_03_02");	//Понятно.
@@ -129,20 +129,14 @@ func void DIA_Ulf_Beer_MR_Perm_Odo_Info()
 		AI_Output(other,self,"DIA_Ulf_Beer_MR_Perm_Odo_03_00");	//Хочешь еще пива?
 	if (Ulf_Beer_Count < Wld_GetDay() * 3 + 5)	{
 		AI_Output(self,other,"DIA_Ulf_Beer_MR_Perm_Odo_03_01");	//Что за вопрос? Давай!
-		B_GiveInvItems(other,self,ItFo_Beer,1);;
+		B_GiveInvItems(other,self,ItFo_Beer,1);
 		B_UseItem(self,ItFo_Beer);
 		B_GivePlayerXP(XP_Ambient);
 		Ulf_Beer_Count += 1;
 	}
 	else	{
 		AI_Output(self,other,"DIA_Ulf_Beer_MR_Perm_Odo_03_02");	//Знаешь, в меня уже больше не лезет, ик! Может быть, завтра, ик,...
-		IF ((Hlp_Random(100) < 50) && !Hlp_StrCmp(Npc_GetNearestWP(self),"NW_MONASTERY_GRASS_06"))	{
-			Npc_ClearAIQueue(self);
-			AI_StopProcessInfos(self);
-			AI_SetWalkmode(self,NPC_RUN);
-			AI_GotoWP(self,"NW_MONASTERY_GRASS_06");
-			AI_StartState(self,ZS_Pee,0,"NW_MONASTERY_GRASS_06");
-		};
+		AI_StopProcessInfos(self);
 	};
 };
 //===================================================
