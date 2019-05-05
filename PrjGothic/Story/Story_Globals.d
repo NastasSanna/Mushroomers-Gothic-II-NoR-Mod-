@@ -427,6 +427,7 @@ var int BloodwinSnow_KillPlayer; //разозлили начальника СноуСтудио
 var int ACHIEV_SnowStudio_Counter; //сколько актеров нашли
 //книги
 var int Read_MRBook_Once;
+var int Read_HerbBook_Once;
 var int Read_CourtCase_Once;
 var int Read_Shipbuilding_Once;
 var int Read_Bookstand_Report_Once;
@@ -440,7 +441,7 @@ var int Read_UnderInnosEye_Once;
 var int Read_HorsePlague_Once;
 var int Read_AboutDragons_Once;
 var int Read_Books_Count;
-const int Read_Books_Count_All = 12;
+const int Read_Books_Count_All = 13;
 var int Read_BooksOld_Count;
 const int Read_BooksOld_Count_All = 9;
 
