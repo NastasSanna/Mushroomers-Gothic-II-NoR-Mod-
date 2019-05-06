@@ -260,3 +260,47 @@ func void Use_Letter_Dikar()
 		Doc_Show(nDocID);
 	};
 };
+
+//===================================================
+instance ItWr_HeroPortrait_FromFireDragon(C_ITEM)
+{
+	name = "Мое изображение";
+	mainflag = ITEM_KAT_DOCS;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItWr_Scroll_01.3DS";
+	material = MAT_LEATHER;
+	scemeName = "MAP";
+	on_state[0] = Use_HeroPortrait;
+	description = name;
+	text[1] = "Выполнено скринописью";
+	text[3] = "С обратной стороны надпись:";
+	text[4] = "На память от FIRE DRAGON`а";
+};
+
+func void Use_HeroPortrait()
+{
+	if (Npc_IsPlayer(self))	{
+		if (C_HeroIs_Elena())	{
+			Doc_Open("SCREENSHOT_ELENA.TGA");
+		}
+		else if (C_HeroIs_Erol())	{
+			Doc_Open("SCREENSHOT_EROL.TGA");
+		}
+		else if (C_HeroIs_Odo())	{
+			Doc_Open("SCREENSHOT_ODO.TGA");
+		}
+		else if (C_HeroIs_Rupert())	{
+			Doc_Open("SCREENSHOT_RUPERT.TGA");
+		}
+		else if (C_HeroIs_Sarah())	{
+			Doc_Open("SCREENSHOT_SARAH.TGA");
+		}
+		else if (C_HeroIs_Talbin())	{
+			Doc_Open("SCREENSHOT_TALBIN.TGA");
+		}
+		else if (C_HeroIs_Till())	{
+			Doc_Open("SCREENSHOT_TILL.TGA");
+		};
+	};
+};

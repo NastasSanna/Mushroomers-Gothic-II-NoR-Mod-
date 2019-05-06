@@ -24,7 +24,7 @@ const string MOBNAME_NaemnikIzGotiki = "Наемник из Готики";
 const string MOBNAME_Ren = "Рен";
 const string MOBNAME_Himera = "}{иМера";
 const string MOBNAME_Valerych = "BаLеPыч";
-const string MOBNAME_FireDragon = "Fire Dragon";
+const string MOBNAME_FireDragon = "FIRE DRAGON";
 const string MOBNAME_BloodwinSnow = "BloodwinSnow";
 const string MOBNAME_NastasSanna = "НастасьСанна";
 

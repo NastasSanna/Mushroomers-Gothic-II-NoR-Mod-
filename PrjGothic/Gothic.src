@@ -503,6 +503,7 @@ Story\NPC\PC_IdolKadar.d
 Story\NPC\PC_Dennis.d
 Story\NPC\PC_Himera.d
 Story\NPC\PC_Valerych.d
+Story\NPC\PC_FireDragon.d
 Story\NPC\Farms\Bau_900_Onar.d
 Story\NPC\Farms\Bau_901_Bauer.d
 Story\NPC\Farms\Bau_902_Gunnar.d
@@ -981,6 +982,7 @@ Story\Dialoge\DIA_PC_IdolKadar.d
 Story\Dialoge\DIA_PC_Dennis.d
 Story\Dialoge\DIA_PC_Himera.d
 Story\Dialoge\DIA_PC_Valerych.d
+Story\Dialoge\DIA_PC_FireDragon.d
 Story\Dialoge\PC\DIA_PC_Elena.d
 Story\Dialoge\PC\DIA_PC_Erol.d
 Story\Dialoge\PC\DIA_PC_Odo.d

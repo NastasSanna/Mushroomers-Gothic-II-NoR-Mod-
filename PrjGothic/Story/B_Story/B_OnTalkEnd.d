@@ -116,6 +116,11 @@ func void B_OnTalkEnd()
 			B_Attack(PC_SnowStudioActor_02,hero,AR_KILL,0);
 		};
 	};
+	//FIRE DRAGON отлетает
+	if (C_NpcIs(self,PC_FireDragon))	{
+		B_RemoveNpc(self);
+		Wld_StopEffect("SPELLFX_FIREARMOR");
+	};
 	
 	//вышвырнули из монастыря
 	if (Hero_ThrowOut_Monastery == TRUE)	{

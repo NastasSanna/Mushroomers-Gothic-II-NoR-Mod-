@@ -129,25 +129,26 @@ func void EVT_SNOWGALLERY_NAEMNIK()
 };
 
 var int EVT_SNOWGALLERY_FIREDRAGON_Once;
-instance PC_FireDragon(C_ITEM)
+instance Item_FireDragon(C_ITEM)
 {
 	name = MOBNAME_FireDragon;
 };
 func void EVT_SNOWGALLERY_FIREDRAGON()
 {
 	MEM_Debug("EVT_SNOWGALLERY_FireDragon");
-	if (!EVT_SNOWGALLERY_FIREDRAGON_Once || Hlp_Random(2) == 0) {
-		Snd_Play3D(hero,"SNOWSTUDIO_FIREDRAGON");
-		Wld_InsertItem(PC_FireDragon,"FP_ITEM_FIREDRAGON");
-		Wld_PlayEffect("SPELLFX_RINGRITUAL1",PC_FireDragon,hero,1,10,DAM_FIRE,TRUE);
-		Wld_RemoveItem(PC_FireDragon);
-		Wld_PlayEffect("SPELLFX_CHARGEFIREBALL_COLLIDE",hero,hero,5,10,DAM_FIRE,TRUE);
-		AI_PlayAni(hero,"T_GOTHIT");
-	};
 	if (!EVT_SNOWGALLERY_FIREDRAGON_Once) {
+		Wld_InsertNpc(PC_FireDragon,"NW_MAGECAVE_15");
 		EVT_SNOWGALLERY_FIREDRAGON_Once = TRUE;
 		B_GiveAchievement_SnowStudio();
 		B_LogNote(TOPIC_SnowStudio, TOPIC_SnowStudio_FireDragon);
+	}
+	else if (Hlp_Random(3) == 0) {
+		Snd_Play3D(hero,"SNOWSTUDIO_FIREDRAGON");
+		Wld_InsertItem(Item_FireDragon,"FP_ITEM_FIREDRAGON");
+		Wld_PlayEffect("SPELLFX_RINGRITUAL1",Item_FireDragon,hero,1,10,DAM_FIRE,TRUE);
+		Wld_RemoveItem(Item_FireDragon);
+		Wld_PlayEffect("SPELLFX_CHARGEFIREBALL_COLLIDE",hero,hero,5,10,DAM_FIRE,TRUE);
+		AI_PlayAni(hero,"T_GOTHIT");
 	};
 };
 
