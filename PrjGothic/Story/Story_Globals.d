@@ -403,6 +403,10 @@ var int Bromor_Paid;	//заплатили Бромору за услуги
 var int Vanja_Ready;	//Ваня готова
 var int Vino_HidePlace;	//где прячется Вино
 var int Erol_Graves_GotPlates;	//Эрол выкопал таблички
+var int Mika_MayGuard;	//Можно нанять Мику
+var int Mika_Guard_Active;	//Мика охраняет
+var int Mika_Guard_EndTime;	//до какого часа?
+
 //байки охотников
 var int DIA_Bartok_TellTales;	//1 байка (проклятый охотник)
 	var int Tale_CursedHunter_Once;

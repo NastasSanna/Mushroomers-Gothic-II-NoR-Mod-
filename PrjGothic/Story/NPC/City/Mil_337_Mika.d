@@ -31,6 +31,11 @@ func void Rtn_Start_337()
 	TA_Stand_Guarding(18,0,22,0,"NW_CITY_HABOUR_KASERN_18");
 	TA_Sleep(22,0,7,35,"NW_CITY_BARRACK01_BED_ALRICK");
 };
+func void Rtn_Guard_337()
+{
+	TA_Follow_Player(7,0,22,0,"NW_CITY_HABOUR_KASERN_18");
+	TA_Follow_Player(22,0,7,0,"NW_CITY_HABOUR_KASERN_18");
+};
 
 
 
