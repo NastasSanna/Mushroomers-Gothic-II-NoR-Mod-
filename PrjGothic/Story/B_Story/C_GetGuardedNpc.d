@@ -23,6 +23,7 @@ func int C_GetGuardedNpc(var C_NPC slf)
 	if (C_NpcIs(slf, Summoned_Skeleton_Odo)) {
 		return CMP_Odo;
 	};
+	/* по умолчанию - ГГ
 	if (C_NpcIs(slf, Summoned_Gobbo_Skeleton)
 		|| C_NpcIs(slf, Summoned_Golem)
 		|| C_NpcIs(slf, Summoned_Guardian)
@@ -31,6 +32,11 @@ func int C_GetGuardedNpc(var C_NPC slf)
 	) {
 		return hero;
 	};
+	if (C_NpcIs(slf, Mil_337_Mika) && Mika_Guard_Active)	{
+		return hero;
+	};
+	//*/
+	return hero;
 };
 
 func int C_IsBodyGuard(var C_NPC slf, var C_NPC oth)

@@ -103,6 +103,7 @@ AI\Human\B_Human\B_SetAivars.d
 AI\Human\C_Human\C_BodyStateContains.d
 AI\Human\C_Human\C_NpcHasAttribute.d
 AI\Human\C_Human\C_GetPlayerPortalGuild.d
+Story\B_Story\C_FollowPlayerForbidden.d
 Story\B_Story\C_NpcIsInQuarter.d
 Story\B_Story\B_GetLearnCost.d
 Story\B_Story\B_AddFightSkill.d

@@ -37,7 +37,7 @@ func int B_AssessGuardedDamage()
 	if (Npc_IsInState(self, ZS_Attack))	{
 		return FALSE;
 	};
-	
+
 	// если € охранник
 	if (HasFlags(self.aivar[AIV_Temper], TEMPER_BodyGuard)) {
 		//и € охран€ю жертву
@@ -46,19 +46,29 @@ func int B_AssessGuardedDamage()
 			B_Attack_BodyGuard(self, other);
 			return TRUE;
 		};
-		//а если € охран€ю обидчика
+		//а если € охран€ю обидчика  и не €вл€юсь другом жертвы
 		if (C_IsBodyGuard(self,other)) {
-			//то напасть на жертву
-			B_Attack_BodyGuard(self, victim);
+			if (C_NpcGetAttitude(self,victim) != ATT_FRIENDLY)	{
+				//то напасть на жертву
+				B_Attack_BodyGuard(self, victim);
+			}
+			else	{
+				AI_StartState(self,ZS_WatchFight,0,"");
+			};
 			return TRUE;
 		};
 	};
 	//если обидчик охранник
 	if (HasFlags(other.aivar[AIV_Temper], TEMPER_BodyGuard)) {
-		//и он охран€ет мен€
+		//и он охран€ет мен€ и € не €вл€юсь другом жертвы
 		if (C_IsBodyGuard(other, self)) {
-			//то напасть на жертву
-			B_Attack_BodyGuard(self, victim);
+			if (C_NpcGetAttitude(self,victim) != ATT_FRIENDLY)	{
+				//то напасть на жертву
+				B_Attack_BodyGuard(self, victim);
+			}
+			else	{
+				AI_StartState(self,ZS_WatchFight,0,"");
+			};
 			return TRUE;
 		};
 	};
@@ -149,11 +159,6 @@ func void B_AssessFightSound()
 		return;
 	};
 	
-	// ќ’–јЌЌ» » -----------------------------------------------------------
-	if (B_AssessGuardedDamage()) {
-		return;
-	};
-	
 	
 	// ќ¬÷џ ----------------------------------------------------------------
 	
@@ -237,6 +242,7 @@ func void B_AssessFightSound()
 	};
 	
 	// ≈ў≈ Ќ≈ ƒ≈–”“—я ----------------------------------------------------------
+	
 	
 	// жертва - мой друг, но он еще не ответил напавшему
 	if (C_NpcGetAttitude(self,victim) == ATT_FRIENDLY)
@@ -343,6 +349,11 @@ func void B_AssessFightSound()
 			B_Attack(self,other,AR_GuardStopsFight,0);
 			return;
 		};
+	};
+	
+	// ќ’–јЌЌ» » -----------------------------------------------------------
+	if (B_AssessGuardedDamage()) {
+		return;
 	};
 	
 	// ќѕќЋ„≈Ќ»≈ ---------------------------------------------------------------

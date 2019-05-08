@@ -69,7 +69,9 @@ instance DIA_Mika_BodyGuard(C_INFO)
 };
 func int DIA_Mika_BodyGuard_cond()
 {
-	if (DIA_WhenAsked_cond() && Competition_Result == Competition_Result_NONE)	{
+	if (DIA_WhenAsked_cond() && Competition_Result == Competition_Result_NONE
+		&& !C_HeroIs_Talbin())	//У Талбина уже есть компаньон
+	{
 		return TRUE;
 	};
 };
@@ -77,39 +79,35 @@ func void DIA_Mika_BodyGuard_info()
 {
 	AI_Output(self,other,"DIA_Mika_BodyGuard_12_00");	//Ей, я слышал, ты участвуешь в грибном конкурсе?
 	Info_ClearChoices(DIA_Mika_BodyGuard);
-	Info_AddChoice(DIA_Mika_BodyGuard,"Нет",DIA_Mika_BodyGuard_No);
-	Info_AddChoice(DIA_Mika_BodyGuard,"Да",DIA_Mika_BodyGuard_Yes);
+	Info_AddChoice(DIA_Mika_BodyGuard,"Нет.",DIA_Mika_BodyGuard_No);
+	Info_AddChoice(DIA_Mika_BodyGuard,"Да.",DIA_Mika_BodyGuard_Yes);
 };
 
 func void DIA_Mika_BodyGuard_Yes()
 {
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_BodyGuard_03_01");	//Да, это так.
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_BodyGuard_07_01");	//Ты прав, участвую.
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_BodyGuard_10_01");	//Ты прав, участвую.
 	} else if (hero.voice == 14)	{	//Тилл
-		AI_Output(other,self,"DIA_Mika_BodyGuard_14_01");	//Ты прав, участвую.
+		AI_Output(other,self,"DIA_Mika_BodyGuard_14_01");	//Да, это правда.
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Mika_BodyGuard_16_01");	//Да, участвую.
 	};
 	AI_Output(self,other,"DIA_Mika_BodyGuard_12_02");	//В наших лесах небезопасно - всякое зверье, кабаны, волки...
-	if (other.guild == GIL_VLK)	{
-		AI_Output(self,other,"DIA_Mika_BodyGuard_12_03a");	//Я не могу оставить жителей этого города без защиты.
-	}
-	else if (other.guild == GIL_BAU || other.guild == GIL_BAU2)	{
+	if (other.guild == GIL_BAU || other.guild == GIL_BAU2)	{
 		AI_Output(self,other,"DIA_Mika_BodyGuard_12_03b");	//Я не могу позволить снабжающим город крестьянам остаться без защиты.
+	}
+	else 	{ //для Одо нет отдельной фразы
+		AI_Output(self,other,"DIA_Mika_BodyGuard_12_03a");	//Я не могу оставить жителей этого города без защиты.
 	};
 	AI_Output(self,other,"DIA_Mika_BodyGuard_12_04");	//И я мог бы ее предоставить за очень скромное вознаграждение.
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_BodyGuard_03_05");	//Сколько?
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_BodyGuard_07_05");	//Скромное - это сколько?
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_BodyGuard_10_05");	//Скромное - это сколько?
 	} else if (hero.voice == 14)	{	//Тилл
-		AI_Output(other,self,"DIA_Mika_BodyGuard_14_05");	//Скромное - это сколько?
+		AI_Output(other,self,"DIA_Mika_BodyGuard_14_05");	//Сколько?
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Mika_BodyGuard_16_05");	//Сколько?
 	};
@@ -122,12 +120,10 @@ func void DIA_Mika_BodyGuard_No()
 {
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_BodyGuard_03_02");	//Нет, ты ошибся.
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_BodyGuard_07_02");	//Нет, ты ошибся.
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_BodyGuard_10_02");	//Нет, ты меня с кем-то перепутал.
 	} else if (hero.voice == 14)	{	//Тилл
-		AI_Output(other,self,"DIA_Mika_BodyGuard_14_02");	//Нет, ты ошибся.
+		AI_Output(other,self,"DIA_Chief_Payment_No_14_00");	//Нет, мне это неинтересно.
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Mika_BodyGuard_16_02");	//Нет, ты ошибся.
 	};
@@ -154,8 +150,6 @@ func void DIA_Mika_Pay_info()
 {
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_Pay_03_00");	//Я хочу нанять тебя.
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_Pay_07_00");	//Я хочу нанять тебя.
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_Pay_10_00");	//Я хочу нанять тебя.
 	} else if (hero.voice == 14)	{	//Тилл
@@ -170,6 +164,7 @@ func void DIA_Mika_Pay_info()
 		AI_StopProcessInfos(self);
 		self.aivar[AIV_Temper] = self.aivar[AIV_Temper]  | TEMPER_BodyGuard;
 		self.aivar[AIV_PARTYMEMBER] = TRUE;
+		B_SetAttitude(self, ATT_FRIENDLY);
 		B_StartOtherRoutine(self,"GUARD");
 	}
 	else	{
@@ -208,12 +203,10 @@ func void DIA_Mika_PayAgain_Yes()
 {
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_PayAgain_03_01");	//Да, вот еще 10 золотых.
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_PayAgain_07_01");	//Да, вот еще 10 золотых.
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_PayAgain_10_01");	//Да, вот еще 10 золотых.
 	} else if (hero.voice == 14)	{	//Тилл
-		AI_Output(other,self,"DIA_Mika_PayAgain_14_01");	//Да, вот еще 10 золотых.
+		AI_Output(other,self,"DIA_Sekob_Till_Final_14_01");	//Да, вот деньги.
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Mika_PayAgain_16_01");	//Да, вот еще 10 золотых.
 	};
@@ -226,12 +219,10 @@ func void DIA_Mika_PayAgain_No()
 {
 	if (hero.voice == 3)	{			//Одо/Руперт
 		AI_Output(other,self,"DIA_Mika_PayAgain_03_02");	//Нет, ты мне больше не нужен.
-	} else if (hero.voice == 7)	{		//Талбин
-		AI_Output(other,self,"DIA_Mika_PayAgain_07_02");	//Нет, ты мне больше не нужен.
 	} else if (hero.voice == 10)	{	//Эрол
 		AI_Output(other,self,"DIA_Mika_PayAgain_10_02");	//Нет, ты мне больше не нужен.
 	} else if (hero.voice == 14)	{	//Тилл
-		AI_Output(other,self,"DIA_Mika_PayAgain_14_02");	//Нет, ты мне больше не нужен.
+		AI_Output(other,self,"DIA_OldShepherd_HowAU_No_14_00");	//Нет, спасибо.
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Mika_PayAgain_16_02");	//Нет, ты мне больше не нужен.
 	};
@@ -240,6 +231,7 @@ func void DIA_Mika_PayAgain_No()
 	Mika_Guard_Active = FALSE;
 	self.aivar[AIV_Temper] = self.aivar[AIV_Temper] & ~TEMPER_BodyGuard;
 	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	B_SetAttitude(self, ATT_NEUTRAL);
 	B_StartOtherRoutine(self,"START");
 	AI_StopProcessInfos(self);
 };

@@ -68,6 +68,10 @@ func void ZS_Follow_Player()
 
 func int ZS_Follow_Player_Loop()
 {
+	self.wp = Npc_GetNearestWP(self);
+	if (C_FollowPlayerForbidden(self))	{
+		return LOOP_CONTINUE;
+	};
 	// если ГГ слишком далеко (я отстал) 
 	if(Npc_GetDistToNpc(self,hero) > self.aivar[AIV_FollowDist]
 		// проверить, не ушел ли ГГ слишком далеко

@@ -71,6 +71,11 @@ func void ZS_Attack()
 	self.aivar[AIV_HitByOtherNpc] = 0;
 	self.aivar[AIV_SelectSpell] = 0;
 	Npc_SetStateTime(self,0);
+	
+	//сообщаем о начале драки, если она была вызвана каким-то сюжетным событием, а не как реакция на действия ГГ
+	if (self.aivar[AIV_ATTACKREASON] == AR_KILL || self.aivar[AIV_ATTACKREASON] == AR_NONE || self.aivar[AIV_ATTACKREASON] == AR_SuddenEnemyInferno)	{
+		Npc_SendPassivePerc(self, PERC_ASSESSFIGHTSOUND, other, self);
+	};
 };
 
 // ЦИКЛ ===================================================================

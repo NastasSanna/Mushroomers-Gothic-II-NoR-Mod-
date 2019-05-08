@@ -14,7 +14,7 @@ func void ZS_Unconscious()
 	Npc_SetTempAttitude(self,Npc_GetPermAttitude(self,hero));
 	B_StopLookAt(self);
 	AI_StopPointAt(self);
-	if((self.guild < GIL_SEPERATOR_HUM) && Npc_IsPlayer(other))
+	if((self.guild < GIL_SEPERATOR_HUM) && (Npc_IsPlayer(other) || other.aivar[AIV_PARTYMEMBER] == TRUE))
 	{
 		self.aivar[AIV_DefeatedByPlayer] = TRUE;
 		self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_LOST;
