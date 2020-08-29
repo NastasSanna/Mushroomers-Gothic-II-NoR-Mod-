@@ -335,7 +335,7 @@ func void DIA_Irene_SwitchAtttention_info()
 	AI_Output(self,other,"DIA_Irene_SwitchAtttention_17_12");	//Вот, возьми ключ от его сундука. 
 	//PUBLIC
 	B_GiveInvItems(self,other,ItKe_Chest_Fellan,1);
-	self.aivar[AIV_IgnoreFlags] = self.aivar[AIV_IgnoreFlags] | IGNORE_PortalRoom_Public;
+	self.aivar[AIV_IgnoreFlags] = self.aivar[AIV_IgnoreFlags] | IGNORE_PortalRoom;
 	Fellan_ChestKeyGot = TRUE;
 	MOBNAME_Chest_Fellan = MOBNAME_Chest_Fellan_Full;
 	B_LogEntry(TOPIC_FellanGoHome,TOPIC_FellanGoHome_HammerTold);
