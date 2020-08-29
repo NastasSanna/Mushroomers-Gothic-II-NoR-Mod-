@@ -75,6 +75,6 @@ func void B_RupertPayDebt(var int Creditor)
 		XP_sum += XP_Rupert_Debts_Lehmar;
 	};
 	
-	B_RupertPayDebt(XP_sum);
+	B_RupertPayDebt_All(XP_sum);
 };
 
