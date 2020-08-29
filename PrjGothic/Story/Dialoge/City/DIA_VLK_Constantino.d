@@ -1217,6 +1217,7 @@ instance DIA_Constantino_BuyRecipe(C_INFO)
 	condition = DIA_Constantino_BuyRecipe_cond;
 	information = DIA_Constantino_BuyRecipe_info;
 	description = "Я хочу купить рецепт настойки. (500 зол.)";
+	permanent = TRUE;
 };
 func int DIA_Constantino_BuyRecipe_cond()
 {
