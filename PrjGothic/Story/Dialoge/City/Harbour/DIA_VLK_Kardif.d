@@ -99,12 +99,13 @@ instance DIA_Kardif_Elena_AboutLehmar(C_INFO)
 	condition = DIA_Kardif_Elena_AboutLehmar_cond;
 	information = DIA_Kardif_Elena_AboutLehmar_info;
 	description = "Я хочу спросить про Лемара (20 зол.)";
+	permanent = TRUE;
 };
 func int DIA_Kardif_Elena_AboutLehmar_cond()
 {
 	if (C_HeroIs_Elena()
-		&& Kardif_TellRumors
-		&& !MIS_Elena_Present_CupLehmarGot && (MIS_Elena_Present == LOG_Running))	{
+		&& Kardif_TellRumors && MIS_Elena_Present_KnowsLehmar && Npc_KnowsInfo(other,DIA_Lehmar_Elena_AboutCup)
+		&& !MIS_Elena_Present_KardifTold && (MIS_Elena_Present == LOG_Running))	{
 		return TRUE;
 	};
 };
