@@ -24,7 +24,7 @@ func void PC_PrayInnos_PatronGod(var int level)
 {
 	if (PATRONGOD == PATRONGOD_Innos)	{
 		if (level == 3)	{
-			PrintScreen("Иннос очищает твое тело и разум.",-1,-1,FONT_Screen,2);
+			PrintScreen("Иннос очищает твое тело и разум.",-1,60,FONT_Screen,2);
 			POISON_DrgTears_Timer = 0;
 			POISON_Foggy_Timer = 0;
 			POISON_Stone_Cnt = 0;
@@ -32,22 +32,22 @@ func void PC_PrayInnos_PatronGod(var int level)
 			other.attribute[ATR_MANA] = other.attribute[ATR_MANA_MAX];
 		}
 		else if (level == 2)	{
-			PrintScreen("Иннос освобождает твое тело от боли и ядов.",-1,-1,FONT_Screen,2);
+			PrintScreen("Иннос освобождает твое тело от боли и ядов.",-1,60,FONT_Screen,2);
 			POISON_DrgTears_Timer = 0;
 			POISON_Foggy_Timer = 0;
 			POISON_Stone_Cnt = 0;
 			other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
 		}
 		else if (level == 1)	{
-			PrintScreen("Иннос исцеляет твои раны.",-1,-1,FONT_Screen,2);
+			PrintScreen("Иннос исцеляет твои раны.",-1,60,FONT_Screen,2);
 			other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
 		};
 	}
 	else if (PATRONGOD == PATRONGOD_Beliar)	{
-		PrintScreen("Иннос не слышит тебя.",-1,-1,FONT_Screen,2);
+		PrintScreen("Иннос не слышит тебя.",-1,60,FONT_Screen,2);
 	}
 	else	{
-		PrintScreen("Иннос благодарит тебя.",-1,-1,FONT_Screen,2);
+		PrintScreen("Иннос благодарит тебя.",-1,60,FONT_Screen,2);
 		if (level == 3)	{
 			other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
 		}
