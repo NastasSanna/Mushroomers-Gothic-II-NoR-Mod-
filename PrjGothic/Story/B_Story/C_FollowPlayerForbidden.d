@@ -8,4 +8,10 @@ func int C_FollowPlayerForbidden(var C_NPC slf)
 			return TRUE;
 		};
 	};
+	if (C_NpcIs(self, PC_HelenDream)) {
+		if (Npc_GetDistToWP(self, "NW_MAGECAVE_NS_IN") > 2500) {
+			return TRUE;
+		};
+	};
+	return FALSE;
 };
