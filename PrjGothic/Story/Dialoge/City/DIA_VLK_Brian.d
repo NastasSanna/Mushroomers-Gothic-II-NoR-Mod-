@@ -349,7 +349,10 @@ func void DIA_Brian_AboutTrade_Info()
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Brian_AboutTrade_16_00");	//Ты что-нибудь продаешь?
 	};
-	if ((Npc_GetDistToNpc(VLK_412_Harad,self) < PERC_DIST_INTERMEDIAT) || (Npc_GetDistToNpc(VLK_412_Harad,other) < PERC_DIST_DIALOG))	{
+	if (Brian_KnifeSell == -1 || 
+		(Npc_GetDistToNpc(VLK_412_Harad,self) < PERC_DIST_INTERMEDIAT) || 
+		(Npc_GetDistToNpc(VLK_412_Harad,other) < PERC_DIST_DIALOG)
+	)	{
 		AI_Output(self,other,"DIA_Brian_AboutTrade_04_01");	//Нет. Мастер пока не разрешает мне торговать.
 	}
 	else	{
