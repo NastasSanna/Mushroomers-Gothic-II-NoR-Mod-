@@ -41,9 +41,13 @@ func void DIA_Pyrokar_Bless_Odo_Info()
 	};
 	if (PATRONGOD == PATRONGOD_Beliar)	{
 		PrintScreen(PRINT_GOD_Beliar_Rage, -1, 55, FONT_Screen, 3);
-		if (self.attribute[ATR_HITPOINTS] > 1)	{
-			self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS] / 2;
+		if (other.attribute[ATR_HITPOINTS] > 1)	{
+			other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS] / 2;
 		};
+	}
+	else {
+		other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
+		other.attribute[ATR_MANA] = other.attribute[ATR_MANA_MAX];
 	};
 };
 
