@@ -98,6 +98,10 @@ func void B_GiveTradeInv_Gorax(var C_Npc slf)
 	{
 		CreateInvItems(slf,ItMw_1h_Nov_Mace,1);
 	};
+	if (Npc_HasItems(slf, ItMi_Flask) < 3)
+	{
+		CreateInvItems(slf,ItMi_Flask,5);
+	};
 };
 
 func void B_CreateTradeItems_Gorax(var int ItemInst, var int amount)
