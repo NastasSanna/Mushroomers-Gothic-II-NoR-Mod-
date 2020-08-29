@@ -110,6 +110,9 @@ func void DIA_Dyrian_GiveMrBook_Odo_Menu()
 	if (Npc_HasItems(other,ItWr_MushroomBook))	{
 		Info_AddChoice(DIA_Dyrian_GiveMrBook_Odo,"О грибах Хориниса.",DIA_Dyrian_GiveMrBook_Odo_MR);
 	};
+	if (Npc_HasItems(other,ItWr_MR_AboutDragons))	{
+		Info_AddChoice(DIA_Dyrian_GiveMrBook_Odo,"О драконах",DIA_Dyrian_GiveMrBook_Odo_AboutDragons);
+	};
 	if (Npc_HasItems(other,ItWr_MR_BiographyBartosLaran))	{
 		Info_AddChoice(DIA_Dyrian_GiveMrBook_Odo,"Биография Бартоса Ларанского.",DIA_Dyrian_GiveMrBook_Odo_BiographyBartosLaran);
 	};
