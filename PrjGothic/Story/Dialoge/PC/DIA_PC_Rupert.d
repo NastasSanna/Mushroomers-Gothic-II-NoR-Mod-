@@ -111,14 +111,15 @@ var int DIA_Rupert_MRTrade_MR;
 var int DIA_Rupert_MRTrade_Cnt;
 var int DIA_Rupert_MRTrade_Price;
 var int DIA_Rupert_MRTrade_AllSum;
+var string DIA_Rupert_MRTrade_MenuText;
 
-func int DIA_Rupert_MRTrade_CheckMR(var string mrName, var int mrInst, var int mrIndex, var func choice)
+func int DIA_Rupert_MRTrade_CheckMR(var string mrName, var int mrInst, var int mrIndex)
 {
 	var int cnt; cnt = Npc_HasItems(self, mrInst);
 	if (cnt > 0)	{
 		var int price; price = MEM_ReadStatArr(MR_Price, mrIndex);
 		DIA_Rupert_MRTrade_AllSum += price * cnt;
-		Info_AddChoice(DIA_Rupert_MRTrade, CS5(mrName, " (", IntToString(price)," зол.)", ""), choice);
+		DIA_Rupert_MRTrade_MenuText = CS5(mrName, " (", IntToString(price)," зол.)", "");
 		return TRUE;
 	};
 	return FALSE;
@@ -147,15 +148,42 @@ func void DIA_Rupert_MRTrade_info()
 	Info_AddChoice(DIA_Rupert_MRTrade,Dialog_Back,DIA_Rupert_MRTrade_Back);
 	var int HasMrms;	HasMrms = FALSE;
 	DIA_Rupert_MRTrade_AllSum = 0;
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Болтун", ItMr_Red, MR_Red, DIA_Rupert_MRTrade_Red);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Сосновик", ItMr_Piny, MR_Piny, DIA_Rupert_MRTrade_Piny);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Каменка", ItMr_Stone, MR_Stone, DIA_Rupert_MRTrade_Stone);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Масляк", ItMr_BrownOiler, MR_BrownOiler, DIA_Rupert_MRTrade_BrownOiler);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Зорьник", ItMr_Sunrise, MR_Sunrise, DIA_Rupert_MRTrade_Sunrise);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Губернатор", ItMr_Governor, MR_Governor, DIA_Rupert_MRTrade_Governor);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Трезубец", ItMr_Trident, MR_Trident, DIA_Rupert_MRTrade_Trident);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Пища рудокопа", ItPl_Mushroom_02, MR_02, DIA_Rupert_MRTrade_MR02);
-	HasMrms = HasMrms | DIA_Rupert_MRTrade_CheckMR("Темный гриб", ItPl_Mushroom_01, MR_01, DIA_Rupert_MRTrade_MR01);
+	if (DIA_Rupert_MRTrade_CheckMR("Болтун", ItMr_Red, MR_Red)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Red);
+	};
+	if (DIA_Rupert_MRTrade_CheckMR("Сосновик", ItMr_Piny, MR_Piny)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Piny);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Каменка", ItMr_Stone, MR_Stone)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Stone);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Масляк", ItMr_BrownOiler, MR_BrownOiler)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_BrownOiler);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Зорьник", ItMr_Sunrise, MR_Sunrise)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Sunrise);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Губернатор", ItMr_Governor, MR_Governor)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Governor);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Трезубец", ItMr_Trident, MR_Trident)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_Trident);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Пища рудокопа", ItPl_Mushroom_02, MR_02)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_MR02);
+	};	
+	if (DIA_Rupert_MRTrade_CheckMR("Темный гриб", ItPl_Mushroom_01, MR_01)) {
+		HasMrms = TRUE;
+		Info_AddChoice(DIA_Rupert_MRTrade, DIA_Rupert_MRTrade_MenuText, DIA_Rupert_MRTrade_MR01);
+	};	
 	if (!HasMrms)	{
 		AI_Output(self,other,"DIA_Rupert_MRTrade_No_03_01");	//У меня сейчас больше нет грибов на продажу.
 		Info_ClearChoices(DIA_Rupert_MRTrade);
@@ -262,12 +290,12 @@ func void DIA_Rupert_MRTrade_MR01()
 func void DIA_Rupert_MRTrade_Cnt1()
 {
 	DIA_Rupert_MRTrade_Cnt = 1;
-	DIA_Rupert_MRTrade_MenuCnt();
+	DIA_Rupert_MRTrade_DoTrade();
 };
 func void DIA_Rupert_MRTrade_Cnt5()
 {
 	DIA_Rupert_MRTrade_Cnt = 5;
-	DIA_Rupert_MRTrade_MenuCnt();
+	DIA_Rupert_MRTrade_DoTrade();
 };
 //-----------------------------
 func void DIA_Rupert_MRTrade_All()
