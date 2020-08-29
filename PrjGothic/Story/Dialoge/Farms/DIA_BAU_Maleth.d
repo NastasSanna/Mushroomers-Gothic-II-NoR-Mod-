@@ -129,7 +129,8 @@ instance DIA_Maleth_WolvesKilled(C_Info)
 };
 func int DIA_Maleth_WolvesKilled_cond()
 {
-	if ((MIS_MalethWolves == LOG_Running) && (MalethWolf_Dead_Cnt >= 6))	{	return TRUE;	};
+	if ((MIS_MalethWolves == LOG_Running) && Npc_KnowsInfo(other, DIA_Maleth_UASad)
+		&& (MalethWolf_Dead_Cnt >= 6))	{	return TRUE;	};
 };
 func void DIA_Maleth_WolvesKilled_info()
 {
