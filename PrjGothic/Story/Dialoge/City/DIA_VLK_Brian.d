@@ -331,10 +331,16 @@ func void DIA_Brian_Apprentice_Info()
 instance DIA_Brian_AboutTrade(C_Info)
 {
 	npc = VLK_457_Brian;					nr = 11;
-	condition = DIA_NoCond_cond;
+	condition = DIA_Brian_AboutTrade_cond;
 	information = DIA_Brian_AboutTrade_Info;
 	description = "Ты что-нибудь продаешь?";
 	permanent = TRUE;
+};
+func int DIA_Brian_AboutTrade_cond() 
+{
+	if (Brian_KnifeSell == FALSE) {
+		return TRUE;
+	};
 };
 func void DIA_Brian_AboutTrade_Info()
 {
@@ -349,8 +355,7 @@ func void DIA_Brian_AboutTrade_Info()
 	} else	{							//Елена/Сара
 		AI_Output(other,self,"DIA_Brian_AboutTrade_16_00");	//Ты что-нибудь продаешь?
 	};
-	if (Brian_KnifeSell == -1 || 
-		(Npc_GetDistToNpc(VLK_412_Harad,self) < PERC_DIST_INTERMEDIAT) || 
+	if ((Npc_GetDistToNpc(VLK_412_Harad,self) < PERC_DIST_INTERMEDIAT) || 
 		(Npc_GetDistToNpc(VLK_412_Harad,other) < PERC_DIST_DIALOG)
 	)	{
 		AI_Output(self,other,"DIA_Brian_AboutTrade_04_01");	//Нет. Мастер пока не разрешает мне торговать.
