@@ -111,6 +111,7 @@ func void B_Foggy_Templapse()
 {
 	PrintScreen("Какое странное чувство...",-1,-1,FONT_Screen,3);
 	Wld_PlayEffect("POISON_FOG_SLOW",hero,hero,0,0,0,FALSE);
+	Wld_PlayEffect("SLEEP_BLEND", hero,hero,0,0,0,FALSE);
 	AI_Wait(hero, 2);
 	Wld_PlayEffect("SLEEP_BLEND", hero,hero,0,0,0,FALSE);
 	var string WP;

@@ -945,6 +945,7 @@ const string PRINT_SleepPain = "А?! Что? Больно!";
 
 const string PRINT_NoEffect = "Никакого эффекта...";
 const string TEXT_UnknownEffect = "Эффект неизвестен.";
+const string TEXT_DoNotEat = "Несъедобно!";
 
 const int YPOS_LOGENTRY		= 20;
 const int YPOS_XPGained		= 30;

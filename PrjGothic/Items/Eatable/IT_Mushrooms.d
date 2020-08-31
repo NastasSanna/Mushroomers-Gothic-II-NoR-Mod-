@@ -30,7 +30,6 @@ instance ItMr_Stone(Proto_Mushroom)
 		count[2] = HP_Mr_Stone;
 		text[3] = NAME_Bonus_Mana;
 		count[3] = Mana_Mr_Stone;
-		MEM_Debug("instance ItMr_Stone");
 	}
 	else	{
 		text[2] = TEXT_UnknownEffect;
@@ -61,11 +60,12 @@ func void Use_Mushroom_Stone()
 				self.attribute[ATR_STRENGTH] = 1;
 			};
 			if (self.aivar[AIV_Gender] == MALE)	{
-				AI_PrintScreen("Мой желудок! Как будто камень проглотил!",-1,-1,FONT_Screen,4);
+				AI_PrintScreen("Мой желудок! Как будто камень проглотил!",-1,-1,FONT_Screen,2);
 			}
 			else	{
-				AI_PrintScreen("Мой желудок! Как будто камень проглотила!",-1,-1,FONT_Screen,4);
+				AI_PrintScreen("Мой желудок! Как будто камень проглотила!",-1,-1,FONT_Screen,2);
 			};
+			AI_PrintScreen(CS3(NAME_Bonus_Str, " ", IntToString(AntiBonus_STR_Mr_Stone)),-1,61,FONT_ScreenSmall,3);
 		};
 	};
 };
@@ -104,9 +104,17 @@ func void Use_Mushroom_Sunrise()
 	//но постепенно повышают ловкость
 	if(Npc_IsPlayer(self))
 	{
+		if (!Hero_Knows_MR_Sunrise)	{
+			Hero_Knows_MR_Sunrise = TRUE;
+			AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(HP_Mr_Sunrise)),-1,55,FONT_ScreenSmall,3);
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Sunrise);
+			Npc_RemoveInvItems(self, ItMr_Sunrise,cnt);
+			CreateInvItems(self, ItMr_Sunrise,cnt);
+		};
 		MR_Eaten[MR_Sunrise] += 1;
 		if (MR_Eaten[MR_Sunrise] % 12 == 0)	{
 			B_RaiseAttribute(self,ATR_DEXTERITY,Bonus_DEX_Mr_Sunrise);
+			AI_PrintScreen(CS3(NAME_Bonus_Dex, " ", IntToString(Bonus_DEX_Mr_Sunrise)),-1,61,FONT_ScreenSmall,3);
 		};
 	};
 };
@@ -120,9 +128,15 @@ instance ItMr_Foggy(Proto_Mushroom)
 
 	visual = "ItMr_Foggy.3DS";
 	
+	if (Hero_Knows_MR_Foggy) {
+		text[2] = "Галюциногенный.";
+		text[3] = TEXT_DoNotEat;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
+		
 	text[5] = NAME_NoValue;
-	
-	text[3] = TEXT_UnknownEffect;
 
 	on_state[0] = Use_Mushroom_Foggy;
 };
@@ -134,6 +148,12 @@ func void Use_Mushroom_Foggy()
 	};		
 	if(Npc_IsPlayer(self))
 	{
+		if (!Hero_Knows_MR_Foggy)	{
+			Hero_Knows_MR_Foggy = TRUE;
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Foggy);
+			Npc_RemoveInvItems(self, ItMr_Foggy,cnt);
+			CreateInvItems(self, ItMr_Foggy,cnt);
+		};
 		B_Foggy_Templapse();
 		POISON_Foggy_Timer = Wld_GetFullTime() + POISON_Foggy_Duration + 1;
 		MR_Eaten[MR_Foggy] += 1;
@@ -169,6 +189,7 @@ func void Use_Mushroom_Piny()
 	Npc_ChangeAttribute(self,ATR_HITPOINTS,Bonus_HP_Mr_Piny);
 	if(Npc_IsPlayer(self))
 	{
+		Hero_Knows_MR_Piny = TRUE;
 		MR_Eaten[MR_Piny] += 1;
 	};
 };
@@ -195,6 +216,7 @@ func void Use_Mushroom_Red()
 	PrintInInventory(PRINT_NoEffect);
 	if(Npc_IsPlayer(self))
 	{
+		Hero_Knows_MR_Red = TRUE;
 		MR_Eaten[MR_Red] += 1;
 	};
 };
@@ -220,11 +242,13 @@ instance ItMr_Bottle(Proto_Mushroom)
 FUNC VOID Use_Mushroom_Bottle_Top()
 {
 	Npc_ChangeAttribute(self,ATR_HITPOINTS,AntiBonus_HP_Mr_Bottle);
+	AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(AntiBonus_HP_Mr_Bottle)),-1,55,FONT_ScreenSmall,3);
 };
 //съесть ножку (полезна)
 FUNC VOID Use_Mushroom_Bottle_Bottom()
 {
 	Npc_ChangeAttribute(self,ATR_HITPOINTS,Bonus_HP_Mr_Bottle);
+	AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(Bonus_HP_Mr_Bottle)),-1,58,FONT_ScreenSmall,3);
 };
 //съесть целиком
 FUNC VOID Use_Mushroom_Bottle_All()
@@ -333,6 +357,7 @@ func void Use_Mushroom_BrownOiler()
 	Npc_ChangeAttribute(self,ATR_MANA,Mana_Mr_BrownOiler);
 	if(Npc_IsPlayer(self))
 	{
+		Hero_Knows_MR_BrownOiler = TRUE;
 		MR_Eaten[MR_BrownOiler] += 1;
 	};
 };
@@ -349,7 +374,15 @@ instance ItMr_Oyster(Proto_Mushroom)
 	value = Value_Mr_Oyster;
 	text[5] = NAME_Value;	count[5] = value;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_Oyster)	{
+		text[2] = NAME_Bonus_HP;
+		count[2] = HP_Mr_Oyster;
+		text[3] = NAME_Bonus_Mana;
+		count[3] = Mana_Mr_Oyster;		
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};	
 
 	on_state[0] = Use_Mushroom_Oyster;
 };
@@ -360,6 +393,14 @@ func void Use_Mushroom_Oyster()
 	Npc_ChangeAttribute(self,ATR_MANA,Mana_Mr_Oyster);
 	if(Npc_IsPlayer(self))
 	{
+		if (!Hero_Knows_MR_Oyster)	{
+			Hero_Knows_MR_Oyster = TRUE;
+			AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(HP_Mr_Oyster)),-1,55,FONT_ScreenSmall,3);
+			AI_PrintScreen(CS3(NAME_Bonus_Mana, " ", IntToString(Mana_Mr_Oyster)),-1,58,FONT_ScreenSmall,3);
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Oyster);
+			Npc_RemoveInvItems(self, ItMr_Oyster,cnt);
+			CreateInvItems(self, ItMr_Oyster,cnt);
+		};
 		MR_Eaten[MR_Oyster] += 1;
 	};
 };
@@ -376,8 +417,13 @@ instance ItMr_Governor(Proto_Mushroom)
 	value = Value_Mr_Governor;
 	text[5] = NAME_Value;	count[5] = value;
 	
-	text[2] = NAME_Bonus_HP;
-	count[2] = HP_Mr_Governor;
+	if (Hero_Knows_MR_Governor)	{
+		text[2] = NAME_Bonus_HP;
+		count[2] = HP_Mr_Governor;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_Governor;
 };
@@ -387,6 +433,15 @@ func void Use_Mushroom_Governor()
 	Npc_ChangeAttribute(self,ATR_HITPOINTS,HP_Mr_Governor);
 	if(Npc_IsPlayer(self))
 	{
+		if (!Hero_Knows_MR_Governor)	{
+			Hero_Knows_MR_Governor = TRUE;
+			AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(HP_Mr_Governor)),-1,55,FONT_ScreenSmall,3);
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Governor);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_Governor,cnt);
+				CreateInvItems(self, ItMr_Governor,cnt);
+			};
+		};
 		MR_Eaten[MR_Governor] += 1;
 		if (MR_Eaten[MR_Governor] % Bonus_HP_Mr_Governor_Cnt == 0)	{
 			B_RaiseAttribute(self,ATR_HITPOINTS_MAX,Bonus_HP_Mr_Governor);
@@ -401,7 +456,6 @@ func void Use_Mushroom_Governor()
 };
 
 //-------------------------------------------
-var int Hero_Knows_MR_Keil;
 instance ItMr_KeilBig(Proto_Mushroom)
 {
 	description = "Кабанчик (большой)";	//name = description;
@@ -463,7 +517,15 @@ instance ItMr_Branch(Proto_Mushroom)
 	value = Value_Mr_Branch;
 	text[5] = NAME_Value;	count[5] = value;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_Branch)	{
+		text[2] = NAME_Bonus_Mana;
+		count[2] = Mana_Mr_Branch;
+		text[3] = NAME_Bonus_ManaMax;
+		count[3] = Bonus_Mana_Mr_Branch;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_Branch;
 };
@@ -473,6 +535,16 @@ func void Use_Mushroom_Branch()
 	Npc_ChangeAttribute(self,ATR_MANA,Mana_Mr_Branch);
 	Npc_ChangeAttribute(self,ATR_MANA_MAX,Bonus_Mana_Mr_Branch);
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_Branch)	{
+			Hero_Knows_MR_Branch = TRUE;
+			AI_PrintScreen(CS3(NAME_Bonus_Mana, " ", IntToString(Mana_Mr_Branch)),-1,55,FONT_ScreenSmall,3);
+			AI_PrintScreen(CS3(NAME_Bonus_ManaMax, " ", IntToString(Bonus_Mana_Mr_Branch)),-1,58,FONT_ScreenSmall,3);
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Branch);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_Branch,cnt);
+				CreateInvItems(self, ItMr_Branch,cnt);
+			};
+		};
 		MR_Eaten[MR_Branch] += 1;
 	};
 };
@@ -489,7 +561,15 @@ instance ItMr_LadysEar(Proto_Mushroom)
 	value = Value_Mr_LadysEar;
 	text[5] = NAME_Value;	count[5] = value;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_LadysEar)	{
+		text[2] = NAME_Bonus_HP;
+		count[2] = HP_Mr_LadysEar;
+		text[3] = NAME_Bonus_Mana;
+		count[3] = Mana_Mr_LadysEar;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_LadysEar;
 };
@@ -499,6 +579,16 @@ func void Use_Mushroom_LadysEar()
 	Npc_ChangeAttribute(self,ATR_HITPOINTS,HP_Mr_LadysEar);
 	Npc_ChangeAttribute(self,ATR_MANA,Mana_Mr_LadysEar);
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_LadysEar)	{
+			Hero_Knows_MR_LadysEar = TRUE;
+			AI_PrintScreen(CS3(NAME_Bonus_HP, " ", IntToString(HP_Mr_LadysEar)),-1,55,FONT_ScreenSmall,3);
+			AI_PrintScreen(CS3(NAME_Bonus_Mana, " ", IntToString(Mana_Mr_LadysEar)),-1,58,FONT_ScreenSmall,3);
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_LadysEar);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_LadysEar,cnt);
+				CreateInvItems(self, ItMr_LadysEar,cnt);
+			};
+		};
 		MR_Eaten[MR_LadysEar] += 1;
 	};
 };
@@ -514,7 +604,13 @@ instance ItMr_Trident(Proto_Mushroom)
 	
 	text[5] = NAME_NoValue;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_Trident)	{
+		text[2] = "Вызывает сильную слабость.";
+		text[3] = TEXT_DoNotEat;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_Trident;
 };
@@ -522,6 +618,14 @@ instance ItMr_Trident(Proto_Mushroom)
 func void Use_Mushroom_Trident()
 {
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_Trident)	{
+			Hero_Knows_MR_Trident = TRUE;
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Trident);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_Trident,cnt);
+				CreateInvItems(self, ItMr_Trident,cnt);
+			};
+		};
 		MR_Eaten[MR_Trident] += 1;
 		AI_PrintScreen("Я чувствую слабость", -1, -1, FONT_Screen,2);
 		if (self.attribute[ATR_STRENGTH] > 10)	{
@@ -551,7 +655,13 @@ instance ItMr_NightSparkles(Proto_Mushroom)
 	text[1] = "Здесь около дюжины маленьких грибочков.";
 	text[5] = NAME_NoValue;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_NightSparkles) {
+		text[2] = "Защищают от огня.";
+		text[3] = "На вкус жгучие.";
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_NightSparkles;
 };
@@ -559,6 +669,14 @@ instance ItMr_NightSparkles(Proto_Mushroom)
 func void Use_Mushroom_NightSparkles()
 {
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_NightSparkles)	{
+			Hero_Knows_MR_NightSparkles = TRUE;
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_NightSparkles);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_NightSparkles,cnt);
+				CreateInvItems(self, ItMr_NightSparkles,cnt);
+			};
+		};
 		MR_Eaten[MR_NightSparkles] += 1;
 		if (TIMER_NightSparkles_Enabled == FALSE)	{
 			PrintInInventory("Чувствую странное покалывание...");
@@ -583,7 +701,12 @@ instance ItMr_DragonTears(Proto_Mushroom)
 	
 	text[5] = NAME_NoValue;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_DragonTears) {
+		text[3] = TEXT_DoNotEat;
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_DragonTears;
 };
@@ -591,6 +714,14 @@ instance ItMr_DragonTears(Proto_Mushroom)
 func void Use_Mushroom_DragonTears()
 {
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_DragonTears)	{
+			Hero_Knows_MR_DragonTears = TRUE;
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_DragonTears);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_DragonTears,cnt);
+				CreateInvItems(self, ItMr_DragonTears,cnt);
+			};
+		};
 		MR_Eaten[MR_DragonTears] += 1;
 		POISON_DrgTears_Timer = POISON_DrgTears_Time_Max;
 		AI_PrintScreen("Жжется! ЖЖЕТСЯ!!! Внутри все горит!",-1,YPOS_InInventory,FONT_Screen,5);
@@ -763,7 +894,12 @@ instance ItMr_Ivy(Proto_Mushroom)
 	value = Value_Mr_Ivy;
 	text[5] = NAME_Value;	count[5] = value;
 	
-	text[3] = TEXT_UnknownEffect;
+	if (Hero_Knows_MR_Ivy)	{
+		text[2] = "Вызывает сонливость.";
+	}
+	else {
+		text[3] = TEXT_UnknownEffect;
+	};
 
 	on_state[0] = Use_Mushroom_Ivy;
 };
@@ -772,6 +908,14 @@ func void Use_Mushroom_Ivy()
 {
 //	B_ClearPerceptions(self);
 	if (Npc_IsPlayer(self))	{
+		if (!Hero_Knows_MR_Ivy)	{
+			Hero_Knows_MR_Ivy = TRUE;
+			var int cnt;	cnt = Npc_HasItems(self, ItMr_Ivy);
+			if (cnt > 0) {
+				Npc_RemoveInvItems(self, ItMr_Ivy,cnt);
+				CreateInvItems(self, ItMr_Ivy,cnt);
+			};
+		};
 		MR_Eaten[MR_Ivy] += 1;
 		PC_IvySleepStart.npc = Hlp_GetInstanceID(self);
 		PLAYER_MOBSI_PRODUCTION = MOBSI_IvySleepStart;

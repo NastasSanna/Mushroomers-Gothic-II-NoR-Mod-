@@ -1,7 +1,7 @@
 @echo off
 
 ::путь
-set p_gothic="D:\Gothic Mod\Gothic II Addon"
+set p_gothic="%~dp0..\..\..\Gothic II MR"
 set p=%p_gothic%"\_work\data\Scripts"
 
 DEL /F /Q %p_gothic%"\*.DMP"
