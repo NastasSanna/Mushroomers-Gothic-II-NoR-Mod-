@@ -140,22 +140,28 @@ func void B_AssessTalk()
 		{
 			// то он просит повернуться, с равной вероятностью используя одну из 4 фраз
 			//NS: некоторые фразы совпадают, так что по факту их только 2 
-			rnd = Hlp_Random(100);
-			if(rnd <= 25)
-			{
-				B_Say(other,self,"$SC_HEYTURNAROUND");
-			}
-			else if(rnd <= 50)
-			{
-				B_Say(other,self,"$SC_HEYTURNAROUND02");
-			}
-			else if(rnd <= 75)
-			{
-				B_Say(other,self,"$SC_HEYTURNAROUND03");
-			}
-			else if(rnd <= 99)
-			{
+			//MR послушник Одо обращается к магам "Мастер"
+			if (other.guild == GIL_NOV && self.guild == GIL_KDF) {
 				B_Say(other,self,"$SC_HEYTURNAROUND04");
+			}
+			else {
+				rnd = Hlp_Random(100);
+				if(rnd <= 25)
+				{
+					B_Say(other,self,"$SC_HEYTURNAROUND");
+				}
+				else if(rnd <= 50)
+				{
+					B_Say(other,self,"$SC_HEYTURNAROUND02");
+				}
+				else if(rnd <= 75)
+				{
+					B_Say(other,self,"$SC_HEYTURNAROUND03");
+				}
+				else if(rnd <= 99)
+				{
+					B_Say(other,self,"$SC_HEYTURNAROUND04");
+				};
 			};
 		};
 	};

@@ -602,7 +602,7 @@ instance SVM_3(C_SVM)
 	SC_HeyTurnAround = "SVM_3_SC_HeyTurnAround";	//Эй, ты!
 	SC_HeyTurnAround02 = "SVM_3_SC_HeyTurnAround02";	//Эй, ты!
 	SC_HeyTurnAround03 = "SVM_3_SC_HeyTurnAround03";	//Эй!
-	SC_HeyTurnAround04 = "SVM_3_SC_HeyTurnAround04";	//Эй!
+	SC_HeyTurnAround04 = "SVM_3_SC_HeyTurnAround04";	//Мастер...
 	SC_HeyWaitASecond = "SVM_3_SC_HeyWaitASecond";	//Подожди минутку!
 	DoesntWork = "SVM_3_DoesntWork";	//Не получается.
 	nothingtoget = "SVM_3_NOTHINGTOGET";	//Пусто...
